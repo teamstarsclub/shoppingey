@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Search, ShieldCheck, X, ArrowRight } from 'lucide-react';
 import { CATEGORIES, REVIEWS, type CategorySlug } from '../data/reviews';
 import { getCategoryBySlug, searchReviews } from '../utils/catalog';
-import { navigateTo } from '../utils/router';
+import { navigateTo, resolveAssetUrl } from '../utils/router';
 import { Link } from './Link';
 import { StarRating } from './StarRating';
 
@@ -198,7 +198,7 @@ export const Header: React.FC<HeaderProps> = ({ activePath }) => {
                               className="w-full px-3.5 py-2.5 flex items-center gap-3 text-left hover:bg-[#F9FAFB] transition-colors cursor-pointer"
                             >
                               <img
-                                src={review.image}
+                                src={resolveAssetUrl(review.image)}
                                 alt={review.productName}
                                 width={56}
                                 height={42}

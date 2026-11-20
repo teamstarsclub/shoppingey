@@ -1,11 +1,16 @@
 import React from 'react';
-import { navigateTo } from '../utils/router';
+import { navigateTo, withBasePath } from '../utils/router';
 
 export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   to: string;
 }
 
 export const Link: React.FC<LinkProps> = ({ to, onClick, children, ...rest }) => {
+  const isExternal =
+    to.startsWith('http://') || to.startsWith('https://') || to.startsWith('mailto:');
+  const isHashOnly = to.startsWith('#');
+  const resolvedHref = isExternal || isHashOnly ? to : withBasePath(to);
+
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (onClick) {
       onClick(event);
@@ -22,11 +27,7 @@ export const Link: React.FC<LinkProps> = ({ to, onClick, children, ...rest }) =>
       return;
     }
 
-    if (to.startsWith('http://') || to.startsWith('https://') || to.startsWith('mailto:')) {
-      return;
-    }
-
-    if (to.startsWith('#')) {
+    if (isExternal || isHashOnly) {
       return;
     }
 
@@ -35,7 +36,7 @@ export const Link: React.FC<LinkProps> = ({ to, onClick, children, ...rest }) =>
   };
 
   return (
-    <a href={to} onClick={handleClick} {...rest}>
+    <a href={resolvedHref} onClick={handleClick} {...rest}>
       {children}
     </a>
   );

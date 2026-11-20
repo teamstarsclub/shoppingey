@@ -18,6 +18,7 @@ import {
   sortReviews,
 } from '../utils/catalog';
 import { Link } from '../components/Link';
+import { resolveAssetUrl } from '../utils/router';
 import { ReviewCard } from '../components/ReviewCard';
 import { SEOHead } from '../components/SEOHead';
 
@@ -120,7 +121,7 @@ export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
                 >
                   <div className="aspect-[4/3] w-full bg-[#F8F9FA] border-b border-[#F3F4F6] flex items-center justify-center p-3 overflow-hidden">
                     <img
-                      src={category.featuredImage}
+                      src={resolveAssetUrl(category.featuredImage)}
                       alt={`${category.name} featured product`}
                       width={400}
                       height={300}

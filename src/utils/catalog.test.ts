@@ -16,7 +16,7 @@ import {
   searchReviews,
   sortReviews,
 } from './catalog';
-import { parsePathname } from './router';
+import { parsePathname, resolveAssetUrl, stripBasePath, withBasePath } from './router';
 
 test('catalog has exactly 5 required categories and 1 review per category (5 total)', () => {
   assert.equal(CATEGORIES.length, 5);
@@ -181,4 +181,29 @@ test('parsePathname parses clean semantic paths without hash routing', () => {
     type: 'not-found',
     path: '/unknown-route',
   });
+});
+
+test('GitHub Pages subpath routing and asset resolution work across / and /repo/ bases', () => {
+  assert.equal(stripBasePath('/shoppingey', '/shoppingey/'), '/');
+  assert.equal(stripBasePath('/shoppingey/', '/shoppingey/'), '/');
+  assert.equal(stripBasePath('/shoppingey/category/tools', '/shoppingey/'), '/category/tools');
+  assert.deepEqual(
+    parsePathname('/shoppingey/review/torqpro-20v-brushless-cordless-drill-kit', '', '/shoppingey/'),
+    { type: 'review', slug: 'torqpro-20v-brushless-cordless-drill-kit' }
+  );
+  assert.deepEqual(parsePathname('/shoppingey/', '', '/shoppingey/'), {
+    type: 'home',
+    query: undefined,
+  });
+
+  assert.equal(withBasePath('/', '/shoppingey/'), '/shoppingey/');
+  assert.equal(withBasePath('/category/tools', '/shoppingey/'), '/shoppingey/category/tools');
+  assert.equal(
+    resolveAssetUrl('/src/assets/images/product.jpg', '/shoppingey/'),
+    '/shoppingey/src/assets/images/product.jpg'
+  );
+  assert.equal(
+    resolveAssetUrl('/src/assets/images/product.jpg', '/'),
+    '/src/assets/images/product.jpg'
+  );
 });

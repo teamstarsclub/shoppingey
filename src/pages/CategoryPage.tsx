@@ -13,6 +13,7 @@ import {
 } from '../utils/catalog';
 import { AmazonAffiliateButton } from '../components/AmazonAffiliateButton';
 import { Link } from '../components/Link';
+import { resolveAssetUrl } from '../utils/router';
 import { ProductImage } from '../components/ProductImage';
 import { SchemaMarkup } from '../components/SchemaMarkup';
 import { SEOHead } from '../components/SEOHead';
@@ -319,7 +320,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug }) => {
                   className="bg-white border border-[#E5E7EB] rounded-lg p-4 flex items-center gap-3.5 hover:border-[#D1D5DB] hover:shadow-sm transition-all group"
                 >
                   <img
-                    src={other.featuredImage}
+                    src={resolveAssetUrl(other.featuredImage)}
                     alt={other.name}
                     width={64}
                     height={48}

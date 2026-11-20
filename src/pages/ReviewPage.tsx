@@ -23,6 +23,7 @@ import {
 } from '../utils/catalog';
 import { AmazonAffiliateButton } from '../components/AmazonAffiliateButton';
 import { Link } from '../components/Link';
+import { resolveAssetUrl } from '../utils/router';
 import { ProductImage } from '../components/ProductImage';
 import { SchemaMarkup } from '../components/SchemaMarkup';
 import { SEOHead } from '../components/SEOHead';
@@ -274,7 +275,7 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
                 }`}
               >
                 <img
-                  src={review.image}
+                  src={resolveAssetUrl(review.image)}
                   alt=""
                   width={48}
                   height={36}
@@ -658,7 +659,7 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
                         aria-label={`Read review of ${compReview.productName}`}
                       >
                         <img
-                          src={compReview.image}
+                          src={resolveAssetUrl(compReview.image)}
                           alt={compReview.productName}
                           width={160}
                           height={120}

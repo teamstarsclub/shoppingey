@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Package } from 'lucide-react';
+import { resolveAssetUrl } from '../utils/router';
 
 export interface ProductImageProps {
   src: string;
@@ -37,7 +38,7 @@ export const ProductImage: React.FC<ProductImageProps> = ({
         </div>
       ) : (
         <img
-          src={src}
+          src={resolveAssetUrl(src)}
           alt={alt}
           width={800}
           height={600}
