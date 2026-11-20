@@ -1,0 +1,6 @@
+{
+  "name": "Shoppingey.com",
+  "description": "Independent Amazon product reviews, hands-on testing, and department buying guides across Home & Tech, Home & Kitchen, Home Decor, Tools, and Gardening Gadgets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

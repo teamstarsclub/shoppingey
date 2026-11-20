@@ -1,0 +1,302 @@
+import React from 'react';
+import {
+  ArrowRight,
+  CheckCircle2,
+  Cpu,
+  FlaskConical,
+  Lamp,
+  Scale,
+  ShieldCheck,
+  Sprout,
+  Utensils,
+  Wrench,
+} from 'lucide-react';
+import { CATEGORIES, REVIEWS, SITE_CONFIG, type Category } from '../data/reviews';
+import {
+  getCategoryReviewCount,
+  searchReviews,
+  sortReviews,
+} from '../utils/catalog';
+import { Link } from '../components/Link';
+import { ReviewCard } from '../components/ReviewCard';
+import { SEOHead } from '../components/SEOHead';
+
+export interface HomePageProps {
+  initialQuery?: string;
+}
+
+function CategoryIcon({ name }: { name: Category['iconName'] }) {
+  const cls = 'w-4 h-4 text-[#D97706] shrink-0';
+  switch (name) {
+    case 'cpu':
+      return <Cpu className={cls} aria-hidden="true" />;
+    case 'utensils':
+      return <Utensils className={cls} aria-hidden="true" />;
+    case 'lamp':
+      return <Lamp className={cls} aria-hidden="true" />;
+    case 'wrench':
+      return <Wrench className={cls} aria-hidden="true" />;
+    case 'sprout':
+      return <Sprout className={cls} aria-hidden="true" />;
+  }
+}
+
+export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
+  const orderedReviews = sortReviews(
+    initialQuery ? searchReviews(REVIEWS, initialQuery, 'all') : REVIEWS,
+    'rating'
+  );
+
+  return (
+    <>
+      <SEOHead
+        title="Shoppingey.com — Independent Amazon Product Reviews & Buying Guides (2026)"
+        description="Honest, hands-on Amazon product reviews tested and organized by department: Home & Tech, Home & Kitchen, Home Decor, Tools, and Gardening Gadgets."
+        canonicalPath="/"
+        ogType="website"
+        image={REVIEWS[0].image}
+      />
+
+      {/* Compact Trust Hero Strip */}
+      <section className="bg-white border-b border-[#E5E7EB]">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 py-8 md:py-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold tracking-wide text-[#B45309]">
+              Independent Product Testing · Updated November 2026
+            </p>
+            <h1 className="mt-2 text-2xl sm:text-3xl lg:text-[34px] font-extrabold tracking-tight text-[#111827] leading-[1.18]">
+              Honest Amazon Product Reviews — Tested, Compared &amp; Organized by Department
+            </h1>
+            <p className="mt-3 text-[15px] leading-relaxed text-[#4B5563]">
+              We buy, bench-test, and live with everyday home, kitchen, workshop, and garden
+              products so you skip sponsored hype and pick gear that lasts.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-6 lg:gap-8 pt-2 lg:pt-0 border-t lg:border-t-0 border-[#F3F4F6] text-sm">
+            <div>
+              <p className="text-xl font-extrabold text-[#111827] tabular-nums">5</p>
+              <p className="text-xs text-[#4B5563]">Core Departments</p>
+            </div>
+            <div className="h-8 w-px bg-[#E5E7EB] hidden sm:block" aria-hidden="true" />
+            <div>
+              <p className="text-xl font-extrabold text-[#111827] tabular-nums">5-Point</p>
+              <p className="text-xs text-[#4B5563]">Lab Scoring Rubric</p>
+            </div>
+            <div className="h-8 w-px bg-[#E5E7EB] hidden sm:block" aria-hidden="true" />
+            <div>
+              <p className="text-xl font-extrabold text-[#111827] tabular-nums">100%</p>
+              <p className="text-xs text-[#4B5563]">Editorial Independence</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 py-10 space-y-14">
+        {/* Section 1: Browse by Category — 5-Card Visual Grid */}
+        <section aria-labelledby="browse-categories-heading">
+          <div className="flex items-end justify-between gap-4 mb-5">
+            <div>
+              <h2
+                id="browse-categories-heading"
+                className="text-xl sm:text-2xl font-bold tracking-tight text-[#111827]"
+              >
+                Browse by Category
+              </h2>
+              <p className="text-sm text-[#4B5563] mt-1">
+                Explore hands-on buying guides across all five Shoppingey.com departments.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {CATEGORIES.map((category) => {
+              const count = getCategoryReviewCount(category.slug, REVIEWS);
+              return (
+                <Link
+                  key={category.slug}
+                  to={`/category/${category.slug}`}
+                  className="group bg-white border border-[#E5E7EB] rounded-lg overflow-hidden flex flex-col transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-[#D1D5DB]"
+                >
+                  <div className="aspect-[4/3] w-full bg-[#F8F9FA] border-b border-[#F3F4F6] flex items-center justify-center p-3 overflow-hidden">
+                    <img
+                      src={category.featuredImage}
+                      alt={`${category.name} featured product`}
+                      width={400}
+                      height={300}
+                      loading="lazy"
+                      decoding="async"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4 flex-1 flex flex-col">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="inline-flex items-center gap-1.5 text-[15px] font-bold text-[#111827] group-hover:text-[#B45309] transition-colors">
+                        <CategoryIcon name={category.iconName} />
+                        <span>{category.name}</span>
+                      </span>
+                    </div>
+                    <p className="mt-1.5 text-xs leading-relaxed text-[#4B5563] flex-1">
+                      {category.shortDescription}
+                    </p>
+                    <div className="mt-3 pt-2.5 border-t border-[#F3F4F6] flex items-center justify-between text-xs font-semibold">
+                      <span className="text-[#4B5563] tabular-nums">
+                        {count} {count === 1 ? 'Review' : 'Reviews'}
+                      </span>
+                      <span className="text-[#111827] group-hover:text-[#B45309] inline-flex items-center gap-1 transition-colors">
+                        Explore
+                        <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Section 2: Latest Featured Reviews Product Grid */}
+        <section id="featured-reviews" aria-labelledby="featured-reviews-heading">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-5">
+            <div>
+              <h2
+                id="featured-reviews-heading"
+                className="text-xl sm:text-2xl font-bold tracking-tight text-[#111827]"
+              >
+                {initialQuery
+                  ? `Search Results for "${initialQuery}"`
+                  : 'Latest Featured Reviews'}
+              </h2>
+              <p className="text-sm text-[#4B5563] mt-1">
+                {initialQuery
+                  ? `Showing ${orderedReviews.length} matching tested review${orderedReviews.length === 1 ? '' : 's'}.`
+                  : 'Our highest-rated flagship picks across every department—tested for real-world performance.'}
+              </p>
+            </div>
+            {initialQuery && (
+              <Link
+                to="/"
+                className="text-sm font-semibold text-[#B45309] hover:underline whitespace-nowrap"
+              >
+                Clear search filter
+              </Link>
+            )}
+          </div>
+
+          {orderedReviews.length === 0 ? (
+            <div className="bg-white border border-[#E5E7EB] rounded-lg p-10 text-center">
+              <p className="text-base font-semibold text-[#111827]">
+                No reviews found matching &ldquo;{initialQuery}&rdquo;
+              </p>
+              <p className="text-sm text-[#4B5563] mt-1">
+                Browse one of our five product departments above or view all flagship reviews.
+              </p>
+              <Link
+                to="/"
+                className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white bg-[#131921] hover:bg-[#232F3E] rounded-md transition-colors"
+              >
+                View All Featured Reviews
+              </Link>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {orderedReviews.map((review) => (
+                <ReviewCard key={review.slug} review={review} />
+              ))}
+            </div>
+          )}
+        </section>
+
+        {/* Section 3: Why Trust Shoppingey.com (E-E-A-T 3-Column Trust Section) */}
+        <section
+          aria-labelledby="why-trust-heading"
+          className="bg-white border border-[#E5E7EB] rounded-lg p-6 sm:p-8 lg:p-10"
+        >
+          <div className="max-w-2xl mb-8">
+            <h2
+              id="why-trust-heading"
+              className="text-xl sm:text-2xl font-bold tracking-tight text-[#111827]"
+            >
+              Why Trust {SITE_CONFIG.name}
+            </h2>
+            <p className="text-sm text-[#4B5563] mt-1.5 leading-relaxed">
+              We built Shoppingey.com to deliver clear, unvarnished product verdicts with zero
+              sponsored placements and zero inflated star ratings.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="space-y-2.5">
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#FEF3C7] text-[#B45309]">
+                <Scale className="w-5 h-5" aria-hidden="true" />
+              </div>
+              <h3 className="text-base font-bold text-[#111827]">Independent Research</h3>
+              <p className="text-sm leading-relaxed text-[#4B5563]">
+                Brands cannot buy a recommendation or preview our scores before publication. Every
+                review includes genuine drawbacks alongside strengths so you know when to skip a
+                product too.
+              </p>
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-[#111827] hover:text-[#B45309] pt-1"
+              >
+                <span>About our editorial team</span>
+                <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+              </Link>
+            </div>
+
+            <div className="space-y-2.5">
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#FEF3C7] text-[#B45309]">
+                <FlaskConical className="w-5 h-5" aria-hidden="true" />
+              </div>
+              <h3 className="text-base font-bold text-[#111827]">Transparent Testing Criteria</h3>
+              <p className="text-sm leading-relaxed text-[#4B5563]">
+                Every reviewed item is graded on our consistent 5-point rubric—Build Quality,
+                Performance, Value, Ease of Use, and Long-Term Durability—using measurable home
+                and workshop benchmarks.
+              </p>
+              <Link
+                to="/how-we-review"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-[#111827] hover:text-[#B45309] pt-1"
+              >
+                <span>See our 5-point testing process</span>
+                <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+              </Link>
+            </div>
+
+            <div className="space-y-2.5">
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#FEF3C7] text-[#B45309]">
+                <ShieldCheck className="w-5 h-5" aria-hidden="true" />
+              </div>
+              <h3 className="text-base font-bold text-[#111827]">Reader-Supported Disclosure</h3>
+              <p className="text-sm leading-relaxed text-[#4B5563]">
+                Shoppingey.com is reader-supported. When you click through our Amazon links and make
+                a qualifying purchase, we may earn a small affiliate commission at no extra cost to
+                you.
+              </p>
+              <Link
+                to="/affiliate-disclosure"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-[#111827] hover:text-[#B45309] pt-1"
+              >
+                <span>Read full FTC &amp; Associates disclosure</span>
+                <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-5 border-t border-[#F3F4F6] flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-[#4B5563]">
+            <span className="inline-flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" aria-hidden="true" />
+              Zero static hardcoded prices—always check live Amazon availability
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" aria-hidden="true" />
+              Regularly audited for discontinued models and updated firmware
+            </span>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+};
