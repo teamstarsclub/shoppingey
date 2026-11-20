@@ -1,5 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { AmazonAffiliateButton } from '../components/AmazonAffiliateButton';
 import { CATEGORIES, REVIEWS, SITE_CONFIG } from '../data/reviews';
 import {
   buildBreadcrumbJsonLd,
@@ -35,14 +38,27 @@ test('catalog has exactly 5 required categories and 1 review per category (5 tot
   }
 });
 
-test('Amazon affiliate URL strictly uses liveblog36507-20 tag and valid 10-char ASINs', () => {
+test('Amazon affiliate URL and rendered button HTML strictly match exact required code per ASIN', () => {
   assert.equal(SITE_CONFIG.affiliateTag, 'liveblog36507-20');
   for (const review of REVIEWS) {
-    assert.match(review.asin, /^B0[A-Z0-9]{8,9}$/, `Invalid ASIN format: ${review.asin}`);
+    assert.match(review.asin, /^B0[A-Z0-9]{8}$/, `Invalid 10-char ASIN format: ${review.asin}`);
     assert.equal(
       getAmazonAffiliateUrl(review.asin),
       `https://amazon.com/dp/${review.asin}?tag=liveblog36507-20`
     );
+
+    const html = renderToStaticMarkup(
+      React.createElement(AmazonAffiliateButton, { asin: review.asin })
+    );
+    const expectedAnchor =
+      `<a href="https://amazon.com/dp/${review.asin}?tag=liveblog36507-20" class="amazon-affiliate-button" rel="sponsored nofollow noopener noreferrer" target="_blank">` +
+      `<img src="https://g.top4top.io/p_390434fjf1.png" alt="Buy On Amazon" width="780" height="241" loading="lazy" decoding="async" style="max-width:240px;width:100%;height:auto"/>` +
+      `</a>`;
+    assert.ok(
+      html.includes(expectedAnchor),
+      `Affiliate button markup mismatch for ${review.asin}:\nGot:      ${html}\nExpected: ${expectedAnchor}`
+    );
+    assert.equal(html.includes('amazon-btn-fallback'), false, 'Fallback wrapper must not exist');
   }
 });
 

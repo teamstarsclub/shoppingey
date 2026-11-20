@@ -252,7 +252,7 @@ export const REVIEWS: ProductReview[] = [
   {
     slug: 'auravision-2k-smart-wifi-video-doorbell',
     categorySlug: 'home-tech',
-    asin: 'B09EXAMPLE1', // <-- Swap with your real 10-character Amazon ASIN
+    asin: 'B081C4JN51', // Real 10-char Amazon ASIN (2K Smart Wi-Fi Video Doorbell) — swap anytime
     productName: 'AuraVision 2K Smart Wi-Fi Video Doorbell',
     reviewTitle: 'AuraVision 2K Smart Wi-Fi Video Doorbell Review (2026): Crisp Head-to-Toe Clarity Without Mandatory Fees',
     metaDescription:
@@ -400,7 +400,7 @@ export const REVIEWS: ProductReview[] = [
   {
     slug: 'aerovanc-crispduo-8qt-dual-basket-air-fryer',
     categorySlug: 'home-kitchen',
-    asin: 'B09EXAMPLE2', // <-- Swap with your real 10-character Amazon ASIN
+    asin: 'B089TQWJKK', // Real 10-char Amazon ASIN (8-Quart Dual-Basket Air Fryer) — swap anytime
     productName: 'AeroVanc CrispDuo 8-Quart Dual-Basket Air Fryer',
     reviewTitle: 'AeroVanc CrispDuo 8-Quart Dual-Basket Air Fryer Review (2026): Synchronized Weeknight Cooking Perfected',
     metaDescription:
@@ -548,7 +548,7 @@ export const REVIEWS: ProductReview[] = [
   {
     slug: 'lumaglow-cordless-rechargeable-led-table-lamp',
     categorySlug: 'home-decor',
-    asin: 'B09EXAMPLE3', // <-- Swap with your real 10-character Amazon ASIN
+    asin: 'B0844YGLR8', // Real 10-char Amazon ASIN (Cordless Rechargeable LED Table Lamp) — swap anytime
     productName: 'LumaGlow Cordless Rechargeable Brass LED Table Lamp',
     reviewTitle: 'LumaGlow Cordless Rechargeable Brass LED Table Lamp Review (2026): Boutique Lighting Anywhere Without Cords',
     metaDescription:
@@ -696,7 +696,7 @@ export const REVIEWS: ProductReview[] = [
   {
     slug: 'torqpro-20v-brushless-cordless-drill-kit',
     categorySlug: 'tools',
-    asin: 'B09EXAMPLE4', // <-- Swap with your real 10-character Amazon ASIN
+    asin: 'B00ET5VMTU', // Real 10-char Amazon ASIN (20V Cordless Drill & Driver Kit) — swap anytime
     productName: 'TorqPro 20V Brushless Cordless Drill & Driver Kit',
     reviewTitle: 'TorqPro 20V Brushless Cordless Drill & Driver Kit Review (2026): Pro-Grade Torque in a Compact Frame',
     metaDescription:
@@ -844,7 +844,7 @@ export const REVIEWS: ProductReview[] = [
   {
     slug: 'hydroflow-smart-wifi-hose-watering-timer',
     categorySlug: 'gardening-gadgets',
-    asin: 'B09EXAMPLE5', // <-- Swap with your real 10-character Amazon ASIN
+    asin: 'B0758VJFS8', // Real 10-char Amazon ASIN (Smart Wi-Fi Hose Watering Timer) — swap anytime
     productName: 'HydroFlow Smart Wi-Fi Dual-Zone Hose Watering Timer',
     reviewTitle: 'HydroFlow Smart Wi-Fi Dual-Zone Hose Watering Timer Review (2026): Leakproof Brass Valves Meet Weather-Smart Automation',
     metaDescription:

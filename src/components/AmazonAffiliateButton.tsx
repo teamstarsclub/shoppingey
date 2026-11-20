@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { resolveAssetUrl } from '../utils/router';
 
 export interface AmazonAffiliateButtonProps {
   asin: string;
@@ -8,10 +9,13 @@ export interface AmazonAffiliateButtonProps {
   className?: string;
 }
 
+const REMOTE_BUTTON_IMAGE = 'https://g.top4top.io/p_390434fjf1.png';
+
 /**
  * Reusable Amazon Associates Affiliate CTA Button.
- * Preserves the exact required HTML anchor & image markup sitewide, with a
- * CSS-only fallback treatment on the outer wrapper if the remote image host is unreachable.
+ * Renders the exact required HTML anchor & image markup sitewide where ONLY the ASIN changes.
+ * If the external host (g.top4top.io) fails to load (e.g., expired SSL certificate),
+ * seamlessly falls back to the identical local copy of the same 780x241 button PNG.
  */
 export const AmazonAffiliateButton: React.FC<AmazonAffiliateButtonProps> = ({
   asin,
@@ -20,7 +24,7 @@ export const AmazonAffiliateButton: React.FC<AmazonAffiliateButtonProps> = ({
   align = 'left',
   className = '',
 }) => {
-  const [imgFailed, setImgFailed] = useState(false);
+  const cleanAsin = asin.trim();
   const alignmentClass = align === 'center' ? 'items-center text-center' : 'items-start text-left';
 
   return (
@@ -30,26 +34,28 @@ export const AmazonAffiliateButton: React.FC<AmazonAffiliateButtonProps> = ({
           Check live price &amp; availability on Amazon
         </span>
       )}
-      <div
-        className={`${compact ? 'w-[152px] shrink-0' : 'w-full max-w-[240px]'} ${
-          imgFailed ? 'amazon-btn-fallback' : ''
-        }`}
-        onErrorCapture={() => setImgFailed(true)}
-      >
+      <div className={compact ? 'w-[144px] shrink-0' : 'inline-block max-w-[240px] w-full'}>
         <a
-          href={`https://amazon.com/dp/${asin}?tag=liveblog36507-20`}
+          href={`https://amazon.com/dp/${cleanAsin}?tag=liveblog36507-20`}
           className="amazon-affiliate-button"
           rel="sponsored nofollow noopener noreferrer"
           target="_blank"
         >
           <img
-            src="https://g.top4top.io/p_390434fjf1.png"
+            src={REMOTE_BUTTON_IMAGE}
             alt="Buy On Amazon"
             width={780}
             height={241}
             loading="lazy"
             decoding="async"
             style={{ maxWidth: '240px', width: '100%', height: 'auto' }}
+            onError={(event) => {
+              const img = event.currentTarget;
+              if (!img.dataset.localFallback) {
+                img.dataset.localFallback = '1';
+                img.src = resolveAssetUrl('/buy-on-amazon.png');
+              }
+            }}
           />
         </a>
       </div>
