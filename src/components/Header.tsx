@@ -77,9 +77,14 @@ export const Header: React.FC<HeaderProps> = ({ activePath }) => {
               className="flex items-center gap-2 shrink-0 whitespace-nowrap group"
               aria-label="Shoppingey.com Home"
             >
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-md bg-[#F59E0B] text-[#131921] font-extrabold text-base tracking-tight">
-                S
-              </span>
+              <img
+                src={resolveAssetUrl('/favicon.svg')}
+                alt=""
+                width={32}
+                height={32}
+                aria-hidden="true"
+                className="w-8 h-8 rounded-md shrink-0"
+              />
               <span className="text-[19px] font-bold tracking-tight text-white">
                 Shoppingey<span className="text-[#F59E0B]">.com</span>
               </span>

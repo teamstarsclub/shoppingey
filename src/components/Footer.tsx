@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowUp } from 'lucide-react';
 import { CATEGORIES, REVIEWS, SITE_CONFIG } from '../data/reviews';
 import { Link } from './Link';
+import { resolveAssetUrl } from '../utils/router';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -26,9 +27,14 @@ export const Footer: React.FC = () => {
           {/* Column 1: Brand Summary */}
           <div>
             <Link to="/" className="inline-flex items-center gap-2 text-lg font-bold text-white">
-              <span className="inline-flex items-center justify-center w-7 h-7 rounded bg-[#F59E0B] text-[#131921] font-extrabold text-sm">
-                S
-              </span>
+              <img
+                src={resolveAssetUrl('/favicon.svg')}
+                alt=""
+                width={28}
+                height={28}
+                aria-hidden="true"
+                className="w-7 h-7 rounded shrink-0"
+              />
               <span>
                 Shoppingey<span className="text-[#F59E0B]">.com</span>
               </span>
