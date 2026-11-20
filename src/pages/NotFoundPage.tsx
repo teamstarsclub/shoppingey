@@ -15,6 +15,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({ path }) => {
         title="Page Not Found | Shoppingey.com"
         description="The requested Shoppingey.com page could not be found. Browse our five independent Amazon product review departments."
         canonicalPath={path}
+        robots="noindex, nofollow"
       />
       <div className="max-w-[760px] mx-auto px-4 sm:px-6 py-16 text-center">
         <div className="bg-white border border-[#E5E7EB] rounded-lg p-8 sm:p-12">

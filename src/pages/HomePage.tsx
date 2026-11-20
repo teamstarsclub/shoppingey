@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ArrowRight,
   CheckCircle2,
@@ -11,9 +11,16 @@ import {
   Utensils,
   Wrench,
 } from 'lucide-react';
-import { CATEGORIES, REVIEWS, SITE_CONFIG, type Category } from '../data/reviews';
+import {
+  CATEGORIES,
+  REVIEWS,
+  SITE_CONFIG,
+  type Category,
+  type CategorySlug,
+} from '../data/reviews';
 import {
   getCategoryReviewCount,
+  getReviewsByCategory,
   searchReviews,
   sortReviews,
 } from '../utils/catalog';
@@ -43,19 +50,43 @@ function CategoryIcon({ name }: { name: Category['iconName'] }) {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
-  const orderedReviews = sortReviews(
-    initialQuery ? searchReviews(REVIEWS, initialQuery, 'all') : REVIEWS,
-    'rating'
-  );
+  const [selectedDepartment, setSelectedDepartment] = useState<'all' | CategorySlug>('all');
+  const [showAllReviews, setShowAllReviews] = useState(false);
+
+  const filteredByContext = initialQuery
+    ? searchReviews(REVIEWS, initialQuery, 'all')
+    : selectedDepartment === 'all'
+      ? REVIEWS
+      : getReviewsByCategory(selectedDepartment, REVIEWS);
+
+  const orderedReviews = sortReviews(filteredByContext, 'rating');
+  const visibleReviews =
+    initialQuery || selectedDepartment !== 'all' || showAllReviews
+      ? orderedReviews
+      : orderedReviews.slice(0, 9);
+  const selectedCategoryObj =
+    selectedDepartment === 'all'
+      ? undefined
+      : CATEGORIES.find((c) => c.slug === selectedDepartment);
 
   return (
     <>
       <SEOHead
-        title="Shoppingey.com — Independent Amazon Product Reviews & Buying Guides (2026)"
+        title={
+          initialQuery
+            ? `Search: ${initialQuery} | Shoppingey.com`
+            : 'Shoppingey.com — Independent Amazon Product Reviews (2026)'
+        }
         description="Honest, hands-on Amazon product reviews tested and organized by department: Home & Tech, Home & Kitchen, Home Decor, Tools, and Gardening Gadgets."
         canonicalPath="/"
         ogType="website"
-        image={REVIEWS[0].image}
+        image={REVIEWS[1]?.image ?? REVIEWS[0].image}
+        imageAlt="Shoppingey.com independent Amazon product reviews and buying guides"
+        robots={
+          initialQuery
+            ? 'noindex, follow'
+            : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        }
       />
 
       {/* Compact Trust Hero Strip */}
@@ -76,13 +107,17 @@ export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
 
           <div className="flex flex-wrap sm:flex-nowrap items-center gap-6 lg:gap-8 pt-2 lg:pt-0 border-t lg:border-t-0 border-[#F3F4F6] text-sm">
             <div>
-              <p className="text-xl font-extrabold text-[#111827] tabular-nums">5</p>
-              <p className="text-xs text-[#4B5563]">Core Departments</p>
+              <p className="text-xl font-extrabold text-[#111827] tabular-nums">
+                {REVIEWS.length}
+              </p>
+              <p className="text-xs text-[#4B5563]">Tested Reviews</p>
             </div>
             <div className="h-8 w-px bg-[#E5E7EB] hidden sm:block" aria-hidden="true" />
             <div>
-              <p className="text-xl font-extrabold text-[#111827] tabular-nums">5-Point</p>
-              <p className="text-xs text-[#4B5563]">Lab Scoring Rubric</p>
+              <p className="text-xl font-extrabold text-[#111827] tabular-nums">
+                {CATEGORIES.length}
+              </p>
+              <p className="text-xs text-[#4B5563]">Core Departments</p>
             </div>
             <div className="h-8 w-px bg-[#E5E7EB] hidden sm:block" aria-hidden="true" />
             <div>
@@ -159,7 +194,7 @@ export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
 
         {/* Section 2: Latest Featured Reviews Product Grid */}
         <section id="featured-reviews" aria-labelledby="featured-reviews-heading">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-5">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-4">
             <div>
               <h2
                 id="featured-reviews-heading"
@@ -167,31 +202,86 @@ export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
               >
                 {initialQuery
                   ? `Search Results for "${initialQuery}"`
-                  : 'Latest Featured Reviews'}
+                  : selectedCategoryObj
+                    ? `${selectedCategoryObj.name} — Top Tested Reviews`
+                    : 'Latest Featured Reviews'}
               </h2>
               <p className="text-sm text-[#4B5563] mt-1">
                 {initialQuery
                   ? `Showing ${orderedReviews.length} matching tested review${orderedReviews.length === 1 ? '' : 's'}.`
-                  : 'Our highest-rated flagship picks across every department—tested for real-world performance.'}
+                  : selectedCategoryObj
+                    ? `All ${orderedReviews.length} lab-tested ${selectedCategoryObj.name} picks, ranked by Shoppingey score.`
+                    : `Our highest-rated Amazon picks across all ${CATEGORIES.length} departments (${REVIEWS.length} full reviews).`}
               </p>
             </div>
-            {initialQuery && (
+            {initialQuery ? (
               <Link
                 to="/"
                 className="text-sm font-semibold text-[#B45309] hover:underline whitespace-nowrap"
               >
                 Clear search filter
               </Link>
-            )}
+            ) : selectedCategoryObj ? (
+              <Link
+                to={`/category/${selectedCategoryObj.slug}`}
+                className="inline-flex items-center gap-1 text-sm font-semibold text-[#B45309] hover:underline whitespace-nowrap"
+              >
+                <span>Open {selectedCategoryObj.name} Hub</span>
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
+            ) : null}
           </div>
 
-          {orderedReviews.length === 0 ? (
+          {/* Department Filter Strip (Clean Marketplace Tabs) */}
+          {!initialQuery && (
+            <div
+              role="tablist"
+              aria-label="Filter featured reviews by department"
+              className="mb-6 flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar"
+            >
+              <button
+                type="button"
+                role="tab"
+                aria-selected={selectedDepartment === 'all'}
+                onClick={() => setSelectedDepartment('all')}
+                className={`px-3.5 py-2 text-xs font-semibold rounded-md border whitespace-nowrap transition-colors cursor-pointer ${
+                  selectedDepartment === 'all'
+                    ? 'bg-[#131921] text-white border-[#131921]'
+                    : 'bg-white text-[#374151] border-[#E5E7EB] hover:border-[#D1D5DB] hover:text-[#111827]'
+                }`}
+              >
+                All Departments ({REVIEWS.length})
+              </button>
+              {CATEGORIES.map((category) => {
+                const count = getCategoryReviewCount(category.slug, REVIEWS);
+                const isSelected = selectedDepartment === category.slug;
+                return (
+                  <button
+                    key={category.slug}
+                    type="button"
+                    role="tab"
+                    aria-selected={isSelected}
+                    onClick={() => setSelectedDepartment(category.slug)}
+                    className={`px-3.5 py-2 text-xs font-semibold rounded-md border whitespace-nowrap transition-colors cursor-pointer ${
+                      isSelected
+                        ? 'bg-[#131921] text-white border-[#131921]'
+                        : 'bg-white text-[#374151] border-[#E5E7EB] hover:border-[#D1D5DB] hover:text-[#111827]'
+                    }`}
+                  >
+                    {category.name} ({count})
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {visibleReviews.length === 0 ? (
             <div className="bg-white border border-[#E5E7EB] rounded-lg p-10 text-center">
               <p className="text-base font-semibold text-[#111827]">
                 No reviews found matching &ldquo;{initialQuery}&rdquo;
               </p>
               <p className="text-sm text-[#4B5563] mt-1">
-                Browse one of our five product departments above or view all flagship reviews.
+                Browse one of our five product departments above or view all tested reviews.
               </p>
               <Link
                 to="/"
@@ -201,11 +291,27 @@ export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {orderedReviews.map((review) => (
-                <ReviewCard key={review.slug} review={review} />
-              ))}
-            </div>
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {visibleReviews.map((review) => (
+                  <ReviewCard key={review.slug} review={review} />
+                ))}
+              </div>
+
+              {!initialQuery && selectedDepartment === 'all' && orderedReviews.length > 9 && (
+                <div className="mt-8 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setShowAllReviews((prev) => !prev)}
+                    className="px-5 py-2.5 text-sm font-semibold text-[#111827] bg-white border border-[#D1D5DB] hover:border-[#131921] hover:bg-[#F9FAFB] rounded-md transition-colors cursor-pointer"
+                  >
+                    {showAllReviews
+                      ? 'Show Top 9 Featured Picks'
+                      : `Show All ${orderedReviews.length} Tested Reviews`}
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </section>
 

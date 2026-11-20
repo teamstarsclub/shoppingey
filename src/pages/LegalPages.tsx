@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle2, ChevronRight, Mail, ShieldCheck } from 'lucide-react';
 import { SITE_CONFIG } from '../data/reviews';
-import { buildBreadcrumbJsonLd } from '../utils/catalog';
+import { buildBreadcrumbJsonLd, buildWebPageJsonLd } from '../utils/catalog';
 import { Link } from '../components/Link';
 import { SchemaMarkup } from '../components/SchemaMarkup';
 import { SEOHead } from '../components/SEOHead';
@@ -228,6 +228,10 @@ export const LegalPages: React.FC<LegalPagesProps> = ({ page }) => {
     { name: meta.heading, path: meta.path },
   ];
 
+  const schemaType =
+    page === 'about' ? 'AboutPage' : page === 'contact' ? 'ContactPage' : 'WebPage';
+  const isIndexablePage = page === 'about' || page === 'how-we-review';
+
   return (
     <>
       <SEOHead
@@ -235,8 +239,24 @@ export const LegalPages: React.FC<LegalPagesProps> = ({ page }) => {
         description={meta.description}
         canonicalPath={meta.path}
         ogType="website"
+        robots={
+          isIndexablePage
+            ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+            : 'noindex, follow'
+        }
       />
-      <SchemaMarkup id={`legal-${page}`} schemas={[buildBreadcrumbJsonLd(breadcrumbs)]} />
+      <SchemaMarkup
+        id={`legal-${page}`}
+        schemas={[
+          buildWebPageJsonLd({
+            type: schemaType,
+            name: meta.heading,
+            description: meta.description,
+            path: meta.path,
+          }),
+          buildBreadcrumbJsonLd(breadcrumbs),
+        ]}
+      />
 
       <div className="max-w-[960px] mx-auto px-4 sm:px-6 py-8">
         <nav aria-label="Breadcrumb" className="mb-5">

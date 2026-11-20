@@ -1,105 +1,321 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.shoppingey.com/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.shoppingey.com/about</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.shoppingey.com/how-we-review</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.shoppingey.com/affiliate-disclosure</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://www.shoppingey.com/privacy-policy</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.shoppingey.com/terms</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.shoppingey.com/contact</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://www.shoppingey.com/category/home-tech</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_smart_video_doorbell_1795195714291.jpg</image:loc>
+      <image:title>Top tested Home &amp; Tech Amazon picks on Shoppingey.com</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.shoppingey.com/category/home-kitchen</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_dual_basket_air_fryer_1795195713278.jpg</image:loc>
+      <image:title>Top tested Home &amp; Kitchen Amazon picks on Shoppingey.com</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.shoppingey.com/category/home-decor</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_cordless_brass_lamp_1795195740235.jpg</image:loc>
+      <image:title>Top tested Home Decor Amazon picks on Shoppingey.com</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.shoppingey.com/category/tools</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_brushless_cordless_drill_1795195759490.jpg</image:loc>
+      <image:title>Top tested Tools Amazon picks on Shoppingey.com</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.shoppingey.com/category/gardening-gadgets</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_smart_hose_timer_1795196018612.jpg</image:loc>
+      <image:title>Top tested Gardening Gadgets Amazon picks on Shoppingey.com</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.shoppingey.com/review/auravision-2k-smart-wifi-video-doorbell</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_smart_video_doorbell_1795195714291.jpg</image:loc>
+      <image:title>AuraVision 2K Smart Wi-Fi Video Doorbell in matte charcoal and brushed aluminum</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://www.shoppingey.com/review/torqpro-20v-brushless-cordless-drill-kit</loc>
+    <loc>https://www.shoppingey.com/review/aerovanc-crispduo-8qt-dual-basket-air-fryer</loc>
     <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_dual_basket_air_fryer_1795195713278.jpg</image:loc>
+      <image:title>AeroVanc CrispDuo 8-Quart Dual-Basket Digital Air Fryer in brushed stainless steel and matte black</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.shoppingey.com/review/lumaglow-cordless-rechargeable-led-table-lamp</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_cordless_brass_lamp_1795195740235.jpg</image:loc>
+      <image:title>LumaGlow Cordless Rechargeable Satin Brass LED Table Lamp with dome shade on white studio surface</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://www.shoppingey.com/review/aerovanc-crispduo-8qt-dual-basket-air-fryer</loc>
+    <loc>https://www.shoppingey.com/review/torqpro-20v-brushless-cordless-drill-kit</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_brushless_cordless_drill_1795195759490.jpg</image:loc>
+      <image:title>TorqPro 20V Brushless Cordless Drill and Driver with all-metal 1/2-inch chuck and 5.0Ah battery</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://www.shoppingey.com/review/auravision-2k-smart-wifi-video-doorbell</loc>
+    <loc>https://www.shoppingey.com/review/hydroflow-smart-wifi-hose-watering-timer</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_smart_hose_timer_1795196018612.jpg</image:loc>
+      <image:title>HydroFlow Smart Wi-Fi Dual-Zone Hose Watering Timer with solid brushed brass faucet coupling and LCD display</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/voltguard-smart-wifi-surge-power-strip</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_smart_power_strip_1795205269849.jpg</image:loc>
+      <image:title>VoltGuard 6-outlet matte white smart Wi-Fi surge protector power strip with USB-C ports on studio backdrop</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/meshcore-wifi-6e-triband-router-system</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_wifi_mesh_system_1795205269113.jpg</image:loc>
+      <image:title>MeshCore AXE5400 minimalist two-pack matte white cylindrical Wi-Fi 6E mesh routers on soft studio background</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/thermosense-smart-learning-thermostat</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_smart_thermostat_1795205268871.jpg</image:loc>
+      <image:title>ThermoSense Pro circular black glass and gunmetal bezel smart Wi-Fi thermostat displaying 71 degrees on studio background</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/keyvault-biometric-smart-deadbolt-lock</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_smart_deadbolt_lock_1795205268931.jpg</image:loc>
+      <image:title>KeyVault matte black and satin nickel biometric fingerprint Wi-Fi smart deadbolt lock with illuminated keypad on studio background</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/brewcraft-precision-gooseneck-electric-kettle</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_gooseneck_kettle_1795205362329.jpg</image:loc>
+      <image:title>BrewCraft matte black stainless steel gooseneck pour-over electric kettle on sleek digital base</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/cremapro-15-bar-espresso-machine-grinder</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_espresso_machine_1795205358817.jpg</image:loc>
+      <image:title>CremaPro brushed stainless steel compact espresso machine with walnut portafilter and steam wand on studio background</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/bladeforge-high-speed-countertop-blender</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_countertop_blender_1795205362509.jpg</image:loc>
+      <image:title>BladeForge 1400W matte graphite and brushed stainless countertop blender with 72-oz Tritan pitcher on studio background</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/heatwave-smart-wireless-meat-thermometer</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_meat_thermometer_1795205363418.jpg</image:loc>
+      <image:title>HeatWave wire-free stainless steel smart Bluetooth meat thermometer probes beside bamboo magnetic charging block</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/oakridge-floating-walnut-wall-shelves-set</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_floating_walnut_shelves_1795205358029.jpg</image:loc>
+      <image:title>OakRidge set of three solid walnut floating wall shelves with rich wood grain mounted cleanly on neutral studio wall</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/archview-brushed-gold-arched-wall-mirror</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_arched_brass_mirror_1795205358879.jpg</image:loc>
+      <image:title>ArchView modern arched full-length freestanding floor mirror with slim brushed brass aluminum frame on studio background</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/nordicweave-washable-geometric-area-rug</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_washable_area_rug_1795205361298.jpg</image:loc>
+      <image:title>NordicWeave Scandinavian cream and warm taupe geometric low-pile washable area rug folded to show non-slip backing</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/zenmist-ceramic-essential-oil-diffuser</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_ceramic_diffuser_1795205361295.jpg</image:loc>
+      <image:title>ZenMist sculptural matte warm stone ceramic ultrasonic essential oil aroma diffuser emitting gentle mist on studio background</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/lasersight-digital-laser-distance-measure</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_laser_measure_1795205406270.jpg</image:loc>
+      <image:title>LaserSight rugged dark slate and amber digital laser distance measure tool showing 14.85 ft on backlit LCD</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/precisionbit-electric-screwdriver-repair-kit</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_electric_screwdriver_1795205404397.jpg</image:loc>
+      <image:title>PrecisionBit anodized gunmetal aluminum cordless electric screwdriver beside pop-up magnetic S2 steel bit case</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/studscan-pro-deep-wall-scanner-detector</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_digital_stud_finder_1795205407001.jpg</image:loc>
+      <image:title>StudScan Pro dark charcoal and warm amber digital wall stud and live wire scanner with LED top indicator bar</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/workbeam-rechargeable-magnetic-led-work-light</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_magnetic_work_light_1795205408219.jpg</image:loc>
+      <image:title>WorkBeam rugged charcoal and amber dual-panel folding rechargeable magnetic COB LED work light on studio background</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/terraprobe-4in1-digital-soil-moisture-meter</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_soil_moisture_meter_1795205407308.jpg</image:loc>
+      <image:title>TerraProbe 4-in-1 forest-slate digital soil moisture, pH, light, and temperature meter with stainless probe</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/shearpro-cordless-electric-pruning-shears</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_electric_pruning_shears_1795205400233.jpg</image:loc>
+      <image:title>ShearPro 21V brushless cordless electric garden pruning shears with SK5 steel bypass blades and lithium battery</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/solarpath-warm-led-landscape-pathway-lights</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_solar_pathway_lights_1795205400778.jpg</image:loc>
+      <image:title>SolarPath matte black die-cast aluminum outdoor solar LED landscape pathway lights with warm fluted glass lenses</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shoppingey.com/review/aerogrow-indoor-hydroponic-herb-garden-kit</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shoppingey.com/src/assets/images/product_hydroponic_herb_garden_1795205406089.jpg</image:loc>
+      <image:title>AeroGrow matte charcoal and brushed aluminum 12-pod indoor smart LED hydroponic countertop herb garden with fresh basil and mint</image:title>
+    </image:image>
   </url>
 </urlset>

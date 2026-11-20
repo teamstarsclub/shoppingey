@@ -21,19 +21,22 @@ import {
 } from './catalog';
 import { parsePathname, resolveAssetUrl, stripBasePath, withBasePath } from './router';
 
-test('catalog has exactly 5 required categories and 1 review per category (5 total)', () => {
+test('catalog has exactly 5 required categories and 5 reviews per category (25 total)', () => {
   assert.equal(CATEGORIES.length, 5);
   assert.deepEqual(
     CATEGORIES.map((c) => c.slug),
     ['home-tech', 'home-kitchen', 'home-decor', 'tools', 'gardening-gadgets']
   );
-  assert.equal(REVIEWS.length, 5);
+  assert.equal(REVIEWS.length, 25);
+  assert.equal(new Set(REVIEWS.map((r) => r.slug)).size, 25, 'All 25 review slugs must be unique');
+  assert.equal(new Set(REVIEWS.map((r) => r.asin)).size, 25, 'All 25 Amazon ASINs must be unique');
+  assert.equal(new Set(REVIEWS.map((r) => r.image)).size, 25, 'All 25 product images must be unique');
 
   for (const cat of CATEGORIES) {
     assert.equal(
       getCategoryReviewCount(cat.slug, REVIEWS),
-      1,
-      `Expected exactly 1 starter review in ${cat.slug}`
+      5,
+      `Expected exactly 5 reviews in ${cat.slug}`
     );
   }
 });
@@ -92,23 +95,65 @@ test('zero hardcoded static dollar prices anywhere in reviews or categories (Ama
   }
 });
 
-test('every review has valid companion recommendations and at least one inline internal link', () => {
+test('internal linking mesh: every review has 2 inline links (same + cross category), 3 valid companions, zero orphans, and zero self-links', () => {
+  const incomingLinks = new Map<string, Set<string>>();
+  for (const review of REVIEWS) {
+    incomingLinks.set(review.slug, new Set());
+  }
+
   for (const review of REVIEWS) {
     const companions = getCompanionReviews(review, REVIEWS, CATEGORIES);
-    assert.ok(companions.length >= 1, `Review ${review.slug} must have at least 1 valid companion`);
+    assert.equal(
+      companions.length,
+      3,
+      `Review ${review.slug} must have exactly 3 valid companions (got ${companions.length})`
+    );
+    const sameCatCompanions = companions.filter((c) => c.review.categorySlug === review.categorySlug);
+    const crossCatCompanions = companions.filter((c) => c.review.categorySlug !== review.categorySlug);
+    assert.ok(
+      sameCatCompanions.length >= 2,
+      `Review ${review.slug} must have at least 2 same-category companions`
+    );
+    assert.ok(
+      crossCatCompanions.length >= 1,
+      `Review ${review.slug} must have at least 1 cross-category companion`
+    );
     for (const comp of companions) {
       assert.notEqual(comp.review.slug, review.slug, 'Companion should not self-link');
       assert.ok(comp.reason.length > 10);
+      incomingLinks.get(comp.review.slug)?.add(review.slug);
     }
 
     const inlineLinks = review.sections
       .map((s) => s.inlineLink)
       .filter((l): l is NonNullable<typeof l> => Boolean(l));
-    assert.ok(inlineLinks.length >= 1, `Review ${review.slug} must contain at least 1 inline internal link`);
+    assert.ok(
+      inlineLinks.length >= 2,
+      `Review ${review.slug} must contain at least 2 contextual inline internal links (got ${inlineLinks.length})`
+    );
+
+    let hasSameCatInline = false;
+    let hasCrossCatInline = false;
     for (const link of inlineLinks) {
+      assert.notEqual(link.targetSlug, review.slug, `Inline link in ${review.slug} must not self-link`);
       const target = REVIEWS.find((r) => r.slug === link.targetSlug);
       assert.ok(target, `Inline link target "${link.targetSlug}" in ${review.slug} must exist`);
+      if (target.categorySlug === review.categorySlug) hasSameCatInline = true;
+      else hasCrossCatInline = true;
+      incomingLinks.get(target.slug)?.add(review.slug);
     }
+
+    assert.ok(hasSameCatInline, `Review ${review.slug} must have at least 1 same-category inline link`);
+    assert.ok(hasCrossCatInline, `Review ${review.slug} must have at least 1 cross-category inline link`);
+  }
+
+  // Verify zero orphan articles: every single review receives >= 3 distinct incoming editorial links
+  for (const review of REVIEWS) {
+    const incomingCount = incomingLinks.get(review.slug)?.size ?? 0;
+    assert.ok(
+      incomingCount >= 3,
+      `Review ${review.slug} only receives ${incomingCount} incoming links (expected >= 3 for strong internal linking)`
+    );
   }
 });
 
@@ -121,11 +166,10 @@ test('searchReviews filters accurately by text query and category dropdown', () 
   assert.equal(kitchenFiltered.length, 0);
 
   const brassResults = searchReviews(REVIEWS, 'brass', 'all');
-  assert.ok(brassResults.length >= 2, 'Expected brass query to match both brass lamp and brass hose timer');
+  assert.ok(brassResults.length >= 2, 'Expected brass query to match multiple brass products');
 
   const decorOnly = searchReviews(REVIEWS, 'brass', 'home-decor');
-  assert.equal(decorOnly.length, 1);
-  assert.equal(decorOnly[0].slug, 'lumaglow-cordless-rechargeable-led-table-lamp');
+  assert.ok(decorOnly.some((r) => r.slug === 'lumaglow-cordless-rechargeable-led-table-lamp'));
 });
 
 test('sortReviews orders by rating, newest, and price tier', () => {
@@ -165,7 +209,7 @@ test('JSON-LD schema builders emit valid Product, Review, Pros/Cons, FAQPage, Co
   ) as Record<string, any>;
   assert.equal(categorySchema['@type'], 'CollectionPage');
   assert.equal(categorySchema.mainEntity['@type'], 'ItemList');
-  assert.equal(categorySchema.mainEntity.numberOfItems, 1);
+  assert.equal(categorySchema.mainEntity.numberOfItems, 5);
 
   const breadcrumbs = buildBreadcrumbJsonLd([
     { name: 'Home', path: '/' },
@@ -222,4 +266,117 @@ test('GitHub Pages subpath routing and asset resolution work across / and /repo/
     resolveAssetUrl('/src/assets/images/product.jpg', '/'),
     '/src/assets/images/product.jpg'
   );
+});
+
+test('Technical SEO: sitemap includes ONLY the 33 indexable URLs and excludes noindex legal/utility pages', async () => {
+  const { buildAllSeoRoutes, buildSitemapRoutes, generateSitemapXml } = await import(
+    '../../scripts/generate-seo'
+  );
+  const allRoutes = buildAllSeoRoutes();
+  assert.equal(allRoutes.length, 37, 'Expected 37 total pre-rendered routes');
+
+  const indexableRoutes = buildSitemapRoutes();
+  assert.equal(
+    indexableRoutes.length,
+    33,
+    'Expected 33 indexable sitemap routes (1 home + 2 E-E-A-T editorial + 5 categories + 25 reviews)'
+  );
+
+  const nonIndexablePaths = ['/affiliate-disclosure', '/privacy-policy', '/terms', '/contact'];
+  for (const hiddenPath of nonIndexablePaths) {
+    const route = allRoutes.find((r) => r.path === hiddenPath);
+    assert.ok(route, `Expected pre-rendered route for ${hiddenPath}`);
+    assert.equal(route.indexable, false, `${hiddenPath} must not be marked indexable`);
+    assert.equal(route.robots, 'noindex, follow', `${hiddenPath} must emit noindex, follow`);
+  }
+
+  const xml = generateSitemapXml();
+  const locs = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
+  assert.equal(locs.length, 33);
+  assert.equal(new Set(locs).size, 33, 'Sitemap must have zero duplicate URLs');
+
+  for (const hiddenPath of nonIndexablePaths) {
+    assert.equal(
+      locs.includes(`https://www.shoppingey.com${hiddenPath}`),
+      false,
+      `Non-indexable URL must be excluded from sitemap.xml: ${hiddenPath}`
+    );
+  }
+
+  for (const mustInclude of ['/', '/about', '/how-we-review']) {
+    assert.ok(
+      locs.includes(`https://www.shoppingey.com${mustInclude}`),
+      `High-value URL missing from sitemap.xml: ${mustInclude}`
+    );
+  }
+
+  for (const review of REVIEWS) {
+    assert.ok(
+      locs.includes(`https://www.shoppingey.com/review/${review.slug}`),
+      `Missing review URL in sitemap: ${review.slug}`
+    );
+  }
+  assert.ok(xml.includes('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'));
+  const imageLocs = [...xml.matchAll(/<image:loc>(.*?)<\/image:loc>/g)].map((m) => m[1]);
+  assert.equal(imageLocs.length, 30, 'Expected Image Sitemap tags for all 5 categories + 25 reviews');
+});
+
+test('Technical SEO: enriched Organization PNG logo, Product/Review E-E-A-T, unique titles, and meta descriptions meet Google guidelines', async () => {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  assert.ok(
+    fs.existsSync(path.resolve(process.cwd(), 'public/logo-512.png')),
+    'Google Rich Results requires a raster PNG Organization logo at public/logo-512.png'
+  );
+
+  const sitewide = buildSitewideJsonLd() as Record<string, any>[];
+  assert.equal(sitewide[0]['@id'], 'https://www.shoppingey.com/#organization');
+  assert.equal(sitewide[0].logo['@type'], 'ImageObject');
+  assert.equal(sitewide[0].logo.url, 'https://www.shoppingey.com/logo-512.png');
+  assert.equal(sitewide[0].publishingPrinciples, 'https://www.shoppingey.com/how-we-review');
+  assert.equal(sitewide[1].publisher['@id'], 'https://www.shoppingey.com/#organization');
+
+  const { buildSitemapRoutes } = await import('../../scripts/generate-seo');
+  const indexableRoutes = buildSitemapRoutes();
+  assert.equal(
+    new Set(indexableRoutes.map((r) => r.title)).size,
+    indexableRoutes.length,
+    'Every indexable page must have a unique <title>'
+  );
+  assert.equal(
+    new Set(indexableRoutes.map((r) => r.description)).size,
+    indexableRoutes.length,
+    'Every indexable page must have a unique <meta name="description">'
+  );
+  for (const r of indexableRoutes) {
+    if (r.path !== '/') {
+      assert.equal(
+        r.path.endsWith('/'),
+        false,
+        `Non-root canonical path must not have trailing slash (matches extensionless .html on GitHub Pages): ${r.path}`
+      );
+    }
+  }
+
+  for (const review of REVIEWS) {
+    assert.ok(
+      review.metaDescription.length >= 110 && review.metaDescription.length <= 165,
+      `Review ${review.slug} metaDescription length (${review.metaDescription.length}) outside optimal 110-165 range`
+    );
+    const schema = buildProductReviewJsonLd(
+      review,
+      getCategoryBySlug(review.categorySlug)
+    ) as Record<string, any>;
+    assert.equal(schema.brand['@type'], 'Brand');
+    assert.equal(schema.mpn, review.asin);
+    assert.ok(schema.additionalProperty.length >= 4);
+    assert.equal(schema.review.author.url, 'https://www.shoppingey.com/about');
+  }
+
+  for (const category of CATEGORIES) {
+    assert.ok(
+      category.metaDescription.length >= 110 && category.metaDescription.length <= 165,
+      `Category ${category.slug} metaDescription length (${category.metaDescription.length}) outside optimal 110-165 range`
+    );
+  }
 });

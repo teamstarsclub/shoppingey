@@ -65,6 +65,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug }) => {
         canonicalPath={`/category/${category.slug}`}
         ogType="website"
         image={category.featuredImage}
+        imageAlt={`Top tested ${category.name} Amazon picks on Shoppingey.com`}
       />
       <SchemaMarkup id={`category-${category.slug}`} schemas={schemas} />
 

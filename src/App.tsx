@@ -11,8 +11,12 @@ import { useRouter } from './utils/router';
 
 const SITEWIDE_SCHEMAS = buildSitewideJsonLd();
 
-export default function App() {
-  const { pathname, route } = useRouter();
+export interface AppProps {
+  initialPathname?: string;
+}
+
+export default function App({ initialPathname }: AppProps) {
+  const { pathname, route } = useRouter(initialPathname);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F3F4F6] text-[#111827]">

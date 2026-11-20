@@ -81,6 +81,12 @@
  * ============================================================================
  */
 
+import { HOME_TECH_EXTRA_REVIEWS } from './reviews/homeTech';
+import { HOME_KITCHEN_EXTRA_REVIEWS } from './reviews/homeKitchen';
+import { HOME_DECOR_EXTRA_REVIEWS } from './reviews/homeDecor';
+import { TOOLS_EXTRA_REVIEWS } from './reviews/tools';
+import { GARDENING_GADGETS_EXTRA_REVIEWS } from './reviews/gardeningGadgets';
+
 export type CategorySlug =
   | 'home-tech'
   | 'home-kitchen'
@@ -340,6 +346,14 @@ export const REVIEWS: ProductReview[] = [
           'Setup takes roughly 12 minutes from unboxing to live video. Plugging the compact indoor chime hub into a hallway outlet creates a dedicated low-power sub-GHz link to the doorbell outside, which noticeably extends battery runtime while keeping your microSD footage safely indoors rather than inside the exterior doorbell body.',
           'Inside the companion app, custom activity zones let you mask out public sidewalks and swaying tree branches with four draggable polygon handles. If you run the unit on battery power, expect roughly 14 to 16 weeks between USB-C top-ups at 20 daily motion events; connecting it to existing 16-24V low-voltage transformer wires removes charging chores altogether and enables a 3-second pre-roll buffer before motion triggers.',
         ],
+        inlineLink: {
+          beforeText:
+            'To protect the indoor chime hub and nearby router from storm voltage spikes, we recommend plugging both into our tested ',
+          linkText: 'VoltGuard Smart Wi-Fi Surge Power Strip',
+          targetSlug: 'voltguard-smart-wifi-surge-power-strip',
+          afterText:
+            ' so you can also power-cycle your entryway bridge remotely if needed.',
+        },
       },
       {
         id: 'who-should-buy',
@@ -362,12 +376,16 @@ export const REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'torqpro-20v-brushless-cordless-drill-kit',
-        reason: 'Makes drilling pilot holes into wood siding, stucco, or masonry brick trim fast and clean during doorbell installation.',
+        slug: 'keyvault-biometric-smart-deadbolt-lock',
+        reason: 'Completes a keyless front-entry security upgrade so you can verify deliveries on video and unlock with a fingerprint.',
       },
       {
-        slug: 'lumaglow-cordless-rechargeable-led-table-lamp',
-        reason: 'Pairs naturally inside your entryway console table for warm wire-free ambient welcome lighting after dusk.',
+        slug: 'meshcore-wifi-6e-triband-router-system',
+        reason: 'Guarantees fast, zero-buffering 2K live video wake-ups through thick brick and exterior stucco walls.',
+      },
+      {
+        slug: 'torqpro-20v-brushless-cordless-drill-kit',
+        reason: 'Makes drilling pilot holes into wood siding, stucco, or masonry brick trim fast and clean during doorbell installation.',
       },
     ],
     faqs: [
@@ -464,6 +482,14 @@ export const REVIEWS: ProductReview[] = [
           'Most dual-basket air fryers lean heavily into glossy black plastic that scratches after the first sponge wipe. The AeroVanc CrispDuo wraps its front bezel and basket trim in brushed 304 stainless steel framed by matte textured housing, giving it a composed appliance presence that blends naturally beside espresso machines and stainless ranges.',
           'Both 4-quart drawers slide smoothly on reinforced steel rails with satisfying magnetic detents, so you never have to slam a basket shut to trigger the safety interlock switch. Equally welcome is the angled capacitive glass display panel: reading both left and right temperature/time readouts from standing height requires zero stooping.',
         ],
+        inlineLink: {
+          beforeText:
+            'If you appreciate sleek matte-black countertop styling, the CrispDuo sits naturally beside our ',
+          linkText: 'BrewCraft Precision Gooseneck Electric Kettle',
+          targetSlug: 'brewcraft-precision-gooseneck-electric-kettle',
+          afterText:
+            ' for a cohesive, clutter-free kitchen coffee and cooking station.',
+        },
       },
       {
         id: 'performance',
@@ -510,12 +536,16 @@ export const REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'lumaglow-cordless-rechargeable-led-table-lamp',
-        reason: 'Creates warm cord-free dining ambiance on kitchen islands and breakfast nooks while dinner finishes.',
+        slug: 'heatwave-smart-wireless-meat-thermometer',
+        reason: 'Tracks exact internal steak and chicken breast temperatures inside the closed air fryer drawer without opening the basket.',
       },
       {
-        slug: 'auravision-2k-smart-wifi-video-doorbell',
-        reason: 'Hands-free grocery delivery notifications directly to your phone while your hands are busy prepping dinner.',
+        slug: 'cremapro-15-bar-espresso-machine-grinder',
+        reason: 'Pairs seamlessly on your countertop to handle weekday mornings while the CrispDuo owns weeknight dinners.',
+      },
+      {
+        slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
+        reason: 'Supplies fresh basil, thyme, and rosemary right on the counter to finish crispy air-fried proteins and vegetables.',
       },
     ],
     faqs: [
@@ -612,6 +642,14 @@ export const REVIEWS: ProductReview[] = [
           'Cordless table lamps have exploded in popularity on Amazon, yet many budget listings arrive feeling like painted soda cans that topple at the slightest brush. The LumaGlow Cordless LED Lamp avoids that trap entirely with a CNC-spun anodized aluminum dome, machined stem, and an internally weighted base tipping the scales at 2.1 pounds.',
           'The brushed satin brass finish leans understated and architectural rather than flashy gold. Because the dome completely shields the recessed COB LED diffuser from eye level, sitting across a dining table or reading in bed gives you a pool of warm reflected light with zero harsh bulb hotspots.',
         ],
+        inlineLink: {
+          beforeText:
+            'With zero trailing power cable to hide, we especially loved resting this brass lamp on our ',
+          linkText: 'OakRidge Solid Walnut Floating Wall Shelves (Set of 2)',
+          targetSlug: 'oakridge-floating-walnut-wall-shelves-set',
+          afterText:
+            ' to turn dark hallway alcoves into warm gallery focal points.',
+        },
       },
       {
         id: 'performance',
@@ -658,12 +696,16 @@ export const REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'aerovanc-crispduo-8qt-dual-basket-air-fryer',
-        reason: 'Elevates quick weeknight kitchen island meals with warm cord-free hospitality lighting.',
+        slug: 'archview-brushed-gold-arched-wall-mirror',
+        reason: 'Matches the satin brushed brass palette while bouncing warm 2700K lamp light across entryways and bedrooms.',
       },
       {
-        slug: 'hydroflow-smart-wifi-hose-watering-timer',
-        reason: 'Great outdoor pairing for enjoying a lush, well-watered evening patio lit by warm cordless brass glow.',
+        slug: 'nordicweave-washable-geometric-area-rug',
+        reason: 'Ties a cozy reading corner or dining area together with soft tactile texture beneath your warm accent lighting.',
+      },
+      {
+        slug: 'solarpath-warm-led-landscape-pathway-lights',
+        reason: 'Extends the same inviting 2700K warm-white lighting temperature from your indoor patio table down the garden walkway.',
       },
     ],
     faqs: [
@@ -784,6 +826,14 @@ export const REVIEWS: ProductReview[] = [
           'Little ergonomic touches elevate this drill during everyday DIY tasks. The integrated LED work light sits at the base of the handle angled upward toward the bit tip, illuminating dark under-sink cabinets cleanly instead of casting a dark ring shadow like collar-mounted lights. A 20-second afterglow delay lets you inspect fasteners after releasing the trigger.',
           'The included 5.0Ah battery snaps smoothly onto the slide rail, features an onboard 4-bar charge indicator, and recharges from flat to 100% in 62 minutes on the ventilated fast charger. A reversible steel belt clip mounts to either side of the base for left- or right-handed carry.',
         ],
+        inlineLink: {
+          beforeText:
+            'Before sinking lag bolts or cabinetry brackets, we paired the TorqPro with the ',
+          linkText: 'LaserSight 165ft Digital Laser Distance Measure',
+          targetSlug: 'lasersight-digital-laser-distance-measure',
+          afterText:
+            ' to map exact wall spans and stud spacing in seconds without wrestling a drooping tape measure.',
+        },
       },
       {
         id: 'who-should-buy',
@@ -806,12 +856,16 @@ export const REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'auravision-2k-smart-wifi-video-doorbell',
-        reason: 'Ideal companion tool for clean, accurate porch-frame mounting of smart security hardware.',
+        slug: 'studscan-pro-deep-wall-scanner-detector',
+        reason: 'Locates stud centers and hidden live AC wiring before you drill a single structural anchor hole.',
       },
       {
-        slug: 'hydroflow-smart-wifi-hose-watering-timer',
-        reason: 'Handy for mounting outdoor hose reels and drip-line fence clips alongside your smart watering setup.',
+        slug: 'precisionbit-electric-screwdriver-repair-kit',
+        reason: 'Covers delicate electronics, glasses, and smart-home micro-fasteners where a 20V drill is overkill.',
+      },
+      {
+        slug: 'keyvault-biometric-smart-deadbolt-lock',
+        reason: 'Ideal weekend upgrade project—makes mortise adjustment and strike-plate reinforcement fast and clean.',
       },
     ],
     faqs: [
@@ -916,6 +970,14 @@ export const REVIEWS: ProductReview[] = [
           'We connected Zone 1 to a 60-foot raised-bed drip irrigation manifold and Zone 2 to an oscillating lawn sprinkler on a spigot registering 78 PSI. Over six weeks of automated morning cycles, zero leaks appeared at any brass joint, and the internal diaphragm valves shut off cleanly with minimal water-hammer knock.',
           'The weather-aware rain skip feature proved genuinely useful rather than gimmicky. Whenever local NOAA precipitation probability crossed our user-set 65% threshold, the app pushed a quick confirmation alert and skipped the morning run automatically. We also loved the Cycle-and-Soak option, which pulses water in 5-minute intervals with 10-minute absorption breaks so clay soil actually drinks water instead of sending it running down the driveway.',
         ],
+        inlineLink: {
+          beforeText:
+            'To dial in exact zone durations without guessing how deep moisture penetrates, we spot-checked our raised beds weekly with the ',
+          linkText: 'TerraProbe 4-in-1 Digital Soil Moisture, pH & Light Meter',
+          targetSlug: 'terraprobe-4in1-digital-soil-moisture-meter',
+          afterText:
+            '—cutting overwatering by nearly 30 percent across hot July weeks.',
+        },
       },
       {
         id: 'ease-of-use',
@@ -954,12 +1016,16 @@ export const REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'torqpro-20v-brushless-cordless-drill-kit',
-        reason: 'Makes anchoring wall-mounted hose hangers and drip-irrigation trellis clips around the yard fast.',
+        slug: 'shearpro-cordless-electric-pruning-shears',
+        reason: 'Keeps thriving, well-irrigated fruit trees, rose bushes, and hedges neatly trimmed without wrist strain.',
       },
       {
-        slug: 'lumaglow-cordless-rechargeable-led-table-lamp',
-        reason: 'Enjoy your newly automated backyard garden after sunset with warm splash-resistant cordless patio lighting.',
+        slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
+        reason: 'Extends automated growing indoors once autumn frost arrives and outdoor spigots are winterized.',
+      },
+      {
+        slug: 'meshcore-wifi-6e-triband-router-system',
+        reason: 'Ensures rock-solid 2.4GHz gateway coverage all the way through exterior brick walls to backyard garden spigots.',
       },
     ],
     faqs: [
@@ -985,4 +1051,9 @@ export const REVIEWS: ProductReview[] = [
       },
     ],
   },
+  ...HOME_TECH_EXTRA_REVIEWS,
+  ...HOME_KITCHEN_EXTRA_REVIEWS,
+  ...HOME_DECOR_EXTRA_REVIEWS,
+  ...TOOLS_EXTRA_REVIEWS,
+  ...GARDENING_GADGETS_EXTRA_REVIEWS,
 ];

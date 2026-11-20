@@ -73,22 +73,36 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 3: Latest Flagship Reviews */}
+          {/* Column 3: Top Pick Per Department (5 Balanced Flagship Links) */}
           <div>
             <h2 className="text-sm font-bold text-white tracking-tight mb-3.5">
-              Featured Reviews
+              Top Rated Picks
             </h2>
             <ul className="space-y-2 text-[13px]">
-              {REVIEWS.map((review) => (
-                <li key={review.slug}>
-                  <Link
-                    to={`/review/${review.slug}`}
-                    className="text-[#D1D5DB] hover:text-[#F59E0B] hover:underline transition-colors line-clamp-1"
-                  >
-                    {review.productName}
-                  </Link>
-                </li>
-              ))}
+              {CATEGORIES.map((category) => {
+                const topPick = REVIEWS.filter((r) => r.categorySlug === category.slug).sort(
+                  (a, b) => b.scoreOutOf10 - a.scoreOutOf10
+                )[0];
+                if (!topPick) return null;
+                return (
+                  <li key={topPick.slug}>
+                    <Link
+                      to={`/review/${topPick.slug}`}
+                      className="text-[#D1D5DB] hover:text-[#F59E0B] hover:underline transition-colors line-clamp-1"
+                    >
+                      {topPick.productName}
+                    </Link>
+                  </li>
+                );
+              })}
+              <li className="pt-0.5">
+                <Link
+                  to="/#featured-reviews"
+                  className="text-[#F59E0B] font-semibold hover:underline transition-colors"
+                >
+                  Browse all {REVIEWS.length} reviews &rarr;
+                </Link>
+              </li>
             </ul>
           </div>
 

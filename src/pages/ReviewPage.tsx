@@ -20,6 +20,8 @@ import {
   getCategoryBySlug,
   getCompanionReviews,
   getReviewBySlug,
+  getReviewsByCategory,
+  sortReviews,
 } from '../utils/catalog';
 import { AmazonAffiliateButton } from '../components/AmazonAffiliateButton';
 import { Link } from '../components/Link';
@@ -44,6 +46,7 @@ const TOC_ITEMS = [
   { id: 'companions', label: 'Companion Products' },
   { id: 'final-verdict', label: 'Final Verdict' },
   { id: 'faqs', label: 'Buyer FAQs' },
+  { id: 'more-in-category', label: 'More in This Department' },
 ];
 
 function CriteriaMeter({ label, score }: { label: string; score: number }) {
@@ -152,6 +155,10 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
 
   const category = getCategoryBySlug(review.categorySlug, CATEGORIES);
   const companions = getCompanionReviews(review, REVIEWS, CATEGORIES);
+  const sameCategorySiblings = sortReviews(
+    getReviewsByCategory(review.categorySlug, REVIEWS).filter((r) => r.slug !== review.slug),
+    'rating'
+  );
 
   const breadcrumbs = [
     { name: 'Home', path: '/' },
@@ -175,6 +182,11 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
         canonicalPath={`/review/${review.slug}`}
         ogType="article"
         image={review.image}
+        imageAlt={review.imageAlt}
+        publishedTime={review.lastUpdated}
+        modifiedTime={review.lastUpdated}
+        authorName={review.author.name}
+        section={category?.name}
       />
       <SchemaMarkup id={`review-${review.slug}`} schemas={schemas} />
 
@@ -647,22 +659,22 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
                   </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {companions.map(({ review: compReview, category: compCategory, reason }) => (
                     <div
                       key={compReview.slug}
-                      className="border border-[#E5E7EB] rounded-lg p-4 flex flex-col sm:flex-row gap-4 bg-[#FAFAFA] hover:border-[#D1D5DB] transition-colors"
+                      className="border border-[#E5E7EB] rounded-lg p-4 flex flex-col gap-3 bg-[#FAFAFA] hover:border-[#D1D5DB] transition-colors"
                     >
                       <Link
                         to={`/review/${compReview.slug}`}
-                        className="w-full sm:w-28 aspect-[4/3] sm:aspect-square bg-white border border-[#E5E7EB] rounded p-1.5 flex items-center justify-center shrink-0"
+                        className="w-full aspect-[4/3] bg-white border border-[#E5E7EB] rounded p-2 flex items-center justify-center overflow-hidden"
                         aria-label={`Read review of ${compReview.productName}`}
                       >
                         <img
                           src={resolveAssetUrl(compReview.image)}
                           alt={compReview.productName}
-                          width={160}
-                          height={120}
+                          width={240}
+                          height={180}
                           loading="lazy"
                           referrerPolicy="no-referrer"
                           className="w-full h-full object-contain"
@@ -691,7 +703,7 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
 
                         <Link
                           to={`/review/${compReview.slug}`}
-                          className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#111827] hover:text-[#B45309] transition-colors"
+                          className="mt-3 pt-2 border-t border-[#E5E7EB] inline-flex items-center gap-1 text-xs font-bold text-[#111827] hover:text-[#B45309] transition-colors"
                         >
                           <span>Read Review</span>
                           <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -764,6 +776,71 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
                 ))}
               </div>
             </section>
+
+            {/* 8. Full-Department Internal Linking Silo: More Tested Picks in This Category */}
+            {category && sameCategorySiblings.length > 0 && (
+              <section
+                id="more-in-category"
+                aria-labelledby="more-in-category-heading"
+                className="scroll-mt-32 bg-white border border-[#E5E7EB] rounded-lg p-6 sm:p-8"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-5">
+                  <div>
+                    <p className="text-xs font-semibold text-[#B45309]">
+                      Complete {category.name} Department Guide
+                    </p>
+                    <h2
+                      id="more-in-category-heading"
+                      className="text-xl font-bold text-[#111827] mt-0.5"
+                    >
+                      More Tested Picks in {category.name}
+                    </h2>
+                  </div>
+                  <Link
+                    to={`/category/${category.slug}`}
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#111827] hover:text-[#B45309] transition-colors whitespace-nowrap"
+                  >
+                    <span>View all {sameCategorySiblings.length + 1} {category.name} reviews</span>
+                    <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                  </Link>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {sameCategorySiblings.map((sibling) => (
+                    <Link
+                      key={sibling.slug}
+                      to={`/review/${sibling.slug}`}
+                      className="group border border-[#E5E7EB] rounded-lg p-3.5 bg-[#FAFAFA] hover:bg-white hover:border-[#D1D5DB] hover:shadow-sm transition-all flex flex-col"
+                    >
+                      <div className="aspect-[4/3] w-full bg-white border border-[#F3F4F6] rounded p-2 flex items-center justify-center overflow-hidden">
+                        <img
+                          src={resolveAssetUrl(sibling.image)}
+                          alt={sibling.productName}
+                          width={240}
+                          height={180}
+                          loading="lazy"
+                          decoding="async"
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                      <p className="mt-2.5 text-[11px] font-semibold text-[#B45309]">
+                        {sibling.editorialBadge}
+                      </p>
+                      <h3 className="mt-0.5 text-[13px] font-bold text-[#111827] leading-snug group-hover:text-[#B45309] transition-colors line-clamp-2 flex-1">
+                        {sibling.productName}
+                      </h3>
+                      <div className="mt-2 pt-2 border-t border-[#E5E7EB] flex items-center justify-between text-[11px] text-[#4B5563]">
+                        <span className="font-semibold text-[#111827] tabular-nums">
+                          {sibling.scoreOutOf10.toFixed(1)}/10
+                        </span>
+                        <span>{sibling.priceTier}</span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
           </article>
         </div>
       </div>

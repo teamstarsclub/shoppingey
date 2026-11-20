@@ -158,16 +158,34 @@ export function buildSitewideJsonLd(): Record<string, unknown>[] {
     {
       '@context': 'https://schema.org',
       '@type': 'Organization',
+      '@id': `${SITE_CONFIG.domain}/#organization`,
       name: SITE_CONFIG.name,
       url: SITE_CONFIG.domain,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_CONFIG.domain}/logo-512.png`,
+        width: 512,
+        height: 512,
+      },
       email: SITE_CONFIG.contactEmail,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'editorial',
+        email: SITE_CONFIG.contactEmail,
+      },
       description: SITE_CONFIG.tagline,
+      publishingPrinciples: `${SITE_CONFIG.domain}/how-we-review`,
     },
     {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
+      '@id': `${SITE_CONFIG.domain}/#website`,
       name: SITE_CONFIG.name,
       url: SITE_CONFIG.domain,
+      inLanguage: 'en-US',
+      publisher: {
+        '@id': `${SITE_CONFIG.domain}/#organization`,
+      },
       potentialAction: {
         '@type': 'SearchAction',
         target: `${SITE_CONFIG.domain}/?q={search_term_string}`,
@@ -195,6 +213,26 @@ export function buildBreadcrumbJsonLd(items: BreadcrumbItem[]): Record<string, u
   };
 }
 
+export function buildWebPageJsonLd(options: {
+  type?: 'WebPage' | 'AboutPage' | 'ContactPage';
+  name: string;
+  description: string;
+  path: string;
+}): Record<string, unknown> {
+  const cleanPath = options.path === '/' ? '/' : options.path.replace(/\/+$/, '');
+  return {
+    '@context': 'https://schema.org',
+    '@type': options.type ?? 'WebPage',
+    name: options.name,
+    description: options.description,
+    url: `${SITE_CONFIG.domain}${cleanPath}`,
+    inLanguage: 'en-US',
+    isPartOf: {
+      '@id': `${SITE_CONFIG.domain}/#website`,
+    },
+  };
+}
+
 export function buildCategoryCollectionJsonLd(
   category: Category,
   categoryReviews: ProductReview[]
@@ -205,6 +243,10 @@ export function buildCategoryCollectionJsonLd(
     name: `${category.name} Reviews — ${SITE_CONFIG.name}`,
     description: category.metaDescription,
     url: `${SITE_CONFIG.domain}/category/${category.slug}`,
+    inLanguage: 'en-US',
+    isPartOf: {
+      '@id': `${SITE_CONFIG.domain}/#website`,
+    },
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: categoryReviews.length,
@@ -226,29 +268,43 @@ export function buildProductReviewJsonLd(
   const imageUrl = review.image.startsWith('http')
     ? review.image
     : `${SITE_CONFIG.domain}${review.image}`;
+  const brandName = review.productName.split(' ')[0] || SITE_CONFIG.name;
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: review.productName,
     description: review.metaDescription,
+    brand: {
+      '@type': 'Brand',
+      name: brandName,
+    },
     sku: review.asin,
+    mpn: review.asin,
     image: [imageUrl],
     category: category?.name ?? review.categorySlug,
     url: reviewUrl,
+    additionalProperty: review.specs.map((spec) => ({
+      '@type': 'PropertyValue',
+      name: spec.label,
+      value: spec.value,
+    })),
     review: {
       '@type': 'Review',
       name: review.reviewTitle,
       reviewBody: review.quickVerdict,
       datePublished: review.lastUpdated,
       dateModified: review.lastUpdated,
+      inLanguage: 'en-US',
       author: {
         '@type': 'Person',
         name: review.author.name,
         jobTitle: review.author.role,
+        url: `${SITE_CONFIG.domain}/about`,
       },
       publisher: {
         '@type': 'Organization',
+        '@id': `${SITE_CONFIG.domain}/#organization`,
         name: SITE_CONFIG.name,
         url: SITE_CONFIG.domain,
       },

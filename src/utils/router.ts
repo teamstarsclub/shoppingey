@@ -144,10 +144,20 @@ export function navigateTo(to: string): void {
   window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
 }
 
-export function useRouter() {
+export function useRouter(initialPathname?: string) {
   const [locationState, setLocationState] = useState(() => ({
-    pathname: typeof window !== 'undefined' ? window.location.pathname : '/',
-    search: typeof window !== 'undefined' ? window.location.search : '',
+    pathname:
+      initialPathname !== undefined
+        ? initialPathname
+        : typeof window !== 'undefined'
+          ? window.location.pathname
+          : '/',
+    search:
+      initialPathname !== undefined
+        ? ''
+        : typeof window !== 'undefined'
+          ? window.location.search
+          : '',
   }));
 
   useEffect(() => {

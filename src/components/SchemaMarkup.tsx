@@ -13,6 +13,15 @@ export function SchemaMarkup({ id, schemas }: SchemaMarkupProps) {
   const serialized = JSON.stringify(schemas);
 
   useEffect(() => {
+    // Remove any static pre-rendered JSON-LD nodes for this group (and stale route groups) to prevent duplicates
+    const selector =
+      id === 'sitewide'
+        ? 'script[data-prerendered-schema="sitewide"]'
+        : 'script[data-prerendered-schema]:not([data-prerendered-schema="sitewide"])';
+    document.head
+      .querySelectorAll<HTMLScriptElement>(selector)
+      .forEach((node) => node.parentNode?.removeChild(node));
+
     const parsed: Record<string, unknown>[] = JSON.parse(serialized);
     const createdNodes: HTMLScriptElement[] = [];
 
