@@ -20,6 +20,7 @@ import {
   buildBreadcrumbJsonLd,
   buildCategoryCollectionJsonLd,
   buildFaqJsonLd,
+  buildHomePageJsonLd,
   buildProductReviewJsonLd,
   buildSitewideJsonLd,
   buildWebPageJsonLd,
@@ -104,20 +105,7 @@ export function buildAllSeoRoutes(): StaticRouteSpec[] {
     indexable: true,
     robots: INDEX_ROBOTS,
     schemaGroupId: 'home',
-    schemas: [
-      {
-        '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        name: 'Shoppingey.com Product Review Departments',
-        numberOfItems: CATEGORIES.length,
-        itemListElement: CATEGORIES.map((cat, idx) => ({
-          '@type': 'ListItem',
-          position: idx + 1,
-          name: cat.name,
-          url: `${SITE_CONFIG.domain}/category/${cat.slug}`,
-        })),
-      },
-    ],
+    schemas: buildHomePageJsonLd(),
   };
 
   const editorialMeta: Array<{

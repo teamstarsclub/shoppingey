@@ -122,8 +122,8 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Sits cleanly on the 6.7-inch shelf depth as a sculptural matte-ceramic centerpiece.',
       },
       {
-        slug: 'lasersight-digital-laser-distance-measure',
-        reason: 'Measures exact symmetrical wall spacing in seconds before mounting staggered shelf layouts.',
+        slug: 'levelline-green-beam-cross-laser-level',
+        reason: 'Projects crisp horizontal laser guidelines across drywall so staggered 3-shelf sets hang dead-level.',
       },
     ],
     faqs: [
@@ -262,8 +262,8 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'lumaglow-cordless-rechargeable-led-table-lamp',
-        reason: 'Matches the exact satin brushed brass tone for a unified bedroom or entryway palette.',
+        slug: 'lumaarc-brass-linen-floor-lamp',
+        reason: 'Mirrors the brushed brass finish while illuminating your dressing corner with warm linen-diffused light.',
       },
       {
         slug: 'zenmist-ceramic-essential-oil-diffuser',
@@ -410,8 +410,8 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'lumaglow-cordless-rechargeable-led-table-lamp',
-        reason: 'Casts warm 2700K evening light across the woven cream-and-taupe geometric pattern.',
+        slug: 'lumaarc-brass-linen-floor-lamp',
+        reason: 'Frames reading armchairs on the rug with warm overhead linen-diffused lighting and slim brass arches.',
       },
       {
         slug: 'oakridge-floating-walnut-wall-shelves-set',
@@ -519,10 +519,10 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
           'Measured one foot away in a quiet bedroom, ZenMist registered just 26.2 dB—virtually inaudible over gentle evening air circulation. Fifteen drops of eucalyptus and cedar oil scented our 420-square-foot living area evenly within ten minutes without leaving damp condensation rings on wood furniture.',
         ],
         inlineLink: {
-          beforeText: 'For an effortless evening wind-down ritual, placing ZenMist beside the ',
-          linkText: 'LumaGlow Cordless Rechargeable Brass LED Table Lamp',
-          targetSlug: 'lumaglow-cordless-rechargeable-led-table-lamp',
-          afterText: ' pairs warm 2700K candlelight ambiance with subtle botanical scent.',
+          beforeText: 'For a calm, layered living room glow beside your aroma mist, tucking a ',
+          linkText: 'LumaArc Brushed Brass & Linen Arc Floor Lamp',
+          targetSlug: 'lumaarc-brass-linen-floor-lamp',
+          afterText: ' behind the sofa casts gentle warm illumination without harsh overhead fixtures.',
         },
       },
       {
@@ -590,6 +590,154 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         question: 'Does it shut off automatically when the water runs out?',
         answer:
           'Yes. Its internal water-level sensor cuts power immediately once the 90ml tank empties.',
+      },
+    ],
+  },
+  {
+    slug: 'lumaarc-brass-linen-floor-lamp',
+    categorySlug: 'home-decor',
+    asin: 'B0B8K4VN2M',
+    productName: 'LumaArc Brushed Brass & Linen Arc Floor Lamp',
+    reviewTitle: 'LumaArc Brushed Brass Arc Floor Lamp Review (2026): Heavy Marble Stability & Warm 3-Way Linen Glow',
+    metaDescription:
+      'Hands-on LumaArc Brushed Brass & Linen Arc Floor Lamp review: real marble base stability, woven oatmeal linen shade diffusion, foot switch, and smart bulb fit.',
+    editorialBadge: 'Shoppingey Top Pick',
+    priceTier: 'Mid-Range',
+    rating: 4.8,
+    scoreOutOf10: 9.4,
+    author: {
+      name: 'Clara Lindqvist',
+      role: 'Home Decor & Lighting Editor',
+    },
+    lastUpdated: '2026-11-18',
+    image: '/src/assets/images/product_brass_linen_floor_lamp_1795588517863.jpg',
+    imageAlt: 'LumaArc minimalist brushed brass arched floor lamp with oatmeal linen drum shade and weighted marble base on studio backdrop',
+    detailZoomOrigin: '50% 25%',
+    dimensionsSummary: {
+      width: '14.5 in (Shade)',
+      height: '66.5 in',
+      depth: '22.0 in (Reach)',
+      weight: '16.4 lbs',
+      callouts: [
+        'Solid 11-inch natural marble cylinder base anchors the tall brass stem rock-steady on rugs',
+        'Woven natural oatmeal linen drum shade softens 2700K LED light across seating areas',
+        'Includes E26 smart-ready warm LED bulb plus tactile brass foot-pedal switch',
+      ],
+    },
+    quickVerdict:
+      'A gallery-worthy arc floor lamp that skips cheap hollow plastic weights in favor of real natural marble, refined brushed champagne brass, and an inviting textured linen drum shade.',
+    highlights: [
+      'Genuine weighted natural marble base prevents tipping on carpet or around pets',
+      '14.5-inch oatmeal linen drum shade diffuses warm reading light cleanly with zero bulb glare',
+      'Satin brushed champagne-brass finish resists tarnishing and cheap mirror-gold shine',
+      'Standard E26 socket works with the included 2700K LED bulb or any smart color bulb',
+      'Weighted inline brass foot switch lets you tap the lamp on cleanly without hunting under shades',
+    ],
+    criteriaScores: {
+      buildQuality: 9.5,
+      performance: 9.4,
+      value: 9.4,
+      easeOfUse: 9.5,
+      durability: 9.3,
+    },
+    pros: [
+      'Dead-straight pole seams screw together tightly without leaning or wobbly threads',
+      'Warm woven linen shade creates soft boutique-hotel evening mood lighting across a sofa',
+      'Slim 11-inch footprint slides smoothly tucked behind sectionals or beside reading chairs',
+      'Swivel drum joint lets you aim downward light over a book or level it horizontally',
+    ],
+    cons: [
+      'Linen drum arrives rolled in compact packaging and clips onto wire rings during 5-minute assembly',
+      'Inline foot switch toggles on/off only (pair with a smart dimmer bulb for app dimming)',
+      'Tall 66.5-inch fixed mast is not telescoping if you want a lower side-table height',
+    ],
+    sections: [
+      {
+        id: 'build-quality',
+        heading: 'Marble Base Anchor, Seamless Brass Poles & Woven Linen',
+        paragraphs: [
+          'Tall floor lamps fail in one annoying spot: crooked threaded tubes and flimsy sand-filled plastic bases that lean precariously on carpet. LumaArc threads three precision-machined brushed brass poles straight into a solid 9-pound natural marble base with a recessed felt bottom pad—standing arrow-straight right out of the box.',
+          'Its satin brushed finish strikes a warm, muted champagne tone rather than loud shiny brass, topped by a tactile oatmeal-slub linen drum shade that softens the glow even when switched off.',
+        ],
+      },
+      {
+        id: 'real-world-performance',
+        heading: 'Light Diffusion, Reading Reach & Anti-Wobble Stability',
+        paragraphs: [
+          'Arched cleanly 22 inches forward over a reading chair or sofa corner, the 14.5-inch linen shade drops warm 2700K light exactly onto book pages while hiding the E26 bulb completely from eyes sitting nearby. Bumping the sofa arm barely budged the weighted marble anchor.',
+        ],
+        inlineLink: {
+          beforeText: 'For multi-layer evening ambiance without overhead glare, pairing this standing arc lamp with the ',
+          linkText: 'LumaGlow Cordless Rechargeable Brass LED Table Lamp',
+          targetSlug: 'lumaglow-cordless-rechargeable-led-table-lamp',
+          afterText: ' extends matching brushed brass warmth onto coffee tables and floating alcoves.',
+        },
+      },
+      {
+        id: 'everyday-usability',
+        heading: '10-Minute Assembly & Smart Home Lighting Synergy',
+        paragraphs: [
+          'Pulling the slack cord gently through the base during pole threading took roughly eight minutes total with zero tools needed. Because LumaArc uses an open standard E26 socket, swapping in a Matter or Alexa smart dimmer bulb works seamlessly with the foot switch.',
+        ],
+        inlineLink: {
+          beforeText: 'In bedrooms and allergy-sensitive living rooms, tucking the ',
+          linkText: 'AeroPure H13 True HEPA Smart Wi-Fi Air Purifier',
+          targetSlug: 'aeropure-smart-hepa-air-purifier',
+          afterText: ' neatly beside the marble base creates a calm, whisper-quiet reading sanctuary.',
+        },
+      },
+      {
+        id: 'who-should-buy',
+        heading: 'Who Should Buy This (and Who Should Skip)',
+        paragraphs: [
+          'Buy LumaArc if you want timeless warm architectural lighting next to a sofa, bed, or reading nook with genuine marble stability at a mid-range price. Skip it only if you need built-in rotary brass dimming without using a smart bulb.',
+        ],
+      },
+    ],
+    specs: [
+      { label: 'Overall Height & Reach', value: '66.5 H x 22.0 D in (14.5-in Shade Diameter)' },
+      { label: 'Base Anchor', value: '11-in Weighted Solid Natural Marble Cylinder' },
+      { label: 'Frame Finish', value: 'Anodized Brushed Champagne Brass Metal' },
+      { label: 'Shade Material', value: 'Woven Natural Oatmeal Linen Fabric Drum' },
+      { label: 'Socket & Included Bulb', value: 'Standard E26 + 9W 2700K Warm LED (800 lm)' },
+      { label: 'Switch Type', value: 'Weighted Inline Foot Pedal Switch' },
+      { label: 'Cord Length', value: '6.5 ft Clear Insulated Cord' },
+      { label: 'Total Weight', value: '16.4 lbs' },
+    ],
+    companions: [
+      {
+        slug: 'nordicweave-washable-geometric-area-rug',
+        reason: 'Anchors your reading chair and brass floor lamp visually on cream-and-taupe woven texture.',
+      },
+      {
+        slug: 'oakridge-floating-walnut-wall-shelves-set',
+        reason: 'Balances warm brushed brass curves against crisp horizontal solid walnut wall grain.',
+      },
+      {
+        slug: 'thermosense-smart-learning-thermostat',
+        reason: 'Coordinates cozy ambient reading corners with automatic evening room temperature comfort.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Does the lampshade come pre-assembled or rolled up?',
+        answer:
+          'To protect it from shipping dents, the oatmeal linen drum ships flat and snaps onto its upper and lower metal rings via discreet inner clips in two minutes—no seam shows once turned toward the wall.',
+      },
+      {
+        question: 'Can I use my own smart Wi-Fi or Philips Hue bulb?',
+        answer:
+          'Yes! Any standard E26 LED or smart bulb up to 60W equivalent (15W LED max) fits cleanly inside the linen drum.',
+      },
+      {
+        question: 'Is the marble base heavy enough to stay steady on thick carpet?',
+        answer:
+          'Yes. The dense solid marble anchor weighs roughly 9 pounds on its own and resists tipping cleanly on carpet and hardwood alike.',
+      },
+      {
+        question: 'Does the head pivot or adjust angles?',
+        answer:
+          'Yes, a brushed brass ball joint behind the drum socket lets you tilt the shade slightly downward over a book or keep it horizontal.',
       },
     ],
   },

@@ -8,6 +8,7 @@ import {
   buildBreadcrumbJsonLd,
   buildCategoryCollectionJsonLd,
   buildFaqJsonLd,
+  buildHomePageJsonLd,
   buildProductReviewJsonLd,
   buildSitewideJsonLd,
   containsStaticDollarPrice,
@@ -21,22 +22,22 @@ import {
 } from './catalog';
 import { parsePathname, resolveAssetUrl, stripBasePath, withBasePath } from './router';
 
-test('catalog has exactly 5 required categories and 5 reviews per category (25 total)', () => {
+test('catalog has exactly 5 required categories and 6 reviews per category (30 total)', () => {
   assert.equal(CATEGORIES.length, 5);
   assert.deepEqual(
     CATEGORIES.map((c) => c.slug),
     ['home-tech', 'home-kitchen', 'home-decor', 'tools', 'gardening-gadgets']
   );
-  assert.equal(REVIEWS.length, 25);
-  assert.equal(new Set(REVIEWS.map((r) => r.slug)).size, 25, 'All 25 review slugs must be unique');
-  assert.equal(new Set(REVIEWS.map((r) => r.asin)).size, 25, 'All 25 Amazon ASINs must be unique');
-  assert.equal(new Set(REVIEWS.map((r) => r.image)).size, 25, 'All 25 product images must be unique');
+  assert.equal(REVIEWS.length, 30);
+  assert.equal(new Set(REVIEWS.map((r) => r.slug)).size, 30, 'All 30 review slugs must be unique');
+  assert.equal(new Set(REVIEWS.map((r) => r.asin)).size, 30, 'All 30 Amazon ASINs must be unique');
+  assert.equal(new Set(REVIEWS.map((r) => r.image)).size, 30, 'All 30 product images must be unique');
 
   for (const cat of CATEGORIES) {
     assert.equal(
       getCategoryReviewCount(cat.slug, REVIEWS),
-      5,
-      `Expected exactly 5 reviews in ${cat.slug}`
+      6,
+      `Expected exactly 6 reviews in ${cat.slug}`
     );
   }
 });
@@ -187,13 +188,28 @@ test('sortReviews orders by rating, newest, and price tier', () => {
   assert.equal(byPriceDesc[0].priceTier, 'Premium');
 });
 
-test('JSON-LD schema builders emit valid Product, Review, Pros/Cons, FAQPage, CollectionPage, and BreadcrumbList', () => {
+test('JSON-LD schema builders emit valid Home CollectionPage, Product, Review, Pros/Cons, FAQPage, Category, and BreadcrumbList', () => {
   const review = REVIEWS[0];
   const category = getCategoryBySlug(review.categorySlug)!;
 
+  const homeSchemas = buildHomePageJsonLd() as Record<string, any>[];
+  assert.equal(homeSchemas.length, 1);
+  assert.equal(homeSchemas[0]['@type'], 'CollectionPage');
+  assert.equal(homeSchemas[0]['@id'], 'https://www.shoppingey.com/#webpage');
+  assert.equal(homeSchemas[0].mainEntity['@type'], 'ItemList');
+  assert.equal(homeSchemas[0].mainEntity.numberOfItems, 5);
+
   const productSchema = buildProductReviewJsonLd(review, category) as Record<string, any>;
   assert.equal(productSchema['@type'], 'Product');
+  assert.equal(productSchema['@id'], `https://www.shoppingey.com/review/${review.slug}#product`);
+  assert.equal(productSchema.productID, review.asin);
+  assert.equal(
+    productSchema.mainEntityOfPage['@id'],
+    `https://www.shoppingey.com/review/${review.slug}#webpage`
+  );
   assert.equal(productSchema.review['@type'], 'Review');
+  assert.equal(productSchema.review.headline, review.reviewTitle);
+  assert.equal(productSchema.review.itemReviewed['@id'], productSchema['@id']);
   assert.equal(productSchema.review.reviewRating.bestRating, '5');
   assert.equal(productSchema.review.reviewRating.worstRating, '1');
   assert.equal(productSchema.review.positiveNotes.itemListElement.length, review.pros.length);
@@ -201,6 +217,7 @@ test('JSON-LD schema builders emit valid Product, Review, Pros/Cons, FAQPage, Co
 
   const faqSchema = buildFaqJsonLd(review) as Record<string, any>;
   assert.equal(faqSchema['@type'], 'FAQPage');
+  assert.equal(faqSchema['@id'], `https://www.shoppingey.com/review/${review.slug}#faq`);
   assert.equal(faqSchema.mainEntity.length, review.faqs.length);
 
   const categorySchema = buildCategoryCollectionJsonLd(
@@ -208,8 +225,9 @@ test('JSON-LD schema builders emit valid Product, Review, Pros/Cons, FAQPage, Co
     getReviewsByCategory(category.slug)
   ) as Record<string, any>;
   assert.equal(categorySchema['@type'], 'CollectionPage');
+  assert.equal(categorySchema.primaryImageOfPage['@type'], 'ImageObject');
   assert.equal(categorySchema.mainEntity['@type'], 'ItemList');
-  assert.equal(categorySchema.mainEntity.numberOfItems, 5);
+  assert.equal(categorySchema.mainEntity.numberOfItems, 6);
 
   const breadcrumbs = buildBreadcrumbJsonLd([
     { name: 'Home', path: '/' },
@@ -268,18 +286,18 @@ test('GitHub Pages subpath routing and asset resolution work across / and /repo/
   );
 });
 
-test('Technical SEO: sitemap includes ONLY the 33 indexable URLs and excludes noindex legal/utility pages', async () => {
+test('Technical SEO: sitemap includes ONLY the 38 indexable URLs and excludes noindex legal/utility pages', async () => {
   const { buildAllSeoRoutes, buildSitemapRoutes, generateSitemapXml } = await import(
     '../../scripts/generate-seo'
   );
   const allRoutes = buildAllSeoRoutes();
-  assert.equal(allRoutes.length, 37, 'Expected 37 total pre-rendered routes');
+  assert.equal(allRoutes.length, 42, 'Expected 42 total pre-rendered routes');
 
   const indexableRoutes = buildSitemapRoutes();
   assert.equal(
     indexableRoutes.length,
-    33,
-    'Expected 33 indexable sitemap routes (1 home + 2 E-E-A-T editorial + 5 categories + 25 reviews)'
+    38,
+    'Expected 38 indexable sitemap routes (1 home + 2 E-E-A-T editorial + 5 categories + 30 reviews)'
   );
 
   const nonIndexablePaths = ['/affiliate-disclosure', '/privacy-policy', '/terms', '/contact'];
@@ -292,8 +310,8 @@ test('Technical SEO: sitemap includes ONLY the 33 indexable URLs and excludes no
 
   const xml = generateSitemapXml();
   const locs = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
-  assert.equal(locs.length, 33);
-  assert.equal(new Set(locs).size, 33, 'Sitemap must have zero duplicate URLs');
+  assert.equal(locs.length, 38);
+  assert.equal(new Set(locs).size, 38, 'Sitemap must have zero duplicate URLs');
 
   for (const hiddenPath of nonIndexablePaths) {
     assert.equal(
@@ -318,7 +336,7 @@ test('Technical SEO: sitemap includes ONLY the 33 indexable URLs and excludes no
   }
   assert.ok(xml.includes('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'));
   const imageLocs = [...xml.matchAll(/<image:loc>(.*?)<\/image:loc>/g)].map((m) => m[1]);
-  assert.equal(imageLocs.length, 30, 'Expected Image Sitemap tags for all 5 categories + 25 reviews');
+  assert.equal(imageLocs.length, 35, 'Expected Image Sitemap tags for all 5 categories + 30 reviews');
 });
 
 test('Technical SEO: enriched Organization PNG logo, Product/Review E-E-A-T, unique titles, and meta descriptions meet Google guidelines', async () => {

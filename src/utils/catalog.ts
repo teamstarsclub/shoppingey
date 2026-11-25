@@ -213,6 +213,42 @@ export function buildBreadcrumbJsonLd(items: BreadcrumbItem[]): Record<string, u
   };
 }
 
+export function buildHomePageJsonLd(): Record<string, unknown>[] {
+  const homeUrl = `${SITE_CONFIG.domain}/`;
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      '@id': `${SITE_CONFIG.domain}/#webpage`,
+      name: 'Shoppingey.com — Independent Amazon Product Reviews (2026)',
+      description:
+        'Honest, hands-on Amazon product reviews tested and organized by department: Home & Tech, Home & Kitchen, Home Decor, Tools, and Gardening Gadgets.',
+      url: homeUrl,
+      inLanguage: 'en-US',
+      isPartOf: {
+        '@id': `${SITE_CONFIG.domain}/#website`,
+      },
+      about: {
+        '@id': `${SITE_CONFIG.domain}/#organization`,
+      },
+      mainEntity: {
+        '@type': 'ItemList',
+        name: 'Shoppingey.com Product Review Departments',
+        numberOfItems: CATEGORIES.length,
+        itemListElement: CATEGORIES.map((cat, idx) => ({
+          '@type': 'ListItem',
+          position: idx + 1,
+          name: cat.name,
+          url: `${SITE_CONFIG.domain}/category/${cat.slug}`,
+          image: cat.featuredImage.startsWith('http')
+            ? cat.featuredImage
+            : `${SITE_CONFIG.domain}${cat.featuredImage}`,
+        })),
+      },
+    },
+  ];
+}
+
 export function buildWebPageJsonLd(options: {
   type?: 'WebPage' | 'AboutPage' | 'ContactPage';
   name: string;
@@ -220,12 +256,14 @@ export function buildWebPageJsonLd(options: {
   path: string;
 }): Record<string, unknown> {
   const cleanPath = options.path === '/' ? '/' : options.path.replace(/\/+$/, '');
+  const url = `${SITE_CONFIG.domain}${cleanPath}`;
   return {
     '@context': 'https://schema.org',
     '@type': options.type ?? 'WebPage',
+    '@id': `${url}#webpage`,
     name: options.name,
     description: options.description,
-    url: `${SITE_CONFIG.domain}${cleanPath}`,
+    url,
     inLanguage: 'en-US',
     isPartOf: {
       '@id': `${SITE_CONFIG.domain}/#website`,
@@ -237,13 +275,23 @@ export function buildCategoryCollectionJsonLd(
   category: Category,
   categoryReviews: ProductReview[]
 ): Record<string, unknown> {
+  const categoryUrl = `${SITE_CONFIG.domain}/category/${category.slug}`;
+  const featuredImageUrl = category.featuredImage.startsWith('http')
+    ? category.featuredImage
+    : `${SITE_CONFIG.domain}${category.featuredImage}`;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
+    '@id': `${categoryUrl}#webpage`,
     name: `${category.name} Reviews — ${SITE_CONFIG.name}`,
     description: category.metaDescription,
-    url: `${SITE_CONFIG.domain}/category/${category.slug}`,
+    url: categoryUrl,
     inLanguage: 'en-US',
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: featuredImageUrl,
+    },
     isPartOf: {
       '@id': `${SITE_CONFIG.domain}/#website`,
     },
@@ -255,6 +303,9 @@ export function buildCategoryCollectionJsonLd(
         position: index + 1,
         url: `${SITE_CONFIG.domain}/review/${review.slug}`,
         name: review.productName,
+        image: review.image.startsWith('http')
+          ? review.image
+          : `${SITE_CONFIG.domain}${review.image}`,
       })),
     },
   };
@@ -273,6 +324,7 @@ export function buildProductReviewJsonLd(
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
+    '@id': `${reviewUrl}#product`,
     name: review.productName,
     description: review.metaDescription,
     brand: {
@@ -281,9 +333,15 @@ export function buildProductReviewJsonLd(
     },
     sku: review.asin,
     mpn: review.asin,
+    productID: review.asin,
     image: [imageUrl],
     category: category?.name ?? review.categorySlug,
     url: reviewUrl,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${reviewUrl}#webpage`,
+      url: reviewUrl,
+    },
     additionalProperty: review.specs.map((spec) => ({
       '@type': 'PropertyValue',
       name: spec.label,
@@ -291,7 +349,13 @@ export function buildProductReviewJsonLd(
     })),
     review: {
       '@type': 'Review',
+      '@id': `${reviewUrl}#review`,
       name: review.reviewTitle,
+      headline: review.reviewTitle,
+      url: reviewUrl,
+      itemReviewed: {
+        '@id': `${reviewUrl}#product`,
+      },
       reviewBody: review.quickVerdict,
       datePublished: review.lastUpdated,
       dateModified: review.lastUpdated,
@@ -335,9 +399,15 @@ export function buildProductReviewJsonLd(
 }
 
 export function buildFaqJsonLd(review: ProductReview): Record<string, unknown> {
+  const reviewUrl = `${SITE_CONFIG.domain}/review/${review.slug}`;
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    '@id': `${reviewUrl}#faq`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${reviewUrl}#webpage`,
+    },
     mainEntity: review.faqs.map((faq) => ({
       '@type': 'Question',
       name: faq.question,

@@ -19,6 +19,7 @@ import {
   type CategorySlug,
 } from '../data/reviews';
 import {
+  buildHomePageJsonLd,
   getCategoryReviewCount,
   getReviewsByCategory,
   searchReviews,
@@ -27,6 +28,7 @@ import {
 import { Link } from '../components/Link';
 import { resolveAssetUrl } from '../utils/router';
 import { ReviewCard } from '../components/ReviewCard';
+import { SchemaMarkup } from '../components/SchemaMarkup';
 import { SEOHead } from '../components/SEOHead';
 
 export interface HomePageProps {
@@ -88,6 +90,7 @@ export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
             : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
         }
       />
+      {!initialQuery && <SchemaMarkup id="home" schemas={buildHomePageJsonLd()} />}
 
       {/* Compact Trust Hero Strip */}
       <section className="bg-white border-b border-[#E5E7EB]">

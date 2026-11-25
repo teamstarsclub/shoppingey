@@ -856,8 +856,8 @@ export const REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'studscan-pro-deep-wall-scanner-detector',
-        reason: 'Locates stud centers and hidden live AC wiring before you drill a single structural anchor hole.',
+        slug: 'levelline-green-beam-cross-laser-level',
+        reason: 'Projects dead-level horizontal and plumb laser guides across walls before you drill a single shelf or cabinet hole.',
       },
       {
         slug: 'precisionbit-electric-screwdriver-repair-kit',
@@ -1020,8 +1020,8 @@ export const REVIEWS: ProductReview[] = [
         reason: 'Keeps thriving, well-irrigated fruit trees, rose bushes, and hedges neatly trimmed without wrist strain.',
       },
       {
-        slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
-        reason: 'Extends automated growing indoors once autumn frost arrives and outdoor spigots are winterized.',
+        slug: 'hydrocoil-retractable-garden-hose-reel',
+        reason: 'Reels and protects Zone 2 watering lines inside a UV-stabilized case with slow auto-rewind convenience.',
       },
       {
         slug: 'meshcore-wifi-6e-triband-router-system',

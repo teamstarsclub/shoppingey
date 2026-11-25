@@ -118,8 +118,8 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Combines outlet-level energy monitoring with smart HVAC scheduling to cut whole-home utility waste.',
       },
       {
-        slug: 'keyvault-biometric-smart-deadbolt-lock',
-        reason: 'Trigger indoor welcome lamps plugged into VoltGuard automatically when your front door unlocks at dusk.',
+        slug: 'aeropure-smart-hepa-air-purifier',
+        reason: 'Logs real-time bedroom air purifier wattage and schedules daytime standby cutoffs automatically.',
       },
       {
         slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
@@ -371,10 +371,10 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
           'Over four weeks of autumn heating and afternoon cooling cycles, we logged ThermoSense Pro against two NIST-traceable digital thermometers. Temperature readings held within ±0.4°F across both the main unit and the remote bedroom puck, cutting daily furnace cycles by 19% through smarter setback recovery.',
         ],
         inlineLink: {
-          beforeText: 'Linking home/away occupancy with our tested ',
-          linkText: 'KeyVault Fingerprint Wi-Fi Smart Deadbolt Lock',
-          targetSlug: 'keyvault-biometric-smart-deadbolt-lock',
-          afterText: ' ensures the thermostat drops into Eco mode the moment you lock up for work.',
+          beforeText: 'When the hallway indoor air quality sensor detects elevated VOCs or seasonal dust spikes, pairing climate control with the ',
+          linkText: 'AeroPure H13 True HEPA Smart Wi-Fi Air Purifier',
+          targetSlug: 'aeropure-smart-hepa-air-purifier',
+          afterText: ' cleans bedroom air quietly while your HVAC fan rests.',
         },
       },
       {
@@ -562,8 +562,8 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Ensures fast, reliable 2.4 GHz Wi-Fi lock status updates right at exterior entryways.',
       },
       {
-        slug: 'voltguard-smart-wifi-surge-power-strip',
-        reason: 'Automates hallway welcome lights the moment your fingerprint unlocks the door after sunset.',
+        slug: 'aeropure-smart-hepa-air-purifier',
+        reason: 'Trigger automated allergen scrubbing in your entryway hall whenever the front deadbolt unlocks.',
       },
       {
         slug: 'solarpath-warm-led-landscape-pathway-lights',
@@ -590,6 +590,154 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         question: 'Can I set temporary access codes for Airbnb guests or housekeepers?',
         answer:
           'Yes. You can create time-bounded codes (active only between specific dates and hours) or recurring weekday schedules directly from the app.',
+      },
+    ],
+  },
+  {
+    slug: 'aeropure-smart-hepa-air-purifier',
+    categorySlug: 'home-tech',
+    asin: 'B09M7KP4TX',
+    productName: 'AeroPure H13 True HEPA Smart Wi-Fi Air Purifier',
+    reviewTitle: 'AeroPure H13 Smart Air Purifier Review (2026): Whisper-Quiet PM2.5 Filtration & Auto Allergen Tracking',
+    metaDescription:
+      'Lab-tested AeroPure H13 True HEPA Smart Air Purifier review: real PM2.5 smoke-clearing speed, 21 dB sleep mode, filter costs, and app air quality graphs.',
+    editorialBadge: 'Editor Tested',
+    priceTier: 'Mid-Range',
+    rating: 4.8,
+    scoreOutOf10: 9.4,
+    author: {
+      name: 'Marcus Halvorsen',
+      role: 'Senior Home Tech Editor',
+    },
+    lastUpdated: '2026-11-18',
+    image: '/src/assets/images/product_smart_air_purifier_1795588516935.jpg',
+    imageAlt: 'AeroPure matte charcoal and brushed metallic H13 True HEPA cylindrical smart Wi-Fi air purifier on studio backdrop',
+    detailZoomOrigin: '50% 35%',
+    dimensionsSummary: {
+      width: '8.7 in',
+      height: '16.5 in',
+      depth: '8.7 in',
+      weight: '7.5 lbs',
+      callouts: [
+        '360° 3-stage cylindrical filter combining nylon pre-filter, H13 True HEPA & activated carbon',
+        'Infrared laser PM2.5 dust sensor adjusts fan speed in real time via Auto mode',
+        '21 dB whisper-quiet Sleep mode dims all display LEDs completely for dark bedrooms',
+      ],
+    },
+    quickVerdict:
+      'A sleek, impressively quiet H13 True HEPA smart purifier that clears cooking smoke, pet dander, and seasonal pollen rapidly in bedrooms and living rooms up to 1,050 sq. ft.',
+    highlights: [
+      'Captures 99.97% of airborne pollen, pet dander, dust mites, and wildfire smoke down to 0.3 microns',
+      'Laser PM2.5 particle sensor updates live digital AQI ring and Auto fan speed within seconds',
+      'Brushless DC motor whispers at 21 dB on Sleep mode with a total Light-Off bedtime toggle',
+      'High-pellet activated carbon core neutralizes kitchen sear smoke and litter-box odors cleanly',
+      'App & Alexa/Google scheduling shows real-time filter life percentage without guesswork',
+    ],
+    criteriaScores: {
+      buildQuality: 9.4,
+      performance: 9.5,
+      value: 9.3,
+      easeOfUse: 9.6,
+      durability: 9.2,
+    },
+    pros: [
+      'Cleared heavy cooking smoke in a 380 sq. ft. room back to single-digit PM2.5 in 17 minutes',
+      'True brushless 21 dB Sleep speed is virtually inaudible three feet from the bed',
+      '360-degree intake pulls air cleanly from any corner without demanding wall clearance',
+      'Light-Off mode extinguishes every LED dot so light-sensitive sleepers get pitch-black rest',
+    ],
+    cons: [
+      'Top fan grille does not accept scented essential oils directly (never drip oil onto HEPA media)',
+      'Auto mode reacts best within 15 feet of cooking sources rather than behind closed doors',
+      'Onboarding requires a 2.4 GHz Wi-Fi SSID (though onboard touch controls work standalone)',
+    ],
+    sections: [
+      {
+        id: 'build-quality',
+        heading: '360-Degree Airflow Architecture & H13 Filter Construction',
+        paragraphs: [
+          'Tall boxy purifiers draw air unevenly from a single front grate, forcing noisy high RPMs to turn over a bedroom. AeroPure’s cylindrical matte charcoal chassis pulls room air through 360 degrees of perforated intake perforations before pushing clean air vertically through an angled top louver.',
+          'Inside sits a hefty twist-lock drum housing three bonded layers: a vacuumable fine pre-filter for pet fur, true medical-grade H13 HEPA pleats, and an upgraded activated-carbon pellet bed that actually weighs enough to trap volatile cooking odors instead of masking them.',
+        ],
+      },
+      {
+        id: 'real-world-performance',
+        heading: 'PM2.5 Smoke Clearance, Noise Floor & Auto Sensor Speed',
+        paragraphs: [
+          'Using a calibrated laser particle counter in a sealed 380-square-foot bedroom/office space, searing steaks spiked PM2.5 readings above 180 µg/m³. AeroPure’s onboard infrared dust sensor detected the spike in 9 seconds, ramped smoothly to Turbo, and dropped particulate counts back below 10 µg/m³ in 17 minutes flat.',
+        ],
+        inlineLink: {
+          beforeText: 'Linking home arrival automations with the ',
+          linkText: 'KeyVault Fingerprint Wi-Fi Smart Deadbolt Lock',
+          targetSlug: 'keyvault-biometric-smart-deadbolt-lock',
+          afterText: ' lets you kick off a 20-minute Turbo pollen purge automatically whenever you step back inside after yard work.',
+        },
+      },
+      {
+        id: 'everyday-usability',
+        heading: 'Sleep Mode Silence, Filter Upkeep & Clean Bedroom Pairings',
+        paragraphs: [
+          'Vacuuming pet hair off the outer mesh sleeve once a month stretches replacement H13 drum life to a full 8–10 months. Best of all, hitting Display Off turns off even the dimmest amber status dot at night while continuing gentle 21 dB Sleep filtration.',
+        ],
+        inlineLink: {
+          beforeText: 'For readers who want subtle botanical calm in filtered air without clogging HEPA pleats with oils, setting a ',
+          linkText: 'ZenMist Matte Ceramic Ultrasonic Aroma Diffuser',
+          targetSlug: 'zenmist-ceramic-essential-oil-diffuser',
+          afterText: ' across the room keeps clean-air filtration and delicate scent completely separate.',
+        },
+      },
+      {
+        id: 'who-should-buy',
+        heading: 'Who Should Buy This (and Who Should Skip)',
+        paragraphs: [
+          'Buy AeroPure if you want genuinely quiet 21 dB nighttime bedroom filtration, rapid wildfire-smoke or cooking-odor recovery, and transparent PM2.5 app telemetry at a mid-range price. Skip it only if you need one industrial machine to scrub a 2,000-square-foot open warehouse.',
+        ],
+      },
+    ],
+    specs: [
+      { label: 'CADR / Room Coverage', value: '1,050 sq. ft. (1x/hr) · 220 sq. ft. (4.8x/hr)' },
+      { label: 'Filtration Stages', value: 'Pre-Filter + H13 True HEPA (0.3 µm) + Carbon' },
+      { label: 'Air Quality Sensor', value: 'Laser PM2.5 Particle Sensor + Live AQI Ring' },
+      { label: 'Noise Range', value: '21 dB (Sleep) to 49 dB (Turbo High)' },
+      { label: 'Motor Type', value: 'High-Efficiency Brushless DC (38W Max)' },
+      { label: 'Smart Integration', value: '2.4 GHz Wi-Fi App, Alexa & Google Home' },
+      { label: 'Sleep Features', value: 'Full Display Light-Off + Whisper Sleep Curve' },
+      { label: 'Dimensions', value: '8.7 Diameter x 16.5 H in (7.5 lbs)' },
+    ],
+    companions: [
+      {
+        slug: 'thermosense-smart-learning-thermostat',
+        reason: 'Coordinates indoor VOC/humidity monitoring with dedicated bedroom H13 HEPA particulate scrubbing.',
+      },
+      {
+        slug: 'voltguard-smart-wifi-surge-power-strip',
+        reason: 'Tracks actual kilowatt-hour draw cleanly and safeguards sensitive brushless purifier electronics.',
+      },
+      {
+        slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
+        reason: 'Keeps kitchen counters fresh—neutralizing lingering cooking odors right alongside living indoor herbs.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Does AeroPure emit ozone or rely on an ionizer?',
+        answer:
+          'No. It uses purely mechanical H13 True HEPA pleats and activated carbon pellets—zero ozone emission and zero questionable plasma ionizers.',
+      },
+      {
+        question: 'How bright are the control lights in a dark bedroom?',
+        answer:
+          'Not bright at all, because pressing the Display Off button shuts off every single LED indicator—including the AQI ring—for complete darkness while sleeping.',
+      },
+      {
+        question: 'How often do I need to replace the H13 filter cartridge?',
+        answer:
+          'Under average 24/7 bedroom use with monthly outer-mesh vacuuming, one filter drum lasts 8 to 10 months (or 6 months in homes with heavy shedding pets).',
+      },
+      {
+        question: 'Can I place it right next to a bed or wall?',
+        answer:
+          'Leave roughly 8 to 10 inches around the 360-degree lower cylinder intake for optimal airflow, and keep the top exhaust clear of low shelves.',
       },
     ],
   },
