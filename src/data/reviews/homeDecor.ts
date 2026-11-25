@@ -67,6 +67,12 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
           'Most budget floating shelves sag within a month because they rely on thin sheet-metal flanges that flex under weight. OakRidge ships rigid welded 4mm steel T-brackets with dual 5-inch support rods that extend deep into each 1.5-inch-thick plank, locked in place by discreet underside set screws.',
           'The hand-rubbed satin walnut finish feels tactile and matte rather than plasticky, pairing effortlessly with brushed brass hardware, cream plaster walls, and dark slate kitchens.',
         ],
+        inlineLink: {
+          beforeText: 'In compact kitchens and coffee bars, a pair of floating walnut planks above the ',
+          linkText: 'CremaPro Compact Espresso Machine with Milk Frother',
+          targetSlug: 'cremapro-15-bar-espresso-machine-grinder',
+          afterText: ' keeps ceramic espresso cups and syrup bottles neatly within reach.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -98,8 +104,14 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         id: 'who-should-buy',
         heading: 'Who Should Buy This (and Who Should Skip)',
         paragraphs: [
-          'Buy the OakRidge 3-pack if you want real floating wood warmth above a desk, coffee bar, or bathroom vanity without paying custom carpentry prices. Skip it only if you need 10-inch deep shelving for large stereo receivers or baskets.',
+          'Buy the OakRidge 3-pack if you want real floating wood warmth above a desk, coffee bar, or bathroom vanity without paying custom carpentry prices. Skip it if you need 10-inch deep shelving for large stereo receivers or baskets.',
         ],
+        inlineLink: {
+          beforeText: 'If you style trailing pothos or ivy planters along upper walnut ledges, spot-check dampness with the ',
+          linkText: 'TerraProbe 4-in-1 Digital Soil pH & Moisture Meter',
+          targetSlug: 'terraprobe-4in1-digital-soil-moisture-meter',
+          afterText: ' so excess drip never stains the oiled grain.',
+        },
       },
     ],
     specs: [
@@ -122,8 +134,8 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Sits cleanly on the 6.7-inch shelf depth as a sculptural matte-ceramic centerpiece.',
       },
       {
-        slug: 'levelline-green-beam-cross-laser-level',
-        reason: 'Projects crisp horizontal laser guidelines across drywall so staggered 3-shelf sets hang dead-level.',
+        slug: 'meshcore-wifi-6e-triband-router-system',
+        reason: 'Elevates cylindrical Wi-Fi 6E mesh nodes mid-wall to improve upstairs and exterior signal dispersion.',
       },
     ],
     faqs: [
@@ -215,6 +227,12 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
           'The quickest way to spot an inferior full-length mirror is stepping six feet back—thin 3mm glass bends slightly and stretches proportions like a funhouse. ArchView uses rigid 5mm copper-free silvered glass backed by an anti-shatter safety membrane, delivering razor-sharp, true-to-life clarity from corner to corner.',
           'The extruded aluminum frame wraps the arched crown seamlessly with zero visible weld gaps, finished in a warm brushed champagne-brass rather than bright yellow paint.',
         ],
+        inlineLink: {
+          beforeText: 'Inside modern entry foyers, its brushed aluminum metalwork pairs cleanly with exterior upgrades like the ',
+          linkText: 'AuraVision 2K Smart Wi-Fi Video Doorbell',
+          targetSlug: 'auravision-2k-smart-wifi-video-doorbell',
+          afterText: ' for a cohesive front-of-house impression.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -248,6 +266,12 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Choose ArchView if you want a designer-grade arched mirror with crystal-clear distortion-free glass and true brushed-brass refinement that elevates a bedroom or entryway instantly. Skip it only if you need a compact tabletop vanity mirror.',
         ],
+        inlineLink: {
+          beforeText: 'In open-plan lofts, pairing architectural warm-metal decor with streamlined countertop staples like the ',
+          linkText: 'BrewCraft Variable-Temp Gooseneck Electric Kettle',
+          targetSlug: 'brewcraft-precision-gooseneck-electric-kettle',
+          afterText: ' pulls kitchen and living zones cleanly together.',
+        },
       },
     ],
     specs: [
@@ -270,8 +294,8 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Softens dressing corners with subtle spa-grade stoneware and ambient scent.',
       },
       {
-        slug: 'studscan-pro-deep-wall-scanner-detector',
-        reason: 'Locates structural wall studs cleanly if you choose to mount this 30-lb mirror flush.',
+        slug: 'hydroflow-smart-wifi-hose-watering-timer',
+        reason: 'Keeps lush backyard courtyard beds looking vibrant through bright glass-door reflections.',
       },
     ],
     faqs: [
@@ -363,6 +387,12 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
           'Two-piece washable rug systems can be frustrating to re-align smoothly after laundry day. NordicWeave bonds its soft low-pile chenille weave directly to a flexible thermoplastic rubber (TPR) backing, giving you immediate traction straight out of the box with neatly overlocked edges that resist fraying.',
           'Visually, the warm cream and muted taupe geometric motif delivers genuine tactile depth rather than the flat printed look common on cheap washable mats.',
         ],
+        inlineLink: {
+          beforeText: 'For homes with busy backyard patios, keeping watering chores neat with the ',
+          linkText: 'HydroCoil 100ft Retractable Wall-Mount Hose Reel',
+          targetSlug: 'hydrocoil-retractable-garden-hose-reel',
+          afterText: ' keeps outdoor pathways clear so muddy boots do not ambush entryway rugs.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -384,10 +414,10 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
           'At just 0.24 inches tall, interior doors sweep cleanly overhead and robot vacuums transition onto the rug without bunching corners. Regular upright vacuums work best with the beater bar switched off or set to bare-floor suction.',
         ],
         inlineLink: {
-          beforeText: 'Because the rug pairs effortlessly with dining and kitchen traffic, it even complements breakfast zones anchored by the ',
-          linkText: 'AeroVanc CrispDuo 8-Quart Dual-Basket Air Fryer',
-          targetSlug: 'aerovanc-crispduo-8qt-dual-basket-air-fryer',
-          afterText: ' without stressing over cooking oil or sauce drops.',
+          beforeText: 'In open breakfast nooks and kitchen runners, the stain-resistant chenille even shrugs off morning fruit spills from the ',
+          linkText: 'BladeForge 1400W Pro Countertop Blender',
+          targetSlug: 'bladeforge-high-speed-countertop-blender',
+          afterText: ' with a quick cold wash cycle.',
         },
       },
       {
@@ -396,6 +426,12 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy NordicWeave if you have pets, kids, or a high-traffic dining or living area and want Scandinavian warmth that genuinely survives real laundry cycles. Skip it only if you crave sink-your-toes-in high-pile wool plushness.',
         ],
+        inlineLink: {
+          beforeText: 'To avoid tripping over lamp or TV cords near rug borders, bundling power plugs neatly onto a ',
+          linkText: 'VoltGuard 6-Outlet Smart Wi-Fi Surge Power Strip',
+          targetSlug: 'voltguard-smart-wifi-surge-power-strip',
+          afterText: ' tucked behind the credenza keeps walkways spotless.',
+        },
       },
     ],
     specs: [
@@ -414,12 +450,12 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Frames reading armchairs on the rug with warm overhead linen-diffused lighting and slim brass arches.',
       },
       {
-        slug: 'oakridge-floating-walnut-wall-shelves-set',
-        reason: 'Pairs rich walnut wood wall accents naturally with Scandinavian cream and taupe textiles.',
+        slug: 'lumaglow-cordless-rechargeable-led-table-lamp',
+        reason: 'Casts warm 2700K accent light across coffee tables without trailing cords across rug edges.',
       },
       {
-        slug: 'lasersight-digital-laser-distance-measure',
-        reason: 'Confirms exact sofa-to-wall dimensions in seconds so you order the ideal rug footprint.',
+        slug: 'workbeam-rechargeable-magnetic-led-work-light',
+        reason: 'Neutral 5000K workshop floodlight lets you inspect true woven cream/taupe color tones before ordering rugs.',
       },
     ],
     faqs: [
@@ -511,6 +547,12 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
           'Most ultrasonic diffusers scream "gadget" with fake woodgrain plastic and rainbow LED strips. ZenMist hides its BPA-free water reservoir inside a weighty, tactile matte-stone ceramic dome that sits naturally beside art books and linen lampshades.',
           'Controls are stripped down to two minimal side buttons: mist duration (4-hour continuous or 8-hour intermittent) and an optional soft warm-amber pinhole glow that you can leave completely dark for sleep.',
         ],
+        inlineLink: {
+          beforeText: 'In bright kitchen-dining alcoves, storing fresh herbal tea leaves airtight with the ',
+          linkText: 'SealPro Stainless Vacuum Food Sealer System',
+          targetSlug: 'sealpro-stainless-vacuum-food-sealer',
+          afterText: ' keeps pantry aromas just as clean as your living space.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -544,6 +586,12 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy ZenMist if you want a sculptural, zero-clutter stoneware diffuser for a living room, home office, or nightstand with whisper-quiet operation. Skip it only if you need a high-output gallon bedroom humidifier for dry winter air.',
         ],
+        inlineLink: {
+          beforeText: 'Crafting custom floating oak or cedar display pedestals to elevate stoneware decor is quick work with the ',
+          linkText: 'TorqPro 20V Brushless Cordless Drill & Driver Kit',
+          targetSlug: 'torqpro-20v-brushless-cordless-drill-kit',
+          afterText: ' on weekend mornings.',
+        },
       },
     ],
     specs: [
@@ -558,12 +606,12 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'oakridge-floating-walnut-wall-shelves-set',
-        reason: 'Displays the sculptural stoneware diffuser cleanly at eye level on a study or living room wall.',
+        slug: 'lumaglow-cordless-rechargeable-led-table-lamp',
+        reason: 'Combines subtle porcelain scent throw with warm 2700K cord-free table lighting on nightstands.',
       },
       {
-        slug: 'archview-brushed-gold-arched-wall-mirror',
-        reason: 'Creates a serene boutique dressing-room corner with warm reflections and gentle fragrance.',
+        slug: 'oakridge-floating-walnut-wall-shelves-set',
+        reason: 'Displays the sculptural stoneware diffuser cleanly at eye level on a study or living room wall.',
       },
       {
         slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
@@ -659,6 +707,12 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
           'Tall floor lamps fail in one annoying spot: crooked threaded tubes and flimsy sand-filled plastic bases that lean precariously on carpet. LumaArc threads three precision-machined brushed brass poles straight into a solid 9-pound natural marble base with a recessed felt bottom pad—standing arrow-straight right out of the box.',
           'Its satin brushed finish strikes a warm, muted champagne tone rather than loud shiny brass, topped by a tactile oatmeal-slub linen drum shade that softens the glow even when switched off.',
         ],
+        inlineLink: {
+          beforeText: 'When arranging framed art or wall sconces symmetrically around your reading chair, our ',
+          linkText: 'LevelLine 360° Green-Beam Cross-Line Laser Level',
+          targetSlug: 'levelline-green-beam-cross-laser-level',
+          afterText: ' projects bright reference heights cleanly across sunlit plaster walls.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -692,6 +746,12 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy LumaArc if you want timeless warm architectural lighting next to a sofa, bed, or reading nook with genuine marble stability at a mid-range price. Skip it only if you need built-in rotary brass dimming without using a smart bulb.',
         ],
+        inlineLink: {
+          beforeText: 'Bring fresh seasonal flowering branches indoors beneath the linen shade—cleanly clipped with our ',
+          linkText: 'ShearPro 21V Brushless Cordless Electric Pruning Shears',
+          targetSlug: 'shearpro-cordless-electric-pruning-shears',
+          afterText: ' from your garden beds.',
+        },
       },
     ],
     specs: [
@@ -706,16 +766,16 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'nordicweave-washable-geometric-area-rug',
-        reason: 'Anchors your reading chair and brass floor lamp visually on cream-and-taupe woven texture.',
-      },
-      {
         slug: 'oakridge-floating-walnut-wall-shelves-set',
         reason: 'Balances warm brushed brass curves against crisp horizontal solid walnut wall grain.',
       },
       {
-        slug: 'thermosense-smart-learning-thermostat',
-        reason: 'Coordinates cozy ambient reading corners with automatic evening room temperature comfort.',
+        slug: 'archview-brushed-gold-arched-wall-mirror',
+        reason: 'Matches brushed champagne-brass tones across bedrooms and dressing corners.',
+      },
+      {
+        slug: 'heatwave-smart-wireless-meat-thermometer',
+        reason: 'Pairs cozy dining-room evening lighting with pinpoint roast timing for memorable dinner hosting.',
       },
     ],
     faqs: [

@@ -96,10 +96,12 @@ test('zero hardcoded static dollar prices anywhere in reviews or categories (Ama
   }
 });
 
-test('internal linking mesh: every review has 2 inline links (same + cross category), 3 valid companions, zero orphans, and zero self-links', () => {
+test('internal linking mesh: every review has 4 distinct inlineLinks, 3 distinct companions (zero overlap), exact 7 incoming links, and diameter <= 2', () => {
   const incomingLinks = new Map<string, Set<string>>();
+  const pageAdj = new Map<string, Set<string>>();
   for (const review of REVIEWS) {
     incomingLinks.set(review.slug, new Set());
+    pageAdj.set(review.slug, new Set());
   }
 
   for (const review of REVIEWS) {
@@ -111,50 +113,110 @@ test('internal linking mesh: every review has 2 inline links (same + cross categ
     );
     const sameCatCompanions = companions.filter((c) => c.review.categorySlug === review.categorySlug);
     const crossCatCompanions = companions.filter((c) => c.review.categorySlug !== review.categorySlug);
-    assert.ok(
-      sameCatCompanions.length >= 2,
-      `Review ${review.slug} must have at least 2 same-category companions`
+    assert.equal(
+      sameCatCompanions.length,
+      2,
+      `Review ${review.slug} must have exactly 2 same-category companions`
     );
-    assert.ok(
-      crossCatCompanions.length >= 1,
-      `Review ${review.slug} must have at least 1 cross-category companion`
+    assert.equal(
+      crossCatCompanions.length,
+      1,
+      `Review ${review.slug} must have exactly 1 cross-category companion`
     );
-    for (const comp of companions) {
-      assert.notEqual(comp.review.slug, review.slug, 'Companion should not self-link');
-      assert.ok(comp.reason.length > 10);
-      incomingLinks.get(comp.review.slug)?.add(review.slug);
-    }
 
     const inlineLinks = review.sections
       .map((s) => s.inlineLink)
       .filter((l): l is NonNullable<typeof l> => Boolean(l));
-    assert.ok(
-      inlineLinks.length >= 2,
-      `Review ${review.slug} must contain at least 2 contextual inline internal links (got ${inlineLinks.length})`
+    assert.equal(
+      inlineLinks.length,
+      4,
+      `Review ${review.slug} must contain exactly 4 contextual inline internal links (got ${inlineLinks.length})`
     );
 
-    let hasSameCatInline = false;
-    let hasCrossCatInline = false;
+    const editorialTargets = new Set<string>();
+    const coveredCategories = new Set<string>();
+
+    for (const comp of companions) {
+      assert.notEqual(comp.review.slug, review.slug, 'Companion should not self-link');
+      assert.ok(comp.reason.length > 10);
+      assert.equal(
+        editorialTargets.has(comp.review.slug),
+        false,
+        `Duplicate companion target ${comp.review.slug} in ${review.slug}`
+      );
+      editorialTargets.add(comp.review.slug);
+      coveredCategories.add(comp.review.categorySlug);
+      incomingLinks.get(comp.review.slug)?.add(review.slug);
+      pageAdj.get(review.slug)?.add(comp.review.slug);
+    }
+
+    let sameCatInlineCount = 0;
+    let crossCatInlineCount = 0;
     for (const link of inlineLinks) {
       assert.notEqual(link.targetSlug, review.slug, `Inline link in ${review.slug} must not self-link`);
       const target = REVIEWS.find((r) => r.slug === link.targetSlug);
       assert.ok(target, `Inline link target "${link.targetSlug}" in ${review.slug} must exist`);
-      if (target.categorySlug === review.categorySlug) hasSameCatInline = true;
-      else hasCrossCatInline = true;
+      assert.equal(
+        editorialTargets.has(link.targetSlug),
+        false,
+        `Inline link ${link.targetSlug} in ${review.slug} overlaps another inline link or companion`
+      );
+      editorialTargets.add(link.targetSlug);
+      coveredCategories.add(target.categorySlug);
+      if (target.categorySlug === review.categorySlug) sameCatInlineCount += 1;
+      else crossCatInlineCount += 1;
       incomingLinks.get(target.slug)?.add(review.slug);
+      pageAdj.get(review.slug)?.add(target.slug);
     }
 
-    assert.ok(hasSameCatInline, `Review ${review.slug} must have at least 1 same-category inline link`);
-    assert.ok(hasCrossCatInline, `Review ${review.slug} must have at least 1 cross-category inline link`);
+    assert.equal(sameCatInlineCount, 1, `Review ${review.slug} must have 1 same-category inline link`);
+    assert.equal(crossCatInlineCount, 3, `Review ${review.slug} must have 3 cross-category inline links`);
+    assert.equal(editorialTargets.size, 7, `Review ${review.slug} must link to 7 unique editorial articles`);
+    assert.equal(
+      coveredCategories.size,
+      CATEGORIES.length,
+      `Review ${review.slug} must link across all ${CATEGORIES.length} categories`
+    );
+
+    // Also include same-category sibling cards rendered in #more-in-category
+    for (const sibling of REVIEWS) {
+      if (sibling.categorySlug === review.categorySlug && sibling.slug !== review.slug) {
+        pageAdj.get(review.slug)?.add(sibling.slug);
+      }
+    }
   }
 
-  // Verify zero orphan articles: every single review receives >= 3 distinct incoming editorial links
+  // Verify symmetric incoming equity: every single review receives exactly 7 incoming editorial links
   for (const review of REVIEWS) {
     const incomingCount = incomingLinks.get(review.slug)?.size ?? 0;
-    assert.ok(
-      incomingCount >= 3,
-      `Review ${review.slug} only receives ${incomingCount} incoming links (expected >= 3 for strong internal linking)`
+    assert.equal(
+      incomingCount,
+      7,
+      `Review ${review.slug} receives ${incomingCount} incoming editorial links (expected 7)`
     );
+  }
+
+  // Verify all-pairs shortest path <= 2 across the rendered review pages
+  for (const source of REVIEWS) {
+    const dist = new Map<string, number>([[source.slug, 0]]);
+    const queue: string[] = [source.slug];
+    while (queue.length > 0) {
+      const curr = queue.shift()!;
+      const currDist = dist.get(curr)!;
+      for (const next of pageAdj.get(curr) ?? []) {
+        if (!dist.has(next)) {
+          dist.set(next, currDist + 1);
+          queue.push(next);
+        }
+      }
+    }
+    assert.equal(dist.size, REVIEWS.length, `Not all reviews reachable from ${source.slug}`);
+    for (const [targetSlug, hops] of dist.entries()) {
+      assert.ok(
+        hops <= 2,
+        `Path from ${source.slug} to ${targetSlug} took ${hops} clicks (expected <= 2)`
+      );
+    }
   }
 });
 

@@ -67,6 +67,12 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
           'Cheap smart strips cut corners inside the chassis with flimsy brass contacts and undersized wiring. Opening our lab unit after load testing revealed clean 14-AWG internal bus bars, solid relay spacing, and an ETL-listed 1,710-Joule MOV surge array backed by a thermal cutoff switch.',
           'Each of the six AC sockets features its own soft-click manual switch and subtle warm amber status dot that never lights up a dark bedroom like harsh blue LEDs. Keyhole mounting slots on the underside let you screw the strip cleanly beneath a desk or behind a media credenza.',
         ],
+        inlineLink: {
+          beforeText: 'For living room reading corners lacking convenient wall switches, plugging in a statement ',
+          linkText: 'LumaArc Brushed Brass & Linen Arc Floor Lamp',
+          targetSlug: 'lumaarc-brass-linen-floor-lamp',
+          afterText: ' turns scheduled dusk timers into effortless evening lighting scenes.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -100,6 +106,12 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Choose the VoltGuard if you want to automate lamps, monitors, chargers, and countertop appliances from one surge-protected strip while seeing exact wattage data per plug. Skip it if you specifically need app-controlled switching on the USB ports or a compact travel-size cube.',
         ],
+        inlineLink: {
+          beforeText: 'Out in a garage workbench, the 30W USB-C bank and protected AC sockets also recharge shop essentials like the ',
+          linkText: 'WorkBeam 2000-Lumen Folding Magnetic LED Work Light',
+          targetSlug: 'workbeam-rechargeable-magnetic-led-work-light',
+          afterText: ' safely overnight.',
+        },
       },
     ],
     specs: [
@@ -118,8 +130,8 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Combines outlet-level energy monitoring with smart HVAC scheduling to cut whole-home utility waste.',
       },
       {
-        slug: 'aeropure-smart-hepa-air-purifier',
-        reason: 'Logs real-time bedroom air purifier wattage and schedules daytime standby cutoffs automatically.',
+        slug: 'keyvault-biometric-smart-deadbolt-lock',
+        reason: 'Trigger indoor welcome lamps plugged into VoltGuard automatically when your front door unlocks at dusk.',
       },
       {
         slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
@@ -215,6 +227,12 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
           'Unlike aggressive spider-legged gaming routers that demand hiding inside a closet, MeshCore’s matte cylindrical nodes sit comfortably on an open credenza or bookshelf—exactly where wireless antennas actually radiate best. Vertical top-vent convection channels keep internal temperatures cool with zero fan noise.',
           'Each node includes three auto-sensing Gigabit WAN/LAN ports on the rear skirt, allowing you to wire a desktop workstation, smart home hub, or full Ethernet backhaul between floors without extra switches.',
         ],
+        inlineLink: {
+          beforeText: 'Full-bar kitchen Wi-Fi coverage keeps recipe tablets and Alexa dinner timers synced effortlessly right beside busy prep stations like the ',
+          linkText: 'AeroVanc CrispDuo 8-Quart Dual-Basket Air Fryer',
+          targetSlug: 'aerovanc-crispduo-8qt-dual-basket-air-fryer',
+          afterText: ' on weeknights.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -248,6 +266,12 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy the MeshCore AXE5400 if you have a 1 Gbps fiber or cable plan, multiple smart home devices, and dead zones on upper floors or patios. Only skip it if you already subscribe to a 2 Gbps+ internet tier and want 2.5G wired Ethernet ports.',
         ],
+        inlineLink: {
+          beforeText: 'For mapping exact square footage and node spacing across large multi-story floor plans before placement, the ',
+          linkText: 'LaserSight 165ft Digital Laser Distance Measure',
+          targetSlug: 'lasersight-digital-laser-distance-measure',
+          afterText: ' eliminates tape-measure guesswork in seconds.',
+        },
       },
     ],
     specs: [
@@ -262,12 +286,12 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'auravision-2k-smart-wifi-video-doorbell',
-        reason: 'Eliminates front-porch Wi-Fi lag so 2K live video feeds open in under two seconds.',
-      },
-      {
         slug: 'keyvault-biometric-smart-deadbolt-lock',
         reason: 'Provides steady 2.4 GHz IoT connectivity at the front entry for instant lock notifications.',
+      },
+      {
+        slug: 'aeropure-smart-hepa-air-purifier',
+        reason: 'Keeps smart bedroom air-quality sensors online continuously with dedicated 2.4 GHz IoT isolation.',
       },
       {
         slug: 'oakridge-floating-walnut-wall-shelves-set',
@@ -363,6 +387,12 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
           'ThermoSense Pro trades glossy plastic shells for a machined zinc-gunmetal ring framing a crisp edge-to-edge glass face. A built-in proximity radar wakes the screen smoothly as you walk down the hallway, shifting from a large glanceable temperature readout to interactive mode and humidity controls within arm’s reach.',
           'Inside the box, you get a paintable trim plate that covers old rectangular thermostat footprints plus a sturdy terminal backplate with tool-free lever clips that grip copper HVAC conductors securely.',
         ],
+        inlineLink: {
+          beforeText: 'For gardeners monitoring windowsill potted herbs alongside indoor HVAC humidity swings, pairing this wall controller with the ',
+          linkText: 'TerraProbe 4-in-1 Digital Soil pH & Moisture Meter',
+          targetSlug: 'terraprobe-4in1-digital-soil-moisture-meter',
+          afterText: ' keeps tropical houseplants thriving through dry winter heating.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -371,10 +401,10 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
           'Over four weeks of autumn heating and afternoon cooling cycles, we logged ThermoSense Pro against two NIST-traceable digital thermometers. Temperature readings held within ±0.4°F across both the main unit and the remote bedroom puck, cutting daily furnace cycles by 19% through smarter setback recovery.',
         ],
         inlineLink: {
-          beforeText: 'When the hallway indoor air quality sensor detects elevated VOCs or seasonal dust spikes, pairing climate control with the ',
-          linkText: 'AeroPure H13 True HEPA Smart Wi-Fi Air Purifier',
-          targetSlug: 'aeropure-smart-hepa-air-purifier',
-          afterText: ' cleans bedroom air quietly while your HVAC fan rests.',
+          beforeText: 'Linking home/away occupancy with our tested ',
+          linkText: 'KeyVault Fingerprint Wi-Fi Smart Deadbolt Lock',
+          targetSlug: 'keyvault-biometric-smart-deadbolt-lock',
+          afterText: ' ensures the thermostat drops into Eco setback automatically the moment you lock up for work.',
         },
       },
       {
@@ -396,6 +426,12 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy ThermoSense Pro if your thermostat sits in a drafty hallway while your bedroom runs too hot or cold, or if you want Apple HomeKit and Alexa control with real utility-bill transparency. Skip it if your home relies on line-voltage electric baseboard heat.',
         ],
+        inlineLink: {
+          beforeText: 'Fans of exact wireless temperature readouts in the home will appreciate bringing similar sensor accuracy to Sunday roasts via the ',
+          linkText: 'HeatWave Bluetooth Smart Wireless Meat Thermometer',
+          targetSlug: 'heatwave-smart-wireless-meat-thermometer',
+          afterText: ' in the kitchen.',
+        },
       },
     ],
     specs: [
@@ -410,12 +446,12 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'auravision-2k-smart-wifi-video-doorbell',
-        reason: 'Builds a unified subscription-free smart home dashboard across climate and entryway security.',
+        slug: 'aeropure-smart-hepa-air-purifier',
+        reason: 'Matches hallway VOC and air-quality alerts with whisper-quiet H13 HEPA scrubbing in bedrooms.',
       },
       {
-        slug: 'voltguard-smart-wifi-surge-power-strip',
-        reason: 'Pairs HVAC efficiency with per-outlet power monitoring for space fans, humidifiers, and purifiers.',
+        slug: 'auravision-2k-smart-wifi-video-doorbell',
+        reason: 'Builds a unified subscription-free smart home dashboard across climate and entryway security.',
       },
       {
         slug: 'zenmist-ceramic-essential-oil-diffuser',
@@ -511,6 +547,12 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
           'Too many smart locks prioritize sleek touchscreens while using lightweight Grade 3 bolts. KeyVault passes ANSI/BHMA Grade 1 residential security standards with a 1-inch hardened steel throw bolt, reinforced exterior strike plate, and solid metal housing sealed to IP65 against blowing rain and dust.',
           'The matte black finish with satin nickel trim resists fingerprints well, and the backlit capacitive keypad supports anti-peep scrambling—letting you type random digits before or after your real code so onlookers cannot guess your PIN.',
         ],
+        inlineLink: {
+          beforeText: 'Just inside the foyer, placing a warm ',
+          linkText: 'LumaGlow Cordless Rechargeable Brass LED Table Lamp',
+          targetSlug: 'lumaglow-cordless-rechargeable-led-table-lamp',
+          afterText: ' on an entry console creates an inviting cord-free greeting glow after sunset.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -519,10 +561,10 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
           'Across 250 test unlocks by four household members, the top-bezel semiconductor fingerprint sensor unlocked on the first touch 98.4% of the time in roughly 0.3 seconds. Real-time push alerts arrived on our test phones within 2 seconds showing exactly which family member or guest code opened the door.',
         ],
         inlineLink: {
-          beforeText: 'For complete front-entry awareness, pairing KeyVault with the ',
-          linkText: 'AuraVision 2K Smart Wi-Fi Video Doorbell',
-          targetSlug: 'auravision-2k-smart-wifi-video-doorbell',
-          afterText: ' lets you visually verify deliveries and unlock the deadbolt remotely from one workflow.',
+          beforeText: 'For complete interior comfort triggered automatically when you unlock the door, pairing KeyVault arrival alerts with the ',
+          linkText: 'AeroPure H13 True HEPA Smart Wi-Fi Air Purifier',
+          targetSlug: 'aeropure-smart-hepa-air-purifier',
+          afterText: ' runs a rapid allergen purge the moment you step home.',
         },
       },
       {
@@ -532,10 +574,10 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
           'Swapping out a standard residential deadbolt took us 14 minutes with a single Phillips screwdriver and zero door chiseling. The lock auto-detects left- or right-handed door swing during calibration, and four AA alkaline batteries delivered over seven months of active Wi-Fi operation before hitting the 20% low-battery alert.',
         ],
         inlineLink: {
-          beforeText: 'If your existing strike plate mortise needs slight deepening for friction-free auto-locking, our tested ',
-          linkText: 'TorqPro 20V Brushless Cordless Drill & Driver Kit',
-          targetSlug: 'torqpro-20v-brushless-cordless-drill-kit',
-          afterText: ' drives 3-inch security strike screws into door framing studs effortlessly.',
+          beforeText: 'Before drilling any deeper security strike-plate anchors into trim framing, checking nearby doorbell wiring with our ',
+          linkText: 'StudScan Pro 5-in-1 Digital Wall Stud & Wire Finder',
+          targetSlug: 'studscan-pro-deep-wall-scanner-detector',
+          afterText: ' prevents accidentally nicking concealed low-voltage lines.',
         },
       },
       {
@@ -544,6 +586,12 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Choose KeyVault if you want true Grade 1 physical deadbolt security, instant thumbprint entry when carrying groceries, and effortless remote guest PIN management. Skip it if your door uses a non-standard mortise lock body.',
         ],
+        inlineLink: {
+          beforeText: 'Hands-free thumbprint garage entry is especially helpful when unloading bulk Costco hauls straight into your ',
+          linkText: 'SealPro Stainless Vacuum Food Sealer System',
+          targetSlug: 'sealpro-stainless-vacuum-food-sealer',
+          afterText: ' prep workflow.',
+        },
       },
     ],
     specs: [
@@ -558,16 +606,16 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'meshcore-wifi-6e-triband-router-system',
-        reason: 'Ensures fast, reliable 2.4 GHz Wi-Fi lock status updates right at exterior entryways.',
+        slug: 'auravision-2k-smart-wifi-video-doorbell',
+        reason: 'Lets you visually verify couriers on 2K video and trigger guest access cleanly from one workflow.',
       },
       {
-        slug: 'aeropure-smart-hepa-air-purifier',
-        reason: 'Trigger automated allergen scrubbing in your entryway hall whenever the front deadbolt unlocks.',
+        slug: 'voltguard-smart-wifi-surge-power-strip',
+        reason: 'Automates hallway welcome lights the moment your fingerprint unlocks the door after sunset.',
       },
       {
-        slug: 'solarpath-warm-led-landscape-pathway-lights',
-        reason: 'Illuminates your front walkway cleanly at night while approaching the backlit keypad.',
+        slug: 'hydrocoil-retractable-garden-hose-reel',
+        reason: 'Keeps side-gate entryways safe with smart deadbolt monitoring and neatly retracted backyard hoses.',
       },
     ],
     faqs: [
@@ -659,6 +707,12 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
           'Tall boxy purifiers draw air unevenly from a single front grate, forcing noisy high RPMs to turn over a bedroom. AeroPure’s cylindrical matte charcoal chassis pulls room air through 360 degrees of perforated intake perforations before pushing clean air vertically through an angled top louver.',
           'Inside sits a hefty twist-lock drum housing three bonded layers: a vacuumable fine pre-filter for pet fur, true medical-grade H13 HEPA pleats, and an upgraded activated-carbon pellet bed that actually weighs enough to trap volatile cooking odors instead of masking them.',
         ],
+        inlineLink: {
+          beforeText: 'After home projects aligned with our tested ',
+          linkText: 'LevelLine 360° Green-Beam Cross-Line Laser Level',
+          targetSlug: 'levelline-green-beam-cross-laser-level',
+          afterText: ', setting AeroPure to Turbo clears fine drywall anchor dust cleanly out of bedrooms.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -667,10 +721,10 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
           'Using a calibrated laser particle counter in a sealed 380-square-foot bedroom/office space, searing steaks spiked PM2.5 readings above 180 µg/m³. AeroPure’s onboard infrared dust sensor detected the spike in 9 seconds, ramped smoothly to Turbo, and dropped particulate counts back below 10 µg/m³ in 17 minutes flat.',
         ],
         inlineLink: {
-          beforeText: 'Linking home arrival automations with the ',
-          linkText: 'KeyVault Fingerprint Wi-Fi Smart Deadbolt Lock',
-          targetSlug: 'keyvault-biometric-smart-deadbolt-lock',
-          afterText: ' lets you kick off a 20-minute Turbo pollen purge automatically whenever you step back inside after yard work.',
+          beforeText: 'Completing a full-perimeter smart-home loop with the ',
+          linkText: 'AuraVision 2K Smart Wi-Fi Video Doorbell',
+          targetSlug: 'auravision-2k-smart-wifi-video-doorbell',
+          afterText: ' keeps outdoor air alerts and front-entry awareness cleanly unified in one smart-home routine.',
         },
       },
       {
@@ -680,10 +734,10 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
           'Vacuuming pet hair off the outer mesh sleeve once a month stretches replacement H13 drum life to a full 8–10 months. Best of all, hitting Display Off turns off even the dimmest amber status dot at night while continuing gentle 21 dB Sleep filtration.',
         ],
         inlineLink: {
-          beforeText: 'For readers who want subtle botanical calm in filtered air without clogging HEPA pleats with oils, setting a ',
-          linkText: 'ZenMist Matte Ceramic Ultrasonic Aroma Diffuser',
-          targetSlug: 'zenmist-ceramic-essential-oil-diffuser',
-          afterText: ' across the room keeps clean-air filtration and delicate scent completely separate.',
+          beforeText: 'Running continuous H13 filtration in living spaces floored with the ',
+          linkText: 'NordicWeave Low-Pile Washable Geometric Area Rug',
+          targetSlug: 'nordicweave-washable-geometric-area-rug',
+          afterText: ' dramatically cuts pet fur and airborne dander before it settles into woven fibers.',
         },
       },
       {
@@ -692,6 +746,12 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy AeroPure if you want genuinely quiet 21 dB nighttime bedroom filtration, rapid wildfire-smoke or cooking-odor recovery, and transparent PM2.5 app telemetry at a mid-range price. Skip it only if you need one industrial machine to scrub a 2,000-square-foot open warehouse.',
         ],
+        inlineLink: {
+          beforeText: 'In studio apartments, its activated-carbon core also neutralizes sharp citrus and smoothie aromas beside our ',
+          linkText: 'BladeForge 1400W Pro Countertop Blender',
+          targetSlug: 'bladeforge-high-speed-countertop-blender',
+          afterText: ' within minutes.',
+        },
       },
     ],
     specs: [
@@ -706,16 +766,16 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'thermosense-smart-learning-thermostat',
-        reason: 'Coordinates indoor VOC/humidity monitoring with dedicated bedroom H13 HEPA particulate scrubbing.',
-      },
-      {
         slug: 'voltguard-smart-wifi-surge-power-strip',
         reason: 'Tracks actual kilowatt-hour draw cleanly and safeguards sensitive brushless purifier electronics.',
       },
       {
-        slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
-        reason: 'Keeps kitchen counters fresh—neutralizing lingering cooking odors right alongside living indoor herbs.',
+        slug: 'meshcore-wifi-6e-triband-router-system',
+        reason: 'Keeps live PM2.5 history and Alexa automation schedules responsive in upstairs bedrooms.',
+      },
+      {
+        slug: 'shearpro-cordless-electric-pruning-shears',
+        reason: 'Scrubs airborne tree pollen and yard dust tracked back indoors after weekend hedge pruning.',
       },
     ],
     faqs: [

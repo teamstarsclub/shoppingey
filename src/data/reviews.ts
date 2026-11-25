@@ -338,6 +338,14 @@ export const REVIEWS: ProductReview[] = [
           'Resolution numbers alone rarely tell the full story with porch cameras—dynamic range and aspect ratio matter far more. AuraVision uses a tall 4:3 sensor that shows both a visitor’s face and packages placed directly against the threshold in a single frame. High-contrast noon sunlight behind a shaded porch is handled cleanly by real-time HDR, preserving facial detail instead of reducing silhouettes to dark shadows.',
           'Notification speed proved consistently snappy across both home Wi-Fi and 5G cellular handoffs. From physical button press to an actionable mobile preview with thumbnail took an average of 1.7 seconds across 50 logged tests. Two-way voice audio uses full-duplex echo cancellation that stayed intelligible even when moderate street traffic passed 30 feet away. On-device AI distinguishes delivery boxes from pets reliably, cutting our false motion alerts by roughly 80 percent compared to motion-zone-only cameras.',
         ],
+        inlineLink: {
+          beforeText:
+            'Pairing alerts with morning kitchen routines next to the ',
+          linkText: 'CremaPro Compact Espresso Machine with Milk Frother',
+          targetSlug: 'cremapro-15-bar-espresso-machine-grinder',
+          afterText:
+            ' lets a smart kitchen display announce deliveries while you pull morning shots.',
+        },
       },
       {
         id: 'ease-of-use',
@@ -362,6 +370,14 @@ export const REVIEWS: ProductReview[] = [
           'Buy the AuraVision 2K Smart Wi-Fi Video Doorbell if you want crisp head-to-toe parcel visibility, reliable local video storage without ongoing subscription fees, and sturdy metal construction that looks intentional beside modern front doors. It is equally well suited to homeowners wiring into existing bell circuits and renters using the rechargeable battery mode.',
           'Skip this model if your smart home runs exclusively on Apple HomeKit Secure Video or if you require 24/7 continuous NVR recording over Power-over-Ethernet (PoE). For everyone else seeking a dependable mid-range Amazon smart doorbell, it is the easiest recommendation in its class.',
         ],
+        inlineLink: {
+          beforeText:
+            'For a cohesive front foyer upgrade inside the door, pairing brushed aluminum entry tech with the ',
+          linkText: 'ArchView Brushed Brass Arched Full-Length Mirror',
+          targetSlug: 'archview-brushed-gold-arched-wall-mirror',
+          afterText:
+            ' creates an understated, welcoming architectural entrance.',
+        },
       },
     ],
     specs: [
@@ -376,16 +392,16 @@ export const REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'keyvault-biometric-smart-deadbolt-lock',
-        reason: 'Completes a keyless front-entry security upgrade so you can verify deliveries on video and unlock with a fingerprint.',
-      },
-      {
         slug: 'meshcore-wifi-6e-triband-router-system',
         reason: 'Guarantees fast, zero-buffering 2K live video wake-ups through thick brick and exterior stucco walls.',
       },
       {
-        slug: 'torqpro-20v-brushless-cordless-drill-kit',
-        reason: 'Makes drilling pilot holes into wood siding, stucco, or masonry brick trim fast and clean during doorbell installation.',
+        slug: 'thermosense-smart-learning-thermostat',
+        reason: 'Connects front-entry arrival awareness cleanly into automated whole-home climate comfort.',
+      },
+      {
+        slug: 'solarpath-warm-led-landscape-pathway-lights',
+        reason: 'Illuminates dark front steps with warm 2700K glow for sharper low-light color porch video.',
       },
     ],
     faqs: [
@@ -514,6 +530,14 @@ export const REVIEWS: ProductReview[] = [
           'AeroVanc avoided the bloated 25-button icon clutter that plagues competing fryers. Six tactile presets (Air Fry, Max Crisp, Roast, Bake, Reheat, Dehydrate) pair with two unmistakable smart modes: Sync-Finish and Match Cook. Tapping Sync-Finish after setting Zone L to 22 minutes and Zone R to 12 minutes automatically pauses Zone R for the first 10 minutes, then fires it up so both drawers chime simultaneously.',
           'Cleanup is where cheaper air fryers lose their shine. Here, both the inner drawers and removable crisper plates use a slick mineral-ceramic nonstick coating free of PTFE and PFOA. Baked-on honey-soy glaze released under warm soapy water with a soft nylon brush in under 45 seconds, and both baskets fit comfortably on the bottom rack of a standard dishwasher.',
         ],
+        inlineLink: {
+          beforeText:
+            'To keep kitchen air crisp during high-heat 450°F sears in open apartments, running the ',
+          linkText: 'AeroPure H13 True HEPA Smart Wi-Fi Air Purifier',
+          targetSlug: 'aeropure-smart-hepa-air-purifier',
+          afterText:
+            ' across the room pulls lingering garlic and salmon aromatics down within minutes.',
+        },
       },
       {
         id: 'who-should-buy',
@@ -522,6 +546,14 @@ export const REVIEWS: ProductReview[] = [
           'Buy the AeroVanc CrispDuo 8-Quart if you cook for two to five people and routinely juggle a protein and a side dish on busy weeknights. Its combination of true dual-zone convection, PFAS-free ceramic coatings, and quiet operation makes it an immediate upgrade over older single-drawer fryers.',
           'Skip it if you have extremely tight galley-kitchen counter space or primarily bake wide flat items like whole 12-inch pizzas—in that specific case, a countertop French-door toaster oven will fit wide sheet pans better.',
         ],
+        inlineLink: {
+          beforeText:
+            'For tidy small-appliance handle maintenance and smart kitchen device installs nearby, keeping the ',
+          linkText: 'PrecisionBit 64-in-1 Cordless Electric Screwdriver Kit',
+          targetSlug: 'precisionbit-electric-screwdriver-repair-kit',
+          afterText:
+            ' in a utility drawer handles delicate fasteners without marring finishes.',
+        },
       },
     ],
     specs: [
@@ -536,12 +568,12 @@ export const REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'heatwave-smart-wireless-meat-thermometer',
-        reason: 'Tracks exact internal steak and chicken breast temperatures inside the closed air fryer drawer without opening the basket.',
-      },
-      {
         slug: 'cremapro-15-bar-espresso-machine-grinder',
         reason: 'Pairs seamlessly on your countertop to handle weekday mornings while the CrispDuo owns weeknight dinners.',
+      },
+      {
+        slug: 'bladeforge-high-speed-countertop-blender',
+        reason: 'Covers cold sauces, marinades, and smoothies alongside crispy air-fried family mains.',
       },
       {
         slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
@@ -658,6 +690,14 @@ export const REVIEWS: ProductReview[] = [
           'Using a handheld spectrometer, we measured the 2700K preset at 2,740K with a Color Rendering Index (CRI) of 93.4—genuinely impressive for a budget-friendly rechargeable lamp. Skin tones, walnut tables, and plated food look inviting rather than washed out. Even more importantly, our high-speed camera flicker test showed zero PWM strobing across the entire dimming range, preventing eye fatigue during evening reading.',
           'In our battery discharge tests, setting the lamp to 35% evening dining brightness yielded 36 hours of continuous illumination—easily a full week of nightly dinners before plugging in. Cranking it to 100% reading output delivered 11 hours and 15 minutes before the subtle red charging LED blinked near the base.',
         ],
+        inlineLink: {
+          beforeText:
+            'Setting this satin brass lamp on an entryway console table right inside doors guarded by the ',
+          linkText: 'KeyVault Fingerprint Wi-Fi Smart Deadbolt Lock',
+          targetSlug: 'keyvault-biometric-smart-deadbolt-lock',
+          afterText:
+            ' gives arriving family members a warm cordless beacon without needing a wall switch.',
+        },
       },
       {
         id: 'ease-of-use',
@@ -682,6 +722,14 @@ export const REVIEWS: ProductReview[] = [
           'Buy the LumaGlow Cordless Brass LED Lamp if you have dark bookshelves, kitchen islands, console tables, or nightstands lacking convenient wall outlets—or if you simply love the calm, restaurant-style atmosphere of cord-free warm accent lighting at a budget-friendly price tier.',
           'Skip it if you need a high-lumen primary desk lamp for intricate craft work or want app-controlled RGB colors. This lamp is purpose-built for warm, tactile architectural light.',
         ],
+        inlineLink: {
+          beforeText:
+            'If you ever need to snug a delicate brass desk hardware screw or service desktop electronics nearby, the ',
+          linkText: 'PrecisionBit 64-in-1 Cordless Electric Screwdriver Kit',
+          targetSlug: 'precisionbit-electric-screwdriver-repair-kit',
+          afterText:
+            ' complements the lamp nicely in both build finish and everyday desk utility.',
+        },
       },
     ],
     specs: [
@@ -802,6 +850,14 @@ export const REVIEWS: ProductReview[] = [
           'The first thing you notice when gripping the TorqPro 20V Brushless Drill is the balance. At just 6.7 inches from back cap to chuck tip, its stubby brushless motor housing eliminates the nose-heavy tilt that fatigues your wrist on long projects. The rubberized micro-textured overmold hugs the handle tightly, and the directional forward/reverse switch clicks with crisp mechanical certainty.',
           'Even better is the 1/2-inch all-metal ratcheting chuck. Whereas plastic-sleeved chucks slowly loosen when backing out deep paddle bits, TorqPro’s knurled steel collar locks with an audible click and showed minimal 0.004-inch runout on our dial indicator test—impressive precision for a cordless Amazon kit.',
         ],
+        inlineLink: {
+          beforeText:
+            'Precision clutch settings also keep living-room accent installs safe—from hanging curtain hardware to leveling reading zones around our ',
+          linkText: 'LumaArc Brushed Brass & Linen Arc Floor Lamp',
+          targetSlug: 'lumaarc-brass-linen-floor-lamp',
+          afterText:
+            ' without overdriving drywall anchors.',
+        },
       },
       {
         id: 'performance',
@@ -842,6 +898,14 @@ export const REVIEWS: ProductReview[] = [
           'Buy the TorqPro 20V Brushless Cordless Drill & Driver Kit if you are a dedicated homeowner, woodworker, or frequent DIYer ready to invest once in a serious brushless drill that will handle decks, shelving, furniture builds, and tough fasteners for years.',
           'Skip it if you only assemble flat-pack furniture twice a year (a compact 12V screwdriver will be lighter and simpler) or if you regularly drill large anchor holes into poured foundation concrete, where a dedicated rotary hammer drill is the right tool.',
         ],
+        inlineLink: {
+          beforeText:
+            'Once weekend cabinetry installs wrap up, taking a quick break with the ',
+          linkText: 'BrewCraft Variable-Temp Gooseneck Electric Kettle',
+          targetSlug: 'brewcraft-precision-gooseneck-electric-kettle',
+          afterText:
+            ' in the newly organized kitchen is hard to beat.',
+        },
       },
     ],
     specs: [
@@ -856,16 +920,16 @@ export const REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'levelline-green-beam-cross-laser-level',
-        reason: 'Projects dead-level horizontal and plumb laser guides across walls before you drill a single shelf or cabinet hole.',
-      },
-      {
         slug: 'precisionbit-electric-screwdriver-repair-kit',
         reason: 'Covers delicate electronics, glasses, and smart-home micro-fasteners where a 20V drill is overkill.',
       },
       {
-        slug: 'keyvault-biometric-smart-deadbolt-lock',
-        reason: 'Ideal weekend upgrade project—makes mortise adjustment and strike-plate reinforcement fast and clean.',
+        slug: 'studscan-pro-deep-wall-scanner-detector',
+        reason: 'Locates structural studs and hidden live AC wiring reliably before sinking heavy drill anchors.',
+      },
+      {
+        slug: 'hydrocoil-retractable-garden-hose-reel',
+        reason: 'An ideal weekend drill project—anchors 5/16-inch exterior wall bracket lag bolts tightly into brick or framing.',
       },
     ],
     faqs: [
@@ -962,6 +1026,14 @@ export const REVIEWS: ProductReview[] = [
           'Ask any experienced gardener why hose timers fail after a single summer, and the answer is almost always stripped plastic faucet threads or sun-baked housings that split under static water pressure. HydroFlow addresses both weak points head-on with heavy knurled brass 3/4-inch GHT swivel couplings at the top inlet and both bottom outlets.',
           'The matte graphite ABS body carries an IP55 weatherproof seal with a gasketed battery tray on the side. Best of all, the front face features a crisp daylight-readable monochrome LCD alongside dedicated tactile Zone 1 and Zone 2 buttons and rotary override dials—meaning you can trigger a quick 10-minute soak right at the spigot without fishing your phone out of your pocket.',
         ],
+        inlineLink: {
+          beforeText:
+            'Because automatic morning cycles keep watering tidy without dragging leaky hoses across muddy thresholds, entryways floored with our tested ',
+          linkText: 'NordicWeave Low-Pile Washable Geometric Area Rug',
+          targetSlug: 'nordicweave-washable-geometric-area-rug',
+          afterText:
+            ' stay noticeably cleaner throughout summer.',
+        },
       },
       {
         id: 'performance',
@@ -988,11 +1060,11 @@ export const REVIEWS: ProductReview[] = [
         ],
         inlineLink: {
           beforeText:
-            'If you are upgrading your entire exterior perimeter at the same time, mounting a ',
-          linkText: 'AuraVision 2K Smart Wi-Fi Video Doorbell',
-          targetSlug: 'auravision-2k-smart-wifi-video-doorbell',
+            'If you also mount an organizer rack or conduit clips near the indoor gateway wall, scanning first with the ',
+          linkText: 'StudScan Pro 5-in-1 Digital Wall Stud & Wire Finder',
+          targetSlug: 'studscan-pro-deep-wall-scanner-detector',
           afterText:
-            ' out front and pairing it with automated backyard watering gives you effortless hands-off peace of mind while traveling.',
+            ' keeps electrical runs safe along exterior stucco framing.',
         },
       },
       {
@@ -1002,6 +1074,14 @@ export const REVIEWS: ProductReview[] = [
           'Buy the HydroFlow Smart Wi-Fi Dual-Zone Hose Watering Timer if you manage vegetable beds, container gardens, and lawn zones off a single exterior spigot and want dependable brass-threaded automation without paying for an underground sprinkler installation.',
           'Skip it if your home Wi-Fi router cannot expose a 2.4GHz SSID for smart-home IoT bridges, or if you need buried 8-zone commercial lawn manifold control.',
         ],
+        inlineLink: {
+          beforeText:
+            'Once your automated Zone 1 herb beds are flourishing all summer, bring fresh oregano and thyme straight onto patio steaks tracked by our ',
+          linkText: 'HeatWave Bluetooth Smart Wireless Meat Thermometer',
+          targetSlug: 'heatwave-smart-wireless-meat-thermometer',
+          afterText:
+            ' for unforgettable backyard cookouts.',
+        },
       },
     ],
     specs: [
@@ -1020,8 +1100,8 @@ export const REVIEWS: ProductReview[] = [
         reason: 'Keeps thriving, well-irrigated fruit trees, rose bushes, and hedges neatly trimmed without wrist strain.',
       },
       {
-        slug: 'hydrocoil-retractable-garden-hose-reel',
-        reason: 'Reels and protects Zone 2 watering lines inside a UV-stabilized case with slow auto-rewind convenience.',
+        slug: 'solarpath-warm-led-landscape-pathway-lights',
+        reason: 'IP65 aluminum housings shrug off Zone 2 lawn sprinklers while guiding evening backyard walks.',
       },
       {
         slug: 'meshcore-wifi-6e-triband-router-system',

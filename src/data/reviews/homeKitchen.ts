@@ -67,6 +67,12 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
           'The secret to a great gooseneck kettle is handle geometry, not just wattage. BrewCraft places a subtle thumb rest and counterweighted balance point along its matte handle so pouring slowly over a V60 dripper feels natural rather than front-heavy.',
           'Inside, the kettle body, inner lid, and spout weld are 100% food-grade 304 stainless steel with clean laser-etched fill markers and zero plastic gaskets submerged in hot water.',
         ],
+        inlineLink: {
+          beforeText: 'Home gardeners who compost cooled coffee grounds into windowsill mint pots can pair morning brews with the ',
+          linkText: 'TerraProbe 4-in-1 Digital Soil pH & Moisture Meter',
+          targetSlug: 'terraprobe-4in1-digital-soil-moisture-meter',
+          afterText: ' to keep tea-herb soil balanced without overwatering.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -100,6 +106,12 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy BrewCraft if you brew pour-over coffee, AeroPress, French press, or loose-leaf teas daily and want accurate temperature presets with zero plastic contact. Skip it only if you need a large 1.7-liter jug kettle for boiling big pots.',
         ],
+        inlineLink: {
+          beforeText: 'For clearer taste, many pour-over brewers swap under-sink water filter cartridges quarterly using a magnetic ',
+          linkText: 'WorkBeam 2000-Lumen Folding Magnetic LED Work Light',
+          targetSlug: 'workbeam-rechargeable-magnetic-led-work-light',
+          afterText: ' inside dim kitchen cabinets.',
+        },
       },
     ],
     specs: [
@@ -118,12 +130,12 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Completes the morning beverage station with silky iced smoothies and cold-foam blending.',
       },
       {
-        slug: 'sealpro-stainless-vacuum-food-sealer',
-        reason: 'Locks fresh whole coffee beans and freezer-prepped breakfast pastries airtight for months.',
+        slug: 'heatwave-smart-wireless-meat-thermometer',
+        reason: 'Applies the same disciplined culinary temperature precision from pour-over water to oven roasts.',
       },
       {
-        slug: 'lumaglow-cordless-rechargeable-led-table-lamp',
-        reason: 'Adds warm 2700K morning lighting to a kitchen coffee nook without cluttering outlets.',
+        slug: 'zenmist-ceramic-essential-oil-diffuser',
+        reason: 'Adds serene matte-porcelain aromatherapy to calm early-morning coffee rituals.',
       },
     ],
     faqs: [
@@ -215,6 +227,12 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
           'Most serious espresso machines devour two feet of counter space. CremaPro packs a PID temperature controller, 54mm brew group, and articulating stainless steam wand into a footprint just 7.7 inches wide. Brushed steel paneling resists smudges cleanly and looks refined next to modern kitchen appliances.',
           'The top cup tray holds two espresso demitasses, and the removable stainless drip tray includes a red float indicator that pops up before overflow ever becomes a mess.',
         ],
+        inlineLink: {
+          beforeText: 'For reliable streaming music and smart coffee-scale timers in distant kitchen corners, pairing your home setup with the ',
+          linkText: 'MeshCore AXE5400 Tri-Band Wi-Fi 6E Mesh System',
+          targetSlug: 'meshcore-wifi-6e-triband-router-system',
+          afterText: ' eliminates dead zones around tiled walls.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -248,6 +266,12 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy CremaPro if you want authentic café-grade espresso and real microfoam lattes in under three minutes without surrendering half your kitchen counter. Skip it only if you prefer push-button super-automatic bean-to-cup machines with zero tamping.',
         ],
+        inlineLink: {
+          beforeText: 'If you are anchoring espresso cup shelving directly into kitchen drywall, scanning first with the ',
+          linkText: 'StudScan Pro 5-in-1 Digital Wall Stud & Wire Finder',
+          targetSlug: 'studscan-pro-deep-wall-scanner-detector',
+          afterText: ' avoids kitchen electrical runs behind backsplash tile.',
+        },
       },
     ],
     specs: [
@@ -262,16 +286,16 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'brewcraft-precision-gooseneck-electric-kettle',
-        reason: 'Pairs precision pour-over coffee and tea brewing alongside morning espresso.',
-      },
-      {
         slug: 'heatwave-smart-wireless-meat-thermometer',
         reason: 'Brings the same culinary temperature precision to weeknight roasts and grilling.',
       },
       {
-        slug: 'voltguard-smart-wifi-surge-power-strip',
-        reason: 'Protects your coffee bar electronics with ETL surge suppression and daily power tracking.',
+        slug: 'sealpro-stainless-vacuum-food-sealer',
+        reason: 'Seals bulk specialty roasted espresso beans airtight so aroma stays vibrant for months.',
+      },
+      {
+        slug: 'solarpath-warm-led-landscape-pathway-lights',
+        reason: 'Lights up evening backyard walks when tossing nitrogen-rich spent coffee pucks into compost beds.',
       },
     ],
     faqs: [
@@ -363,6 +387,12 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
           'Many mid-range blenders wobble violently when crushing frozen mango or ice. BladeForge anchors its 1400W motor inside a weighted matte-graphite base fitted with four firm suction feet that stayed glued to our quartz benchtop through every high-speed pulse.',
           'The 72-oz BPA-free Tritan pitcher resists clouding and scratching after weeks of daily ice crushing, and the pour spout inside the locking lid pours thick smoothies cleanly without dripping down the pitcher wall.',
         ],
+        inlineLink: {
+          beforeText: 'High-wattage morning smoothie routines pair seamlessly with automated home comfort driven by our ',
+          linkText: 'ThermoSense Pro Smart Wi-Fi Learning Thermostat',
+          targetSlug: 'thermosense-smart-learning-thermostat',
+          afterText: ' keeping busy kitchens cool and comfortable.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -384,10 +414,10 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
           'Adding two cups of warm water and a drop of dish soap for a 30-second high-speed blitz cleans the blade stack effortlessly. Everything above the motor base is also top-rack dishwasher safe for deeper weekend washes.',
         ],
         inlineLink: {
-          beforeText: 'We loved blending fresh basil pesto and mint smoothies straight from the ',
-          linkText: 'AeroGrow 12-Pod Smart LED Hydroponic Herb Garden',
-          targetSlug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
-          afterText: ' sitting just two feet away on our test counter.',
+          beforeText: 'We kept fresh smoothie mint and summer berry borders watered automatically outdoors using the ',
+          linkText: 'HydroFlow Smart Wi-Fi Dual-Zone Hose Watering Timer',
+          targetSlug: 'hydroflow-smart-wifi-hose-watering-timer',
+          afterText: ' for effortless homegrown smoothie ingredients.',
         },
       },
       {
@@ -396,6 +426,12 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy BladeForge if you make daily frozen smoothies, blended margaritas, sauces, or family soup batches and want serious 1400W crushing muscle at a mid-range price tier. Skip it if you specifically need friction-heated hot soup cooking from raw cold vegetables.',
         ],
+        inlineLink: {
+          beforeText: 'For DIYers who value that exact same no-stall torque philosophy in garage hardware, check out the ',
+          linkText: 'TorqPro 20V Brushless Cordless Drill & Driver Kit',
+          targetSlug: 'torqpro-20v-brushless-cordless-drill-kit',
+          afterText: ' in our workshop department.',
+        },
       },
     ],
     specs: [
@@ -414,8 +450,8 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Vacuum-seals smoothie fruit packs and blended pestos flat for zero-freezer-burn prep.',
       },
       {
-        slug: 'brewcraft-precision-gooseneck-electric-kettle',
-        reason: 'Pairs hot tea and pour-over mornings with quick post-workout protein shakes.',
+        slug: 'aerovanc-crispduo-8qt-dual-basket-air-fryer',
+        reason: 'Covers the hot crispy half of weeknight dinners while BladeForge handles sauces and smoothies.',
       },
       {
         slug: 'nordicweave-washable-geometric-area-rug',
@@ -511,6 +547,12 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
           'Traditional wired thermometers pinch inside oven gaskets and snag constantly on grill grates. HeatWave seals both its internal tip thermistor and ceramic-tipped ambient sensor inside a waterproof stainless shaft that slides neatly into an attractive bamboo charging block.',
           'A single AAA battery inside the bamboo dock powers up to 100 full probe recharges, and each full charge gives the probe 24 hours of continuous wireless telemetry—plenty even for marathon overnight brisket cooks.',
         ],
+        inlineLink: {
+          beforeText: 'When dinner roasts move to the dining table, setting the mood with our ',
+          linkText: 'LumaArc Brushed Brass & Linen Arc Floor Lamp',
+          targetSlug: 'lumaarc-brass-linen-floor-lamp',
+          afterText: ' bathes the table in warm 2700K linen glow.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -532,10 +574,10 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
           'Leaving the magnetic bamboo repeater within ten feet of an outdoor grill extended reliable phone updates 145 feet indoors through two walls. The app’s visual cook graph also archives past sessions so you can repeat winning recipes effortlessly.',
         ],
         inlineLink: {
-          beforeText: 'For evening backyard grilling sessions after sunset, lining your patio walkway with ',
-          linkText: 'SolarPath Die-Cast Aluminum Solar Pathway Lights (8-Pack)',
-          targetSlug: 'solarpath-warm-led-landscape-pathway-lights',
-          afterText: ' keeps trips between the grill and kitchen bright and hands-free.',
+          beforeText: 'Keeping outdoor grilling decks neat and clear of low-hanging fruit or ornamental branches is quick work with the ',
+          linkText: 'ShearPro 21V Brushless Cordless Electric Pruning Shears',
+          targetSlug: 'shearpro-cordless-electric-pruning-shears',
+          afterText: ' on spring afternoons.',
         },
       },
       {
@@ -544,6 +586,12 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Choose HeatWave if you roast poultry, grill thick steaks, smoke meats, or air-fry proteins and want foolproof smartphone alerts without wires. Skip it only if you primarily cook paper-thin fish fillets where a tiny needle instant-read probe is gentler.',
         ],
+        inlineLink: {
+          beforeText: 'During long slow-smoke backyard sessions, staying alert to front-door spice or grocery drop-offs via the ',
+          linkText: 'AuraVision 2K Smart Wi-Fi Video Doorbell',
+          targetSlug: 'auravision-2k-smart-wifi-video-doorbell',
+          afterText: ' saves repeated walks out front.',
+        },
       },
     ],
     specs: [
@@ -558,16 +606,16 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'cremapro-15-bar-espresso-machine-grinder',
-        reason: 'Pairs effortless dinner-party roasts with post-dinner café espressos.',
+        slug: 'aerovanc-crispduo-8qt-dual-basket-air-fryer',
+        reason: 'Wire-free design slips cleanly inside closed air-fryer drawers for juicy chicken breasts and salmon.',
       },
       {
-        slug: 'bladeforge-high-speed-countertop-blender',
-        reason: 'Whips up fresh marinades, rubs, and herb chimichurri to complement grilled meats.',
+        slug: 'brewcraft-precision-gooseneck-electric-kettle',
+        reason: 'Adds temperature precision across coffee bars and dinner-party dining tables alike.',
       },
       {
-        slug: 'workbeam-rechargeable-magnetic-led-work-light',
-        reason: 'Clips magnetically to a grill hood or patio beam for crystal-clear evening grilling visibility.',
+        slug: 'lasersight-digital-laser-distance-measure',
+        reason: 'Checks safe outdoor grill and smoker clearance from house siding in seconds.',
       },
     ],
     faqs: [
@@ -659,6 +707,12 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
           'Cheap clamshell vacuum sealers force you to lean both elbows hard onto flimsy plastic tabs just to get suction started. SealPro builds an articulated metal cam lever right on the side—flip it down effortlessly with one hand to lock the upper and lower silicone gaskets tight before pressing Dry or Moist.',
           'Popping open the rear bay reveals internal storage for an 11-inch bag roll plus a smooth bidirectional sliding razor cutter that slices straight, waste-free custom bags in one swipe.',
         ],
+        inlineLink: {
+          beforeText: 'For tidy pantry walls holding wall-mounted bag-roll dispensers above prep counters, our tested ',
+          linkText: 'LevelLine 360° Green-Beam Cross-Line Laser Level',
+          targetSlug: 'levelline-green-beam-cross-laser-level',
+          afterText: ' keeps hooks and organizer brackets dead-straight.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -680,10 +734,10 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
           'Cleanup takes ten seconds: lift out the black drip trough and rinse under warm soapy water while wiping the Teflon-coated heating bar with a soft cloth. The external accessory port also plugs straight into mason jar sealers for preserving dry pantry grains and spices.',
         ],
         inlineLink: {
-          beforeText: 'We even used SealPro’s Gentle Pulse mode to freeze surplus sweet basil and pesto harvests straight from our ',
-          linkText: 'AeroGrow 12-Pod Smart LED Hydroponic Herb Garden',
-          targetSlug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
-          afterText: ' in flat freezer pouches for effortless mid-winter pasta sauces.',
+          beforeText: 'Outdoors during bumper tomato and snap-bean picking season, washing harvests cleanly with the ',
+          linkText: 'HydroCoil 100ft Retractable Wall-Mount Hose Reel',
+          targetSlug: 'hydrocoil-retractable-garden-hose-reel',
+          afterText: ' prepares garden produce for rapid kitchen blanching and airtight freezing.',
         },
       },
       {
@@ -692,6 +746,12 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy SealPro if you split wholesale warehouse meat packs, cook sous-vide meals, or preserve seasonal fruit and garden herbs without freezer burn. Skip it only if you seal snacks twice a year and want a tiny handheld zip-bag wand.',
         ],
+        inlineLink: {
+          beforeText: 'Streamline bulk-shopping unloading into the kitchen with keyless garage/side-door access via the ',
+          linkText: 'KeyVault Fingerprint Wi-Fi Smart Deadbolt Lock',
+          targetSlug: 'keyvault-biometric-smart-deadbolt-lock',
+          afterText: ' when carrying cold meat packs inside.',
+        },
       },
     ],
     specs: [
@@ -706,16 +766,16 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'heatwave-smart-wireless-meat-thermometer',
-        reason: 'Tracks thick vacuum-marinated roasts and steaks to exact medium-rare temperatures on the grill or oven.',
+        slug: 'brewcraft-precision-gooseneck-electric-kettle',
+        reason: 'Brings exact water temperature control to blanching garden produce and steeping vacuum-sealed teas.',
       },
       {
-        slug: 'bladeforge-high-speed-countertop-blender',
-        reason: 'Prepares custom marinades and green pestos in seconds ready for airtight freezer portioning.',
+        slug: 'cremapro-15-bar-espresso-machine-grinder',
+        reason: 'Pairs seamlessly with airtight vacuum canisters or sealed pouches that keep roasted espresso beans fresh.',
       },
       {
-        slug: 'terraprobe-4in1-digital-soil-moisture-meter',
-        reason: 'Keeps backyard vegetable beds thriving for bigger summer harvests worth preserving.',
+        slug: 'archview-brushed-gold-arched-wall-mirror',
+        reason: 'Visually brightens compact kitchen butler pantries and laundry-adjacent freezer zones.',
       },
     ],
     faqs: [

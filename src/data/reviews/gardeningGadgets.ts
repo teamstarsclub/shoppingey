@@ -94,10 +94,10 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
           'Wiping the stainless tip clean with a dry cloth after every check prevents mineral oxidation and keeps readings repeatable season after season. Pairing moisture logs with automated watering schedules takes all guesswork out of summer heatwaves.',
         ],
         inlineLink: {
-          beforeText: 'Using TerraProbe to verify root-zone dampness helped us tune exact cycle minutes on our ',
-          linkText: 'HydroFlow Smart Wi-Fi Dual-Zone Hose Watering Timer',
-          targetSlug: 'hydroflow-smart-wifi-hose-watering-timer',
-          afterText: ' and cut weekly garden water use by roughly 25%.',
+          beforeText: 'When monitoring overwintered indoor citrus and seed-starting shelves, checking ambient temperature alongside our ',
+          linkText: 'ThermoSense Smart Learning Wi-Fi Thermostat',
+          targetSlug: 'thermosense-smart-learning-thermostat',
+          afterText: ' keeps delicate root zones out of cold overnight drafts.',
         },
       },
       {
@@ -106,6 +106,12 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy TerraProbe if you manage raised vegetable beds, acid-loving hydrangeas/blueberries, or prized indoor houseplants and want clear digital numbers instead of guesswork. Skip it if you need a liquid pH/EC pen for hydroponic nutrient reservoirs.',
         ],
+        inlineLink: {
+          beforeText: 'When healthy soil yields bumper crops of tomatoes, basil, and berries all at once, preserving peak harvest batches inside our ',
+          linkText: 'SealPro Stainless Vacuum Food Sealer Machine',
+          targetSlug: 'sealpro-stainless-vacuum-food-sealer',
+          afterText: ' locks in garden flavor cleanly for winter freezer storage.',
+        },
       },
     ],
     specs: [
@@ -221,6 +227,12 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
           'Powered garden shears live or die by blade geometry. ShearPro fits forged SK5 high-carbon bypass blades coated to reduce sap gumming, driven by a compact brushless gearbox that delivers crisp guillotine torque without stalling halfway through dense apple or crape myrtle branches.',
           'Safety is thoughtfully engineered: flipping the power switch requires two rapid trigger pulls before the blades arm, and setting the shears down for 60 seconds puts them back into sleep lock automatically.',
         ],
+        inlineLink: {
+          beforeText: 'After a full morning of orchard shaping and lilac cleanup, heading indoors beside the ',
+          linkText: 'ZenMist Handcrafted Ceramic Essential Oil Diffuser',
+          targetSlug: 'zenmist-ceramic-essential-oil-diffuser',
+          afterText: ' brings crisp cedar and lavender calm right back inside your living room.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -254,6 +266,12 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy ShearPro if you maintain fruit trees, grapevines, hedges, or thick shrubs—or if hand fatigue makes traditional pruners painful. Skip it only if you tend a handful of soft balcony herbs where lightweight snips suffice.',
         ],
+        inlineLink: {
+          beforeText: 'If you store pricey cordless garden power tools inside a detached backyard shed, upgrading shed entry security with our ',
+          linkText: 'KeyVault Biometric Smart Deadbolt Door Lock',
+          targetSlug: 'keyvault-biometric-smart-deadbolt-lock',
+          afterText: ' lets you unlock instantly with a fingerprint while carrying armfuls of clippings.',
+        },
       },
     ],
     specs: [
@@ -268,16 +286,16 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'hydroflow-smart-wifi-hose-watering-timer',
-        reason: 'Delivers deep, scheduled root hydration to help newly pruned shrubs recover vigorously.',
+        slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
+        reason: 'Keeps fresh pruning and culinary plant harvests thriving indoors long after outdoor frost.',
       },
       {
-        slug: 'terraprobe-4in1-digital-soil-moisture-meter',
-        reason: 'Checks fruit-tree and rose-bed soil pH and dampness right after seasonal pruning.',
+        slug: 'hydrocoil-retractable-garden-hose-reel',
+        reason: 'Rinses walkways and deeply hydrates newly trimmed rose beds without dragging tangled hoses.',
       },
       {
-        slug: 'workbeam-rechargeable-magnetic-led-work-light',
-        reason: 'Lights up sheds and backyard cleanup chores cleanly when sunset catches you mid-project.',
+        slug: 'brewcraft-precision-gooseneck-electric-kettle',
+        reason: 'Brews crisp chamomile or homegrown mint tea effortlessly once afternoon yard work wraps.',
       },
     ],
     faqs: [
@@ -369,6 +387,12 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
           'Most bargain solar lights fade to dim blue blinks within a single season because their thin plastic lenses cloud over and flimsy stakes snap during lawn edging. SolarPath upgrades every touchpoint to matte-black die-cast aluminum and thick fluted glass that looks indistinguishable from professional hardwired landscape lighting.',
           'Inside the sealed IP65 head sits a 1,200 mAh LiFePO4 rechargeable cell—far more resistant to freezing winter cycles than cheap Ni-MH batteries—and easily replaceable years down the road.',
         ],
+        inlineLink: {
+          beforeText: 'When spacing out stakes along curved driveway borders after sunset, our tested ',
+          linkText: 'WorkBeam 2000-Lumen Folding Magnetic LED Work Light',
+          targetSlug: 'workbeam-rechargeable-magnetic-led-work-light',
+          afterText: ' floods the gravel clearly while you set fixture angles straight.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -402,6 +426,12 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy the SolarPath 8-Pack if you want upscale warm landscape lighting along driveways, garden borders, or stone walkways without digging trenches for low-voltage cable. Skip it only if your pathway sits under dense year-round evergreen canopy.',
         ],
+        inlineLink: {
+          beforeText: 'Stepping out onto a warmly lit dawn patio with an early espresso pulled on our ',
+          linkText: 'CremaPro 15-Bar Stainless Espresso Machine with Grinder',
+          targetSlug: 'cremapro-15-bar-espresso-machine-grinder',
+          afterText: ' makes even dark winter mornings feel like a boutique garden courtyard.',
+        },
       },
     ],
     specs: [
@@ -420,8 +450,8 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Keeps unruly garden hoses neatly coiled away behind shrubs so solar walkways stay uncluttered.',
       },
       {
-        slug: 'shearpro-cordless-electric-pruning-shears',
-        reason: 'Keeps border shrubs neatly trimmed so solar panels capture full daytime sunlight.',
+        slug: 'hydroflow-smart-wifi-hose-watering-timer',
+        reason: 'Automates overnight lawn irrigation quietly while IP65-sealed solar fixtures shrug off sprinkler mist.',
       },
       {
         slug: 'lumaglow-cordless-rechargeable-led-table-lamp',
@@ -517,6 +547,12 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
           'Earlier indoor hydroponic kits looked like harsh purple laboratory rigs. AeroGrow pairs a matte charcoal water basin with brushed stainless trim and a warm-balanced 24W full-spectrum white LED array that makes lush green basil look vibrant rather than neon-magenta.',
           'Its whisper-quiet 22 dB submersible pump runs on an automatic 30-minute on/off oxygenation rhythm, keeping roots pearly white and energetic without humming audibly across an open-concept kitchen.',
         ],
+        inlineLink: {
+          beforeText: 'For periodic seasonal deep-cleans of the pump impeller housing and canopy brackets, having our ',
+          linkText: 'PrecisionBit Electric Precision Screwdriver Repair Kit',
+          targetSlug: 'precisionbit-electric-screwdriver-repair-kit',
+          afterText: ' on hand keeps miniature fasteners from stripping inside wet kitchen spaces.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -550,6 +586,12 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy AeroGrow if you cook frequently with fresh herbs, live in an apartment without a sunny balcony, or want zero-dirt winter salads. Skip it only if you want to grow huge vining crops like full-size zucchini or corn.',
         ],
+        inlineLink: {
+          beforeText: 'Protecting sensitive LED grow hoods and timers from kitchen appliance power spikes is effortless when plugged into our tested ',
+          linkText: 'VoltGuard Smart Wi-Fi Surge Power Strip',
+          targetSlug: 'voltguard-smart-wifi-surge-power-strip',
+          afterText: ', letting you track daily grow-light wattage from one clean app.',
+        },
       },
     ],
     specs: [
@@ -564,16 +606,16 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
+        slug: 'hydroflow-smart-wifi-hose-watering-timer',
+        reason: 'Bridges indoor automated herb care with smart seasonal drip schedules outdoors.',
+      },
+      {
         slug: 'terraprobe-4in1-digital-soil-moisture-meter',
         reason: 'Helps you transplant rooted hydroponic herbs successfully into outdoor patio pots come spring.',
       },
       {
-        slug: 'shearpro-cordless-electric-pruning-shears',
-        reason: 'Complements effortless indoor herb growing with effortless outdoor garden maintenance.',
-      },
-      {
-        slug: 'bladeforge-high-speed-countertop-blender',
-        reason: 'Turns fresh homegrown basil, mint, and parsley into vibrant pesto and green smoothies in seconds.',
+        slug: 'lumaarc-brass-linen-floor-lamp',
+        reason: 'Balances bright kitchen grow-canopy output with warm 2700K evening lounge ambience nearby.',
       },
     ],
     faqs: [
@@ -665,6 +707,12 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
           'Coiling a stiff 100-foot garden hose by hand in humid summer heat is universally hated—which is why leaky hoses end up sun-rotting across backyard grass. HydroCoil seals a 100-foot triple-layer hybrid hose inside an impact-resistant, UV-stabilized matte shell mounted to a powder-coated steel 180-degree wall bracket.',
           'Crucially, both the 6-foot leader line and main hose ends feature solid machined brass 3/4-inch GHT fittings that stayed bone-dry under static pressure without cracked plastic collars.',
         ],
+        inlineLink: {
+          beforeText: 'Keeping patio greenery tidy outside pairs cleanly with brighter natural entryway depth indoors from the ',
+          linkText: 'ArchView Brushed Brass Arched Full-Length Mirror',
+          targetSlug: 'archview-brushed-gold-arched-wall-mirror',
+          afterText: ' reflecting sunlit garden views right through the mudroom.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -686,10 +734,10 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
           'Mounting the heavy wall plate into exterior house studs or masonry brick takes about 15 minutes using the four included 5/16-inch lag bolts. Come late autumn, pulling one vertical hinge pin lets you carry the drum straight into a heated garage before winter freezes.',
         ],
         inlineLink: {
-          beforeText: 'For driving those four heavy wall-bracket lag bolts into dense exterior framing or masonry anchors, our ',
-          linkText: 'TorqPro 20V Brushless Cordless Drill & Driver Kit',
-          targetSlug: 'torqpro-20v-brushless-cordless-drill-kit',
-          afterText: ' delivered effortless low-gear torque without rounding off bolt heads.',
+          beforeText: 'When bringing the lift-off hose drum indoors during dry allergy-heavy spring winds or mudroom cleanup, our ',
+          linkText: 'AeroPure Smart H13 True HEPA Air Purifier',
+          targetSlug: 'aeropure-smart-hepa-air-purifier',
+          afterText: ' clears tracked-in grass pollen and fine outdoor dust quickly.',
         },
       },
       {
@@ -698,6 +746,12 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy HydroCoil if you hate dragging kinked 100-foot hoses across flower beds and have a solid exterior wall stud, post, or brick pier nearby. Skip it only if you need heavy 3/4-inch commercial water flow for long-range turf impact sprinklers.',
         ],
+        inlineLink: {
+          beforeText: 'Keeping summer kitchen-garden greens lush and hydrated outside lets you blend chilled gazpacho and pesto inside the ',
+          linkText: 'BladeForge 1500W High-Speed Countertop Blender',
+          targetSlug: 'bladeforge-high-speed-countertop-blender',
+          afterText: ' straight from crisp morning harvests.',
+        },
       },
     ],
     specs: [
@@ -712,8 +766,8 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'hydroflow-smart-wifi-hose-watering-timer',
-        reason: 'Dedicate one brass timer zone to automated drip irrigation and the other to the quick-reach reel.',
+        slug: 'terraprobe-4in1-digital-soil-moisture-meter',
+        reason: 'Confirms deep root-zone saturation after gentle thumb-nozzle watering sessions.',
       },
       {
         slug: 'shearpro-cordless-electric-pruning-shears',

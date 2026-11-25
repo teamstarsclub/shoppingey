@@ -67,6 +67,12 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
           'LaserSight fits comfortably in a shirt pocket yet feels genuinely rugged thanks to thick amber rubber bumpers wrapping its dark slate shell. Built-in dual bubble vials on the crown help you hold the beam level on long room spans without tilting errors.',
           'The inverted high-contrast backlit LCD reads effortlessly in dark basements or sunlit hallways, displaying three previous measurements above the live reading so you never scramble for a pencil mid-project.',
         ],
+        inlineLink: {
+          beforeText: 'When planning whole-home upgrades, checking multi-room spans helps determine ideal satellite placement for the ',
+          linkText: 'MeshCore AXE5400 Tri-Band Wi-Fi 6E Mesh System',
+          targetSlug: 'meshcore-wifi-6e-triband-router-system',
+          afterText: ' across upper floors.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -88,10 +94,10 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
           'Beyond framing and drywall estimates, LaserSight shines during home decorating—instantly checking wall widths, window-to-ceiling clearances, and exact square footage before ordering flooring or furniture.',
         ],
         inlineLink: {
-          beforeText: 'During our home decor testing, we used LaserSight to verify exact wall spacing for the ',
-          linkText: 'OakRidge Solid Walnut Floating Wall Shelves (Set of 3)',
-          targetSlug: 'oakridge-floating-walnut-wall-shelves-set',
-          afterText: ' and check floor clearance for tall arched mirrors in under ten seconds.',
+          beforeText: 'In kitchen remodels, checking exact upper-cabinet clearance takes two clicks before fitting the ',
+          linkText: 'CremaPro Compact Espresso Machine with Milk Frother',
+          targetSlug: 'cremapro-15-bar-espresso-machine-grinder',
+          afterText: ' cleanly onto narrow apartment counters.',
         },
       },
       {
@@ -100,6 +106,12 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy LaserSight if you measure rooms, hang shelves, order paint/flooring, or estimate projects solo—it pays for itself in saved time on the very first weekend. Skip it only if you exclusively measure bright outdoor concrete lots beyond 60 feet where a green-beam laser shines brighter.',
         ],
+        inlineLink: {
+          beforeText: 'In backyard gardens, using LaserSight Area Mode computes exact mulch and soil-bed square footage before balancing root zones with our ',
+          linkText: 'TerraProbe 4-in-1 Digital Soil pH & Moisture Meter',
+          targetSlug: 'terraprobe-4in1-digital-soil-moisture-meter',
+          afterText: ' each spring.',
+        },
       },
     ],
     specs: [
@@ -215,6 +227,12 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
           'Cheap precision bit kits round off after three laptop teardowns because they use soft chrome-vanadium steel. PrecisionBit mills all 50 bits from hardened S2 tool steel (60 HRC) seated inside a sleek press-to-eject aluminum magnetic dock that feels worthy of leaving right on your desk.',
           'Three tiny LEDs ring the chuck collar, casting crisp, shadow-free illumination directly down deep recessed plastic screw wells where desk lamps cannot reach.',
         ],
+        inlineLink: {
+          beforeText: 'The anodized desk kit looks right at home beside subtle architectural lighting like the ',
+          linkText: 'LumaGlow Cordless Rechargeable Brass LED Table Lamp',
+          targetSlug: 'lumaglow-cordless-rechargeable-led-table-lamp',
+          afterText: ' on study workstations and craft desks.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -236,10 +254,10 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
           'One 60-minute USB-C charge handled roughly 380 micro screws across a full month of intermittent bench work. Because the kit includes Torx security bits (T6H–T10H), it also handles smart doorbells and thermostat security set-screws effortlessly.',
         ],
         inlineLink: {
-          beforeText: 'In fact, its T6 security bit made swapping the faceplate and battery latch on the ',
-          linkText: 'AuraVision 2K Smart Wi-Fi Video Doorbell',
-          targetSlug: 'auravision-2k-smart-wifi-video-doorbell',
-          afterText: ' vastly faster than wrestling with the tiny L-key included in the box.',
+          beforeText: 'Its compact profile slips neatly into kitchen utility drawers beside modern counter setups like the ',
+          linkText: 'AeroGrow 12-Pod Smart LED Hydroponic Herb Garden',
+          targetSlug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
+          afterText: ' for maintaining small appliances and lighting hoods.',
         },
       },
       {
@@ -248,6 +266,12 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy PrecisionBit if you upgrade PCs, repair game controllers, tinker with cameras, or install smart home electronics. Skip it if you need a heavy-duty driver for IKEA furniture or deck screws—reach for a 20V cordless drill instead.',
         ],
+        inlineLink: {
+          beforeText: 'Around the kitchen, Setting 1 torque also handles loose cabinet pulls and housing fasteners near the ',
+          linkText: 'BladeForge 1400W Pro Countertop Blender',
+          targetSlug: 'bladeforge-high-speed-countertop-blender',
+          afterText: ' without stripping soft screws.',
+        },
       },
     ],
     specs: [
@@ -262,12 +286,12 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'torqpro-20v-brushless-cordless-drill-kit',
-        reason: 'Covers heavy structural drilling and driving while PrecisionBit handles delicate micro fasteners.',
-      },
-      {
         slug: 'workbeam-rechargeable-magnetic-led-work-light',
         reason: 'Bathes your electronics repair bench in crisp shadow-free floodlight during intricate teardowns.',
+      },
+      {
+        slug: 'levelline-green-beam-cross-laser-level',
+        reason: 'Projects crisp alignment lines across walls before driving delicate smart-home wall plates.',
       },
       {
         slug: 'thermosense-smart-learning-thermostat',
@@ -363,6 +387,12 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
           'Single-sensor stud finders force you to calibrate on an empty spot of drywall, guess edges, and pray you did not start directly on a stud. StudScan Pro houses 13 independent density sensors across a wide top LED bar that lights up the exact physical footprint of wood and metal studs beneath the drywall.',
           'Rubberized amber side grips keep the base flat against textured walls without scuffing fresh paint, and the crisp top center notch lets you tap a pencil mark right at dead-center.',
         ],
+        inlineLink: {
+          beforeText: 'In kitchen pantries, finding structural wood studs ensures heavy pantry shelving safely holds bulk goods prepared with our ',
+          linkText: 'SealPro Stainless Vacuum Food Sealer System',
+          targetSlug: 'sealpro-stainless-vacuum-food-sealer',
+          afterText: ' without drywall pullout.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -396,6 +426,12 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Every homeowner, renter with hanging permissions, and DIYer should own StudScan Pro—it eliminates the frustration of flaky bargain stud finders forever. Only skip it if your home has thick wire-mesh metal lath plaster where a magnetic nail-finder is needed instead.',
         ],
+        inlineLink: {
+          beforeText: 'When routing indoor bridges near exterior stucco walls for garden automation like the ',
+          linkText: 'HydroFlow Smart Wi-Fi Dual-Zone Hose Watering Timer',
+          targetSlug: 'hydroflow-smart-wifi-hose-watering-timer',
+          afterText: ', its live-wire alert keeps small mounting screws safely clear of outlets.',
+        },
       },
     ],
     specs: [
@@ -410,16 +446,16 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
+        slug: 'levelline-green-beam-cross-laser-level',
+        reason: 'Combines solid framing stud detection with luminous green laser horizontals for spotless installs.',
+      },
+      {
         slug: 'torqpro-20v-brushless-cordless-drill-kit',
         reason: 'Drives heavy TV mount lag bolts and shelf brackets cleanly once StudScan marks dead-center.',
       },
       {
-        slug: 'lasersight-digital-laser-distance-measure',
-        reason: 'Pairs exact room spacing measurements with pinpoint stud detection for gallery walls.',
-      },
-      {
-        slug: 'oakridge-floating-walnut-wall-shelves-set',
-        reason: 'Guarantees sag-free 40-lb stud mounting across every floating wood shelf.',
+        slug: 'keyvault-biometric-smart-deadbolt-lock',
+        reason: 'Verifies surrounding entry framing and electrical lines cleanly before chiseling deep deadbolt strike plates.',
       },
     ],
     faqs: [
@@ -511,6 +547,12 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
           'Cheap plastic floodlights overheat and dim by 40% after ten minutes. WorkBeam backs both COB LED panels with die-cast aluminum finned heatsinks wrapped in impact-absorbing amber corner guards, keeping sustained lumen output remarkably steady.',
           'Its weighted swivel base packs four recessed neodymium magnets plus a 1/4-20 tripod thread, letting you clamp it under a vehicle hood, hang it from rafters via its carry handle, or stand it flat on uneven gravel.',
         ],
+        inlineLink: {
+          beforeText: 'For workbench battery charging stations inside garages and sheds, plugging the USB-C charger into our tested ',
+          linkText: 'VoltGuard Smart Wi-Fi Surge Power Strip',
+          targetSlug: 'voltguard-smart-wifi-surge-power-strip',
+          afterText: ' protects lithium tool packs against workshop voltage spikes and lets you shut down bench outlets remotely.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -544,6 +586,12 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy WorkBeam if you work on cars, tackle home electrical/plumbing projects, or want one dependable storm-outage floodlight and power bank. Skip it only if you need an ultralight keychain flashlight.',
         ],
+        inlineLink: {
+          beforeText: 'Once messy garage or roadside repairs wrap up for the evening, unwinding indoors beside the ',
+          linkText: 'ZenMist Handcrafted Ceramic Essential Oil Diffuser',
+          targetSlug: 'zenmist-ceramic-essential-oil-diffuser',
+          afterText: ' swaps workshop grease and glare for soft warm ambient mist.',
+        },
       },
     ],
     specs: [
@@ -558,16 +606,16 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'studscan-pro-deep-wall-scanner-detector',
-        reason: 'Illuminates shadowy closets and stairwells cleanly while mapping wall studs.',
+        slug: 'torqpro-20v-brushless-cordless-drill-kit',
+        reason: 'Illuminates dark crawlspaces and framing bays while driving structural screws cleanly.',
       },
       {
-        slug: 'precisionbit-electric-screwdriver-repair-kit',
-        reason: 'Provides bright overhead bench light for intricate PC and electronics repairs.',
+        slug: 'lasersight-digital-laser-distance-measure',
+        reason: 'Brightens dimly lit attics and basements so laser measurement marks stay crisp and visible.',
       },
       {
-        slug: 'keyvault-biometric-smart-deadbolt-lock',
-        reason: 'Makes evening door-frame installation and strike-plate adjustments easy to see.',
+        slug: 'heatwave-smart-wireless-meat-thermometer',
+        reason: 'Magnetic base clips right onto metal patio pergolas to monitor evening smokehouse grilling.',
       },
     ],
     faqs: [
@@ -659,6 +707,12 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
           'Cheap pocket laser levels feel like hollow toys whose fragile pendulums knock out of calibration after one mild bump. LevelLine encases its gimbal pendulum in a thick TPE-overmolded shell rated to IP54 against drywall dust and splashes, paired with a heavy metal pendulum lock slider on the side so jostling inside a toolbox causes zero drift.',
           'Its bundled L-shaped bracket packs three wide neodymium magnets plus a keyhole nail slot, sticking rock-steady onto steel corner drywall bead or metal appliance frames.',
         ],
+        inlineLink: {
+          beforeText: 'Outside, we even used its high-visibility green reference line at dusk to align post heights alongside our ',
+          linkText: 'SolarPath Die-Cast Aluminum Solar Pathway Lights (8-Pack)',
+          targetSlug: 'solarpath-warm-led-landscape-pathway-lights',
+          afterText: ' across sloped garden borders.',
+        },
       },
       {
         id: 'real-world-performance',
@@ -680,10 +734,10 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
           'One full USB-C charge lasted 8 hours and 20 minutes with both cross beams running continuously—plenty for tiling an entire bathroom shower surround over a weekend. Flipping the side switch to Locked activates diagonal tilt lines for stair banister spindles.',
         ],
         inlineLink: {
-          beforeText: 'Beyond cabinetry and tile, it made leveling tall hallway accents like the ',
-          linkText: 'ArchView Brushed Brass Arched Full-Length Mirror',
-          targetSlug: 'archview-brushed-gold-arched-wall-mirror',
-          afterText: ' and matching multi-frame gallery walls effortless on the first hang.',
+          beforeText: 'During messy indoor drywall or tile-saw remodeling projects mapped out with those laser lines, running our tested ',
+          linkText: 'AeroPure Smart H13 True HEPA Air Purifier',
+          targetSlug: 'aeropure-smart-hepa-air-purifier',
+          afterText: ' captures fine plaster and grout dust from the room automatically.',
         },
       },
       {
@@ -692,6 +746,12 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
         paragraphs: [
           'Buy LevelLine if you install kitchen tile, hang floating shelves, align gallery walls, or frame basement partitions and want effortless daylight-visible green lines. Skip it only if you frame outdoor concrete decks all day under direct midday sun—you will want a rotary pulse receiver kit for long yard runs.',
         ],
+        inlineLink: {
+          beforeText: 'When planning upper pantry cabinetry and tiled backsplashes above busy counters housing appliances like the ',
+          linkText: 'AeroVanc CrispDuo 8-Quart Dual-Basket Air Fryer',
+          targetSlug: 'aerovanc-crispduo-8qt-dual-basket-air-fryer',
+          afterText: ', accurate horizontal clearance lines save costly cabinet hang mistakes.',
+        },
       },
     ],
     specs: [
@@ -710,8 +770,8 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Measures exact room spans and cut lengths while LevelLine keeps every layout mark dead level.',
       },
       {
-        slug: 'studscan-pro-deep-wall-scanner-detector',
-        reason: 'Confirms solid framing studs sit right behind your glowing green laser mounting marks.',
+        slug: 'precisionbit-electric-screwdriver-repair-kit',
+        reason: 'Fastens delicate cabinet hinges, switch plates, and trim hardware cleanly along laser lines.',
       },
       {
         slug: 'oakridge-floating-walnut-wall-shelves-set',
