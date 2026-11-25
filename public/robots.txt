@@ -1,6 +1,86 @@
+# Shoppingey.com Robots & AI Crawler Policy
+# Welcomes Google Search, Google Image, Bing, and AI Search / LLM Assistants
+# while preventing duplicate parameter-query crawling.
+
+User-agent: Googlebot
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: GoogleOther
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: Applebot
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
+User-agent: bingbot
+Allow: /
+Disallow: /*?q=
+Disallow: /*?/
+
 User-agent: *
 Allow: /
 Disallow: /*?q=
 Disallow: /*?/
 
 Sitemap: https://www.shoppingey.com/sitemap.xml
+# AI Knowledge Index (llmstxt.org): https://www.shoppingey.com/llms.txt
+# Full AI Product Catalog (Markdown): https://www.shoppingey.com/llms-full.txt
+# Structured AI Catalog (JSON): https://www.shoppingey.com/ai-catalog.json

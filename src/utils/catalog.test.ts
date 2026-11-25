@@ -460,3 +460,55 @@ test('Technical SEO: enriched Organization PNG logo, Product/Review E-E-A-T, uni
     );
   }
 });
+
+test('Googlebot & AI readiness: robots.txt, llms.txt, llms-full.txt, ai-catalog.json, speakable, and Product isRelatedTo', async () => {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  const robotsTxt = fs.readFileSync(path.resolve(process.cwd(), 'public/robots.txt'), 'utf8');
+
+  for (const bot of [
+    'Googlebot',
+    'Googlebot-Image',
+    'Google-Extended',
+    'OAI-SearchBot',
+    'GPTBot',
+    'ClaudeBot',
+    'PerplexityBot',
+  ]) {
+    assert.ok(robotsTxt.includes(`User-agent: ${bot}`), `robots.txt should welcome ${bot}`);
+  }
+  assert.ok(robotsTxt.includes('Disallow: /*?q='), 'robots.txt must block duplicate ?q= search queries');
+  assert.ok(robotsTxt.includes('Sitemap: https://www.shoppingey.com/sitemap.xml'));
+
+  const sitewide = buildSitewideJsonLd() as Record<string, any>[];
+  assert.ok(Array.isArray(sitewide[0].knowsAbout) && sitewide[0].knowsAbout.length >= 5);
+
+  const sampleSchema = buildProductReviewJsonLd(
+    REVIEWS[0],
+    getCategoryBySlug(REVIEWS[0].categorySlug)
+  ) as Record<string, any>;
+  assert.equal(sampleSchema.isRelatedTo.length, 3);
+  assert.equal(sampleSchema.mainEntityOfPage.speakable['@type'], 'SpeakableSpecification');
+
+  const { generateLlmsTxt, generateLlmsFullTxt, generateAiCatalogJson } = await import(
+    '../../scripts/generate-seo'
+  );
+  const llms = generateLlmsTxt();
+  const llmsFull = generateLlmsFullTxt();
+  const aiJson = generateAiCatalogJson();
+  const parsedAi = JSON.parse(aiJson);
+
+  assert.equal(parsedAi.categories.length, 5);
+  assert.equal(parsedAi.reviews.length, 30);
+  assert.equal(containsStaticDollarPrice(llms), false, 'llms.txt must not contain static dollar prices');
+  assert.equal(containsStaticDollarPrice(llmsFull), false, 'llms-full.txt must not contain static dollar prices');
+  assert.equal(containsStaticDollarPrice(aiJson), false, 'ai-catalog.json must not contain static dollar prices');
+
+  for (const cat of CATEGORIES) {
+    assert.ok(llms.includes(`https://www.shoppingey.com/category/${cat.slug}`));
+  }
+  for (const rev of REVIEWS) {
+    assert.ok(llms.includes(`https://www.shoppingey.com/review/${rev.slug}`), `Missing ${rev.slug} in llms.txt`);
+    assert.ok(llmsFull.includes(`ASIN: ${rev.asin}`), `Missing ASIN ${rev.asin} in llms-full.txt`);
+  }
+});

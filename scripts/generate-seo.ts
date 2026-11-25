@@ -31,6 +31,9 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..');
 const PUBLIC_SITEMAP_PATH = path.join(ROOT_DIR, 'public', 'sitemap.xml');
+const PUBLIC_LLMS_PATH = path.join(ROOT_DIR, 'public', 'llms.txt');
+const PUBLIC_LLMS_FULL_PATH = path.join(ROOT_DIR, 'public', 'llms-full.txt');
+const PUBLIC_AI_CATALOG_PATH = path.join(ROOT_DIR, 'public', 'ai-catalog.json');
 const DIST_DIR = path.join(ROOT_DIR, 'dist');
 const DEFAULT_OG_IMAGE = `${SITE_CONFIG.domain}/src/assets/images/product_dual_basket_air_fryer_1795195713278.jpg`;
 
@@ -324,6 +327,125 @@ export function generateSitemapXml(): string {
   ].join('\n');
 }
 
+export function generateLlmsTxt(): string {
+  const lines: string[] = [
+    `# ${SITE_CONFIG.name}`,
+    '',
+    `> Independent hands-on Amazon product reviews tested, scored on a transparent 5-point rubric, and organized across ${CATEGORIES.length} core home, workshop, kitchen, decor, and garden departments (${REVIEWS.length} reviews total). Prices on Amazon fluctuate dynamically, so live price tiers are shown rather than fixed dollar quotes.`,
+    '',
+    '## Key Resources',
+    `- [Homepage & Full Review Directory](${SITE_CONFIG.domain}/): Complete index of tested product reviews.`,
+    `- [About Shoppingey.com](${SITE_CONFIG.domain}/about): Editorial independence, mission, and team info.`,
+    `- [How We Review Products](${SITE_CONFIG.domain}/how-we-review): 5-point testing rubric (Build Quality, Performance, Value, Ease of Use, Durability).`,
+    `- [Full AI Catalog Digest (Markdown)](${SITE_CONFIG.domain}/llms-full.txt): Complete product summaries, pros, cons, technical specs, and FAQs.`,
+    `- [Structured AI Product Feed (JSON)](${SITE_CONFIG.domain}/ai-catalog.json): Machine-readable catalog schema for AI shopping agents.`,
+    `- [XML Sitemap](${SITE_CONFIG.domain}/sitemap.xml): Canonical indexable URLs.`,
+    '',
+    '## Department Hubs',
+  ];
+
+  for (const cat of CATEGORIES) {
+    const count = getReviewsByCategory(cat.slug, REVIEWS).length;
+    lines.push(
+      `- [${cat.name}](${SITE_CONFIG.domain}/category/${cat.slug}): ${count} tested reviews — ${cat.metaDescription}`
+    );
+  }
+
+  for (const cat of CATEGORIES) {
+    lines.push('', `## ${cat.name} Reviews`);
+    const catReviews = getReviewsByCategory(cat.slug, REVIEWS);
+    for (const rev of catReviews) {
+      lines.push(
+        `- [${rev.productName}](${SITE_CONFIG.domain}/review/${rev.slug}): ${rev.editorialBadge} · Score ${rev.scoreOutOf10.toFixed(1)}/10 · Rating ${rev.rating.toFixed(1)}/5 · ${rev.priceTier} · ASIN ${rev.asin} — ${rev.quickVerdict}`
+      );
+    }
+  }
+
+  lines.push('');
+  return lines.join('\n');
+}
+
+export function generateLlmsFullTxt(): string {
+  const lines: string[] = [
+    `# ${SITE_CONFIG.name} — Complete Product Review Catalog for AI & Search Agents`,
+    '',
+    `> Canonical Domain: ${SITE_CONFIG.domain}`,
+    `> Departments: ${CATEGORIES.length} | Tested Product Reviews: ${REVIEWS.length}`,
+    `> Editorial Standard: Hands-on evaluation with zero sponsored placements and zero static dollar quotes.`,
+    '',
+  ];
+
+  for (const cat of CATEGORIES) {
+    lines.push(`---`, '', `## Department: ${cat.name}`, `URL: ${SITE_CONFIG.domain}/category/${cat.slug}`, '', cat.seoIntro, '');
+    const catReviews = getReviewsByCategory(cat.slug, REVIEWS);
+    for (const rev of catReviews) {
+      lines.push(
+        `### ${rev.productName}`,
+        `- URL: ${SITE_CONFIG.domain}/review/${rev.slug}`,
+        `- ASIN: ${rev.asin}`,
+        `- Category: ${cat.name}`,
+        `- Badge: ${rev.editorialBadge} | Price Tier: ${rev.priceTier}`,
+        `- Shoppingey Score: ${rev.scoreOutOf10.toFixed(1)}/10 | Star Rating: ${rev.rating.toFixed(1)}/5`,
+        `- Criteria Scores: Build Quality ${rev.criteriaScores.buildQuality.toFixed(1)}, Performance ${rev.criteriaScores.performance.toFixed(1)}, Value ${rev.criteriaScores.value.toFixed(1)}, Ease of Use ${rev.criteriaScores.easeOfUse.toFixed(1)}, Durability ${rev.criteriaScores.durability.toFixed(1)}`,
+        `- Last Updated: ${rev.lastUpdated} | Author: ${rev.author.name} (${rev.author.role})`,
+        `- Verdict: ${rev.quickVerdict}`,
+        `- Pros: ${rev.pros.join(' | ')}`,
+        `- Cons: ${rev.cons.join(' | ')}`,
+        `- Key Specs: ${rev.specs.map((s) => `${s.label}: ${s.value}`).join(' ; ')}`,
+        `- FAQs: ${rev.faqs.map((f) => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`,
+        ''
+      );
+    }
+  }
+
+  return lines.join('\n');
+}
+
+export function generateAiCatalogJson(): string {
+  const payload = {
+    schemaVersion: '1.0',
+    site: {
+      name: SITE_CONFIG.name,
+      domain: SITE_CONFIG.domain,
+      tagline: SITE_CONFIG.tagline,
+      methodologyUrl: `${SITE_CONFIG.domain}/how-we-review`,
+      llmsTxtUrl: `${SITE_CONFIG.domain}/llms.txt`,
+      sitemapUrl: `${SITE_CONFIG.domain}/sitemap.xml`,
+    },
+    generatedAt: latestReviewDate(),
+    categories: CATEGORIES.map((cat) => ({
+      slug: cat.slug,
+      name: cat.name,
+      url: `${SITE_CONFIG.domain}/category/${cat.slug}`,
+      description: cat.metaDescription,
+      reviewCount: getReviewsByCategory(cat.slug, REVIEWS).length,
+    })),
+    reviews: REVIEWS.map((rev) => ({
+      slug: rev.slug,
+      url: `${SITE_CONFIG.domain}/review/${rev.slug}`,
+      asin: rev.asin,
+      categorySlug: rev.categorySlug,
+      productName: rev.productName,
+      reviewTitle: rev.reviewTitle,
+      editorialBadge: rev.editorialBadge,
+      priceTier: rev.priceTier,
+      rating: rev.rating,
+      scoreOutOf10: rev.scoreOutOf10,
+      criteriaScores: rev.criteriaScores,
+      lastUpdated: rev.lastUpdated,
+      author: rev.author,
+      quickVerdict: rev.quickVerdict,
+      highlights: rev.highlights,
+      pros: rev.pros,
+      cons: rev.cons,
+      specs: rev.specs,
+      faqs: rev.faqs,
+    })),
+  };
+
+  return JSON.stringify(payload, null, 2) + '\n';
+}
+
 function replaceMetaTag(
   html: string,
   attr: 'name' | 'property',
@@ -355,9 +477,10 @@ function renderRouteHtml(baseTemplate: string, route: StaticRouteSpec): string {
     `<link rel="canonical" href="${escapeHtml(canonicalUrl)}" />`
   );
 
-  // Update core SEO, OpenGraph, and Twitter Card meta tags
+  // Update core SEO, Googlebot, OpenGraph, and Twitter Card meta tags
   html = replaceMetaTag(html, 'name', 'description', route.description);
   html = replaceMetaTag(html, 'name', 'robots', route.robots);
+  html = replaceMetaTag(html, 'name', 'googlebot', route.robots);
   html = replaceMetaTag(html, 'property', 'og:type', route.ogType);
   html = replaceMetaTag(html, 'property', 'og:title', route.title);
   html = replaceMetaTag(html, 'property', 'og:description', route.description);
@@ -422,14 +545,25 @@ function renderRouteHtml(baseTemplate: string, route: StaticRouteSpec): string {
 
 function writeSitemap(): void {
   const xml = generateSitemapXml();
+  const llmsTxt = generateLlmsTxt();
+  const llmsFullTxt = generateLlmsFullTxt();
+  const aiCatalogJson = generateAiCatalogJson();
+
   fs.mkdirSync(path.dirname(PUBLIC_SITEMAP_PATH), { recursive: true });
   fs.writeFileSync(PUBLIC_SITEMAP_PATH, xml, 'utf8');
+  fs.writeFileSync(PUBLIC_LLMS_PATH, llmsTxt, 'utf8');
+  fs.writeFileSync(PUBLIC_LLMS_FULL_PATH, llmsFullTxt, 'utf8');
+  fs.writeFileSync(PUBLIC_AI_CATALOG_PATH, aiCatalogJson, 'utf8');
+
   if (fs.existsSync(DIST_DIR)) {
     fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), xml, 'utf8');
+    fs.writeFileSync(path.join(DIST_DIR, 'llms.txt'), llmsTxt, 'utf8');
+    fs.writeFileSync(path.join(DIST_DIR, 'llms-full.txt'), llmsFullTxt, 'utf8');
+    fs.writeFileSync(path.join(DIST_DIR, 'ai-catalog.json'), aiCatalogJson, 'utf8');
   }
   const indexableRoutes = buildSitemapRoutes();
   console.log(
-    `Generated sitemap.xml with ${indexableRoutes.length} indexable URLs (${CATEGORIES.length} categories, ${REVIEWS.length} reviews; non-indexable legal/utility pages excluded).`
+    `Generated sitemap.xml (${indexableRoutes.length} URLs), llms.txt, llms-full.txt, and ai-catalog.json (${CATEGORIES.length} categories, ${REVIEWS.length} reviews).`
   );
 }
 

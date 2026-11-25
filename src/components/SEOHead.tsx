@@ -73,6 +73,7 @@ export function SEOHead({
 
     upsertMeta('name', 'description', description);
     upsertMeta('name', 'robots', robots);
+    upsertMeta('name', 'googlebot', robots);
 
     upsertMeta('property', 'og:site_name', SITE_CONFIG.name);
     upsertMeta('property', 'og:locale', 'en_US');

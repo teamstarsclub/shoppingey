@@ -175,6 +175,10 @@ export function buildSitewideJsonLd(): Record<string, unknown>[] {
       },
       description: SITE_CONFIG.tagline,
       publishingPrinciples: `${SITE_CONFIG.domain}/how-we-review`,
+      knowsAbout: [
+        'Independent Amazon Product Reviews',
+        ...CATEGORIES.map((c) => c.name),
+      ],
     },
     {
       '@context': 'https://schema.org',
@@ -230,6 +234,10 @@ export function buildHomePageJsonLd(): Record<string, unknown>[] {
       },
       about: {
         '@id': `${SITE_CONFIG.domain}/#organization`,
+      },
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', 'main p'],
       },
       mainEntity: {
         '@type': 'ItemList',
@@ -321,6 +329,13 @@ export function buildProductReviewJsonLd(
     : `${SITE_CONFIG.domain}${review.image}`;
   const brandName = review.productName.split(' ')[0] || SITE_CONFIG.name;
 
+  const companionProducts = getCompanionReviews(review, REVIEWS, CATEGORIES).map((c) => ({
+    '@type': 'Product',
+    name: c.review.productName,
+    sku: c.review.asin,
+    url: `${SITE_CONFIG.domain}/review/${c.review.slug}`,
+  }));
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -341,7 +356,12 @@ export function buildProductReviewJsonLd(
       '@type': 'WebPage',
       '@id': `${reviewUrl}#webpage`,
       url: reviewUrl,
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', '#verdict-scores', '#final-verdict'],
+      },
     },
+    ...(companionProducts.length > 0 ? { isRelatedTo: companionProducts } : {}),
     additionalProperty: review.specs.map((spec) => ({
       '@type': 'PropertyValue',
       name: spec.label,
