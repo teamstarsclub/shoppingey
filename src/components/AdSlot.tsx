@@ -21,21 +21,55 @@ export const AdSlot: React.FC<AdSlotProps> = ({ placement, routeKey = '', classN
     const insEl = insRef.current;
     if (!insEl || typeof window === 'undefined') return;
 
-    // Prevent duplicate adsbygoogle.push() calls during React StrictMode double-effects
-    if (insEl.getAttribute('data-adsbygoogle-status')) return;
+    let pushed = false;
+    let rafId = 0;
+    let observer: ResizeObserver | undefined;
 
-    try {
-      window.adsbygoogle = window.adsbygoogle || [];
-      window.adsbygoogle.push({});
-    } catch {
-      // Ignore AdSense initialization errors in offline/blocked environments
-    }
+    const tryPushAd = () => {
+      if (pushed) return;
+      if (insEl.getAttribute('data-adsbygoogle-status')) {
+        pushed = true;
+        return;
+      }
+      // Never initialize an AdSense slot inside a display:none / 0-width container (e.g., lg-only sidebar on mobile)
+      const width = insEl.getBoundingClientRect().width;
+      if (insEl.offsetParent === null || width <= 0) {
+        return;
+      }
+      pushed = true;
+      if (observer) {
+        observer.disconnect();
+        observer = undefined;
+      }
+      try {
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.push({});
+      } catch {
+        // Ignore AdSense initialization errors in offline/blocked environments
+      }
+    };
+
+    rafId = window.requestAnimationFrame(() => {
+      tryPushAd();
+      if (!pushed && typeof ResizeObserver !== 'undefined') {
+        observer = new ResizeObserver(() => {
+          tryPushAd();
+        });
+        observer.observe(insEl);
+      }
+    });
+
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+      if (observer) observer.disconnect();
+    };
   }, [placement, routeKey]);
 
   const isInArticle = config.layout === 'in-article';
 
   return (
     <aside
+      key={`${placement}-${routeKey}`}
       aria-label={config.label}
       data-ad-placement={placement}
       className={`ad-slot-shell bg-[#FAFAFA] border border-[#E5E7EB] rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 ${className}`}
@@ -46,7 +80,6 @@ export const AdSlot: React.FC<AdSlotProps> = ({ placement, routeKey = '', classN
       <div className={`w-full overflow-hidden flex items-center justify-center ${config.minHeightClass}`}>
         <ins
           ref={insRef}
-          key={`${placement}-${routeKey}`}
           className="adsbygoogle block w-full"
           style={isInArticle ? { display: 'block', textAlign: 'center' } : { display: 'block' }}
           data-ad-client={ADSENSE_CLIENT_ID}
