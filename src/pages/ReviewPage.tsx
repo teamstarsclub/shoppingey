@@ -16,12 +16,12 @@ import {
   buildBreadcrumbJsonLd,
   buildFaqJsonLd,
   buildProductReviewJsonLd,
+  buildReviewSocialMeta,
   formatDisplayDate,
   getCategoryBySlug,
   getCompanionReviews,
   getReviewBySlug,
-  getReviewsByCategory,
-  sortReviews,
+  getSameCategoryCrossLinks,
 } from '../utils/catalog';
 import { AmazonAffiliateButton } from '../components/AmazonAffiliateButton';
 import { Link } from '../components/Link';
@@ -155,10 +155,7 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
 
   const category = getCategoryBySlug(review.categorySlug, CATEGORIES);
   const companions = getCompanionReviews(review, REVIEWS, CATEGORIES);
-  const sameCategorySiblings = sortReviews(
-    getReviewsByCategory(review.categorySlug, REVIEWS).filter((r) => r.slug !== review.slug),
-    'rating'
-  );
+  const sameCategoryCrossLinks = getSameCategoryCrossLinks(review, REVIEWS, { minLinks: 3 });
 
   const breadcrumbs = [
     { name: 'Home', path: '/' },
@@ -167,6 +164,8 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
       : []),
     { name: review.productName, path: `/review/${review.slug}` },
   ];
+
+  const socialMeta = buildReviewSocialMeta(review, category);
 
   const schemas = [
     buildProductReviewJsonLd(review, category),
@@ -181,12 +180,19 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
         description={review.metaDescription}
         canonicalPath={`/review/${review.slug}`}
         ogType="article"
-        image={review.image}
-        imageAlt={review.imageAlt}
-        publishedTime={review.lastUpdated}
-        modifiedTime={review.lastUpdated}
-        authorName={review.author.name}
-        section={category?.name}
+        socialTitle={socialMeta.socialTitle}
+        socialDescription={socialMeta.socialDescription}
+        image={socialMeta.imageUrl}
+        imageAlt={socialMeta.imageAlt}
+        imageType={socialMeta.imageType}
+        imageWidth={socialMeta.imageWidth}
+        imageHeight={socialMeta.imageHeight}
+        publishedTime={socialMeta.publishedTime}
+        modifiedTime={socialMeta.modifiedTime}
+        authorName={socialMeta.authorName}
+        section={socialMeta.section}
+        tags={socialMeta.tags}
+        twitterLabels={socialMeta.twitterLabels}
       />
       <SchemaMarkup id={`review-${review.slug}`} schemas={schemas} />
 
@@ -778,7 +784,7 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
             </section>
 
             {/* 8. Full-Department Internal Linking Silo: More Tested Picks in This Category */}
-            {category && sameCategorySiblings.length > 0 && (
+            {category && sameCategoryCrossLinks.length > 0 && (
               <section
                 id="more-in-category"
                 aria-labelledby="more-in-category-heading"
@@ -800,13 +806,13 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
                     to={`/category/${category.slug}`}
                     className="inline-flex items-center gap-1 text-xs font-bold text-[#111827] hover:text-[#B45309] transition-colors whitespace-nowrap"
                   >
-                    <span>View all {sameCategorySiblings.length + 1} {category.name} reviews</span>
+                    <span>View all {sameCategoryCrossLinks.length + 1} {category.name} reviews</span>
                     <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </Link>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {sameCategorySiblings.map((sibling) => (
+                  {sameCategoryCrossLinks.map(({ review: sibling, reason }) => (
                     <Link
                       key={sibling.slug}
                       to={`/review/${sibling.slug}`}
@@ -827,9 +833,12 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
                       <p className="mt-2.5 text-[11px] font-semibold text-[#B45309]">
                         {sibling.editorialBadge}
                       </p>
-                      <h3 className="mt-0.5 text-[13px] font-bold text-[#111827] leading-snug group-hover:text-[#B45309] transition-colors line-clamp-2 flex-1">
+                      <h3 className="mt-0.5 text-[13px] font-bold text-[#111827] leading-snug group-hover:text-[#B45309] transition-colors line-clamp-2">
                         {sibling.productName}
                       </h3>
+                      <p className="mt-1.5 text-[11px] leading-relaxed text-[#4B5563] line-clamp-2 flex-1">
+                        {reason}
+                      </p>
                       <div className="mt-2 pt-2 border-t border-[#E5E7EB] flex items-center justify-between text-[11px] text-[#4B5563]">
                         <span className="font-semibold text-[#111827] tabular-nums">
                           {sibling.scoreOutOf10.toFixed(1)}/10

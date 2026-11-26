@@ -11,7 +11,7 @@
  *
  *    {
  *      slug: 'your-seo-friendly-product-slug',
- *      categorySlug: 'home-tech' | 'home-kitchen' | 'home-decor' | 'tools' | 'gardening-gadgets',
+ *      categorySlug: 'home-tech' | 'home-electronics' | 'home-kitchen' | 'home-decor' | 'tools' | 'gardening-gadgets',
  *      asin: 'B0XXXXXXXX', // <-- Swap with the exact 10-character Amazon ASIN
  *      productName: 'Brand Model Short Product Name',
  *      reviewTitle: 'Brand Model Review (2026): Honest Verdict Headline',
@@ -1151,3 +1151,469 @@ export const REVIEWS: ProductReview[] = [
   ...TOOLS_EXTRA_REVIEWS,
   ...GARDENING_GADGETS_EXTRA_REVIEWS,
 ];
+
+// ============================================================================
+// AUTOMATIC SAME-CATEGORY CLUSTER CROSS-LINKING ENGINE
+// ============================================================================
+
+export interface SameCategoryCrossLink {
+  review: ProductReview;
+  relevanceScore: number;
+  sharedTopics: string[];
+  reason: string;
+  isDirectEditorialLink: boolean;
+}
+
+export interface SameCategoryCrossLinkOptions {
+  minLinks?: number;
+  maxLinks?: number;
+}
+
+const PRICE_TIER_ORDER: Record<PriceTier, number> = {
+  'Budget-Friendly': 1,
+  'Mid-Range': 2,
+  Premium: 3,
+};
+
+const STOP_WORDS = new Set([
+  'about',
+  'across',
+  'after',
+  'against',
+  'also',
+  'always',
+  'amazon',
+  'another',
+  'around',
+  'available',
+  'away',
+  'back',
+  'before',
+  'best',
+  'between',
+  'both',
+  'build',
+  'built',
+  'buying',
+  'clean',
+  'cleanly',
+  'comes',
+  'compared',
+  'control',
+  'controls',
+  'could',
+  'daily',
+  'days',
+  'delivered',
+  'delivers',
+  'department',
+  'design',
+  'designed',
+  'device',
+  'devices',
+  'does',
+  'down',
+  'during',
+  'each',
+  'easy',
+  'edition',
+  'editor',
+  'editorial',
+  'enough',
+  'even',
+  'every',
+  'everyday',
+  'exact',
+  'extra',
+  'feature',
+  'features',
+  'feel',
+  'feels',
+  'feet',
+  'first',
+  'five',
+  'four',
+  'from',
+  'full',
+  'gear',
+  'great',
+  'hands',
+  'handles',
+  'have',
+  'high',
+  'home',
+  'honest',
+  'hour',
+  'hours',
+  'ideal',
+  'inch',
+  'inches',
+  'included',
+  'includes',
+  'inside',
+  'into',
+  'just',
+  'keep',
+  'keeps',
+  'kit',
+  'large',
+  'last',
+  'less',
+  'level',
+  'levels',
+  'like',
+  'long',
+  'look',
+  'looks',
+  'made',
+  'make',
+  'makes',
+  'many',
+  'material',
+  'minutes',
+  'mode',
+  'model',
+  'models',
+  'more',
+  'most',
+  'much',
+  'multi',
+  'must',
+  'near',
+  'need',
+  'needs',
+  'never',
+  'next',
+  'only',
+  'option',
+  'options',
+  'other',
+  'outdoor',
+  'outside',
+  'over',
+  'pairs',
+  'pack',
+  'part',
+  'parts',
+  'performance',
+  'pick',
+  'plus',
+  'power',
+  'price',
+  'product',
+  'products',
+  'quality',
+  'quick',
+  'range',
+  'rating',
+  'real',
+  'really',
+  'reliable',
+  'reliably',
+  'review',
+  'reviewed',
+  'reviews',
+  'right',
+  'room',
+  'runs',
+  'same',
+  'score',
+  'seconds',
+  'setup',
+  'shoppingey',
+  'should',
+  'side',
+  'single',
+  'size',
+  'skip',
+  'small',
+  'some',
+  'space',
+  'standard',
+  'stays',
+  'still',
+  'strong',
+  'such',
+  'sure',
+  'system',
+  'systems',
+  'table',
+  'tested',
+  'testing',
+  'than',
+  'that',
+  'their',
+  'them',
+  'then',
+  'there',
+  'these',
+  'they',
+  'this',
+  'those',
+  'three',
+  'through',
+  'tier',
+  'time',
+  'times',
+  'today',
+  'tool',
+  'tools',
+  'total',
+  'true',
+  'turn',
+  'under',
+  'unit',
+  'until',
+  'upgrade',
+  'used',
+  'uses',
+  'using',
+  'value',
+  'very',
+  'want',
+  'week',
+  'weeks',
+  'weight',
+  'well',
+  'what',
+  'when',
+  'where',
+  'which',
+  'while',
+  'whose',
+  'wide',
+  'will',
+  'with',
+  'without',
+  'work',
+  'works',
+  'worth',
+  'would',
+  'year',
+  'years',
+  'your',
+  'zero',
+]);
+
+interface TokenProfile {
+  weights: Map<string, number>;
+  labels: Map<string, string>;
+}
+
+function normalizeTopicToken(raw: string): string {
+  const lower = raw.toLowerCase();
+  if (lower.length > 4 && lower.endsWith('ies')) {
+    return `${lower.slice(0, -3)}y`;
+  }
+  if (lower.length > 4 && lower.endsWith('s') && !lower.endsWith('ss')) {
+    return lower.slice(0, -1);
+  }
+  return lower;
+}
+
+function addWeightedTokens(profile: TokenProfile, text: string, weight: number): void {
+  const matches = text.match(/[a-zA-Z0-9]+(?:[-/][a-zA-Z0-9]+)*/g);
+  if (!matches) return;
+
+  for (const token of matches) {
+    const cleaned = token.replace(/^[-/]+|[-/]+$/g, '');
+    if (!cleaned) continue;
+    const lower = cleaned.toLowerCase();
+    // Skip pure numbers (years, dimensions, scores) unless paired with units (4k, 20v, 100w)
+    if (/^\d+$/.test(lower)) continue;
+    if (lower.length < 2 || STOP_WORDS.has(lower)) continue;
+    if (lower.length === 2 && !/^\d[a-z]$|^[a-z]\d$|^(ac|dc|4k|2k|8k|ph|uv|ir)$/.test(lower)) {
+      continue;
+    }
+
+    const normalized = normalizeTopicToken(lower);
+    if (STOP_WORDS.has(normalized)) continue;
+
+    const prevWeight = profile.weights.get(normalized) ?? 0;
+    profile.weights.set(normalized, Math.min(12, prevWeight + weight));
+
+    const existingLabel = profile.labels.get(normalized);
+    if (!existingLabel || (/[A-Z0-9-]/.test(cleaned) && !/[A-Z0-9-]/.test(existingLabel))) {
+      profile.labels.set(normalized, cleaned);
+    }
+  }
+}
+
+function buildReviewTokenProfile(review: ProductReview): TokenProfile {
+  const profile: TokenProfile = {
+    weights: new Map(),
+    labels: new Map(),
+  };
+
+  addWeightedTokens(profile, review.productName, 3);
+  addWeightedTokens(profile, review.specs.map((s) => `${s.label} ${s.value}`).join(' '), 3);
+  addWeightedTokens(profile, review.dimensionsSummary.callouts.join(' '), 3);
+
+  addWeightedTokens(profile, review.highlights.join(' '), 2);
+  addWeightedTokens(profile, review.quickVerdict, 2);
+  addWeightedTokens(profile, review.metaDescription, 2);
+
+  addWeightedTokens(profile, review.pros.join(' '), 1);
+  addWeightedTokens(profile, review.sections.map((s) => s.heading).join(' '), 1);
+  addWeightedTokens(profile, review.faqs.map((f) => f.question).join(' '), 1);
+
+  return profile;
+}
+
+function getDominantCriterion(criteriaScores: CriteriaScores): keyof CriteriaScores {
+  const entries = Object.entries(criteriaScores) as Array<[keyof CriteriaScores, number]>;
+  entries.sort((a, b) => b[1] - a[1]);
+  return entries[0][0];
+}
+
+function collectDirectLinks(review: ProductReview): Set<string> {
+  const targets = new Set<string>();
+  for (const comp of review.companions) {
+    targets.add(comp.slug);
+  }
+  for (const sec of review.sections) {
+    if (sec.inlineLink?.targetSlug) {
+      targets.add(sec.inlineLink.targetSlug);
+    }
+  }
+  return targets;
+}
+
+function buildCrossLinkReason(
+  source: ProductReview,
+  candidate: ProductReview,
+  sharedTopics: string[]
+): string {
+  const curatedCompanion = source.companions.find((c) => c.slug === candidate.slug);
+  if (curatedCompanion?.reason) {
+    return curatedCompanion.reason;
+  }
+
+  const categoryName =
+    CATEGORIES.find((cat) => cat.slug === source.categorySlug)?.name ?? source.categorySlug;
+
+  if (sharedTopics.length >= 2) {
+    const topicSummary = sharedTopics.slice(0, 3).join(', ');
+    if (source.priceTier === candidate.priceTier) {
+      return `High-relevance ${categoryName} match covering ${topicSummary} at a comparable ${candidate.priceTier} tier.`;
+    }
+    return `Strong ${categoryName} cluster pairing across ${topicSummary} specs and use cases.`;
+  }
+
+  if (sharedTopics.length === 1) {
+    return `Related ${categoryName} pick focused on ${sharedTopics[0]} performance (${candidate.scoreOutOf10.toFixed(1)}/10 Lab Score).`;
+  }
+
+  return `Top-rated ${candidate.priceTier} alternative in ${categoryName} (${candidate.scoreOutOf10.toFixed(1)}/10 Lab Score).`;
+}
+
+/**
+ * Automatically cross-links reviews within the same category by scoring topical
+ * overlap (specs, product attributes, highlights, verdicts), editorial links,
+ * price-tier proximity, and rubric strengths. Guarantees at least `minLinks`
+ * (default 3) high-relevance same-category links whenever available.
+ */
+export function getSameCategoryCrossLinks(
+  review: ProductReview,
+  allReviews: ProductReview[] = REVIEWS,
+  options: SameCategoryCrossLinkOptions = {}
+): SameCategoryCrossLink[] {
+  const minLinks = Math.max(3, options.minLinks ?? 3);
+  const maxLinks =
+    options.maxLinks !== undefined ? Math.max(minLinks, options.maxLinks) : undefined;
+
+  const seenSlugs = new Set<string>();
+  const candidates: ProductReview[] = [];
+  for (const item of allReviews) {
+    if (
+      item.categorySlug === review.categorySlug &&
+      item.slug !== review.slug &&
+      !seenSlugs.has(item.slug)
+    ) {
+      seenSlugs.add(item.slug);
+      candidates.push(item);
+    }
+  }
+
+  if (candidates.length === 0) {
+    return [];
+  }
+
+  const sourceProfile = buildReviewTokenProfile(review);
+  const sourceDirectTargets = collectDirectLinks(review);
+  const sourceStrength = getDominantCriterion(review.criteriaScores);
+
+  const scored: SameCategoryCrossLink[] = candidates.map((candidate) => {
+    const candidateProfile = buildReviewTokenProfile(candidate);
+    const candidateDirectTargets = collectDirectLinks(candidate);
+
+    const matchedTokens: Array<{ topic: string; weight: number }> = [];
+    let tokenOverlapScore = 0;
+
+    for (const [token, srcWeight] of sourceProfile.weights.entries()) {
+      const candWeight = candidateProfile.weights.get(token);
+      if (!candWeight) continue;
+      const pairWeight = Math.min(srcWeight, candWeight);
+      tokenOverlapScore += pairWeight;
+      matchedTokens.push({
+        topic: candidateProfile.labels.get(token) ?? sourceProfile.labels.get(token) ?? token,
+        weight: srcWeight + candWeight,
+      });
+    }
+
+    matchedTokens.sort((a, b) => b.weight - a.weight || a.topic.localeCompare(b.topic));
+    const sharedTopics = matchedTokens.slice(0, 4).map((m) => m.topic);
+
+    const outgoingCitation = sourceDirectTargets.has(candidate.slug);
+    const incomingCitation = candidateDirectTargets.has(review.slug);
+    const isDirectEditorialLink = outgoingCitation || incomingCitation;
+    const editorialBonus = (outgoingCitation ? 6 : 0) + (incomingCitation ? 4 : 0);
+
+    const tierDistance = Math.abs(
+      PRICE_TIER_ORDER[review.priceTier] - PRICE_TIER_ORDER[candidate.priceTier]
+    );
+    const tierBonus = tierDistance === 0 ? 3 : tierDistance === 1 ? 1 : 0;
+
+    const strengthBonus =
+      getDominantCriterion(candidate.criteriaScores) === sourceStrength ? 2 : 0;
+    const qualityScore = candidate.scoreOutOf10 * 0.6 + candidate.rating * 0.4;
+
+    const relevanceScore = Number(
+      (tokenOverlapScore + editorialBonus + tierBonus + strengthBonus + qualityScore).toFixed(2)
+    );
+
+    return {
+      review: candidate,
+      relevanceScore,
+      sharedTopics,
+      reason: buildCrossLinkReason(review, candidate, sharedTopics),
+      isDirectEditorialLink,
+    };
+  });
+
+  scored.sort(
+    (a, b) =>
+      b.relevanceScore - a.relevanceScore ||
+      Number(b.isDirectEditorialLink) - Number(a.isDirectEditorialLink) ||
+      b.review.scoreOutOf10 - a.review.scoreOutOf10 ||
+      b.review.rating - a.review.rating ||
+      a.review.slug.localeCompare(b.review.slug)
+  );
+
+  return maxLinks !== undefined ? scored.slice(0, maxLinks) : scored;
+}
+
+/**
+ * Generates a full category-cluster cross-link index for every review in the
+ * catalog, ensuring each article has >= minLinks same-category recommendations.
+ */
+export function buildSameCategoryCrossLinkMap(
+  allReviews: ProductReview[] = REVIEWS,
+  minLinks = 3
+): Map<string, SameCategoryCrossLink[]> {
+  const clusterMap = new Map<string, SameCategoryCrossLink[]>();
+  for (const review of allReviews) {
+    clusterMap.set(review.slug, getSameCategoryCrossLinks(review, allReviews, { minLinks }));
+  }
+  return clusterMap;
+}

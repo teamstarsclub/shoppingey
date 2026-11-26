@@ -1,12 +1,23 @@
 import {
+  buildSameCategoryCrossLinkMap,
   CATEGORIES,
+  getSameCategoryCrossLinks,
   REVIEWS,
   SITE_CONFIG,
   type Category,
   type CategorySlug,
   type PriceTier,
   type ProductReview,
+  type SameCategoryCrossLink,
+  type SameCategoryCrossLinkOptions,
 } from '../data/reviews';
+
+export {
+  buildSameCategoryCrossLinkMap,
+  getSameCategoryCrossLinks,
+  type SameCategoryCrossLink,
+  type SameCategoryCrossLinkOptions,
+};
 
 export type SortOption = 'rating' | 'newest' | 'price-asc' | 'price-desc';
 
@@ -332,11 +343,22 @@ export function buildProductReviewJsonLd(
     : `${SITE_CONFIG.domain}${review.image}`;
   const brandName = review.productName.split(' ')[0] || SITE_CONFIG.name;
 
-  const companionProducts = getCompanionReviews(review, REVIEWS, CATEGORIES).map((c) => ({
+  const relatedBySlug = new Map<string, ProductReview>();
+  for (const sameCat of getSameCategoryCrossLinks(review, REVIEWS, { minLinks: 3, maxLinks: 3 })) {
+    relatedBySlug.set(sameCat.review.slug, sameCat.review);
+  }
+  for (const comp of getCompanionReviews(review, REVIEWS, CATEGORIES)) {
+    if (!relatedBySlug.has(comp.review.slug)) {
+      relatedBySlug.set(comp.review.slug, comp.review);
+    }
+  }
+
+  const companionProducts = Array.from(relatedBySlug.values()).map((related) => ({
     '@type': 'Product',
-    name: c.review.productName,
-    sku: c.review.asin,
-    url: `${SITE_CONFIG.domain}/review/${c.review.slug}`,
+    name: related.productName,
+    sku: related.asin,
+    category: getCategoryBySlug(related.categorySlug, CATEGORIES)?.name ?? related.categorySlug,
+    url: `${SITE_CONFIG.domain}/review/${related.slug}`,
   }));
 
   return {
@@ -439,6 +461,84 @@ export function buildFaqJsonLd(review: ProductReview): Record<string, unknown> {
         text: faq.answer,
       },
     })),
+  };
+}
+
+export interface ReviewSocialMeta {
+  socialTitle: string;
+  socialDescription: string;
+  imageUrl: string;
+  imageAlt: string;
+  imageType: string;
+  imageWidth: number;
+  imageHeight: number;
+  publishedTime: string;
+  modifiedTime: string;
+  authorName: string;
+  section: string;
+  tags: string[];
+  twitterLabels: Array<{ label: string; data: string }>;
+}
+
+/**
+ * Generates dynamic, high-CTR Open Graph and Twitter Card metadata for any
+ * product review page, shared identically between runtime SEOHead and the
+ * build-time HTML pre-renderer. Zero static dollar prices are ever emitted.
+ */
+export function buildReviewSocialMeta(
+  review: ProductReview,
+  category?: Category
+): ReviewSocialMeta {
+  const categoryName =
+    category?.name ??
+    getCategoryBySlug(review.categorySlug, CATEGORIES)?.name ??
+    review.categorySlug;
+  const imageUrl = review.image.startsWith('http')
+    ? review.image
+    : `${SITE_CONFIG.domain}${review.image.startsWith('/') ? '' : '/'}${review.image}`;
+  const lowerUrl = imageUrl.toLowerCase();
+  const imageType = lowerUrl.endsWith('.png')
+    ? 'image/png'
+    : lowerUrl.endsWith('.webp')
+      ? 'image/webp'
+      : 'image/jpeg';
+  const isoTimestamp = review.lastUpdated.includes('T')
+    ? review.lastUpdated
+    : `${review.lastUpdated}T08:00:00Z`;
+
+  const tags = Array.from(
+    new Set([
+      categoryName,
+      review.editorialBadge,
+      review.priceTier,
+      'Amazon Product Review',
+      review.asin,
+    ])
+  );
+
+  return {
+    socialTitle: review.reviewTitle,
+    socialDescription: `${review.scoreOutOf10.toFixed(1)}/10 Lab Score · ${review.editorialBadge} — ${review.metaDescription}`,
+    imageUrl,
+    imageAlt: review.imageAlt,
+    imageType,
+    imageWidth: 1200,
+    imageHeight: 896,
+    publishedTime: isoTimestamp,
+    modifiedTime: isoTimestamp,
+    authorName: review.author.name,
+    section: categoryName,
+    tags,
+    twitterLabels: [
+      {
+        label: 'Lab Score',
+        data: `${review.scoreOutOf10.toFixed(1)}/10 (${review.rating.toFixed(1)}/5)`,
+      },
+      {
+        label: 'Price Tier',
+        data: `${review.priceTier} · ${review.editorialBadge}`,
+      },
+    ],
   };
 }
 

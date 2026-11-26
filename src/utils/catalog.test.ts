@@ -3,13 +3,15 @@ import assert from 'node:assert/strict';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { AmazonAffiliateButton } from '../components/AmazonAffiliateButton';
-import { CATEGORIES, REVIEWS, SITE_CONFIG } from '../data/reviews';
+import { CATEGORIES, REVIEWS, SITE_CONFIG, type ProductReview } from '../data/reviews';
 import {
   buildBreadcrumbJsonLd,
   buildCategoryCollectionJsonLd,
   buildFaqJsonLd,
   buildHomePageJsonLd,
   buildProductReviewJsonLd,
+  buildReviewSocialMeta,
+  buildSameCategoryCrossLinkMap,
   buildSitewideJsonLd,
   containsStaticDollarPrice,
   getAmazonAffiliateUrl,
@@ -17,6 +19,7 @@ import {
   getCategoryReviewCount,
   getCompanionReviews,
   getReviewsByCategory,
+  getSameCategoryCrossLinks,
   searchReviews,
   sortReviews,
 } from './catalog';
@@ -488,7 +491,14 @@ test('Googlebot & AI readiness: robots.txt, llms.txt, llms-full.txt, ai-catalog.
     REVIEWS[0],
     getCategoryBySlug(REVIEWS[0].categorySlug)
   ) as Record<string, any>;
-  assert.equal(sampleSchema.isRelatedTo.length, 3);
+  assert.ok(sampleSchema.isRelatedTo.length >= 5, 'Expected merged same-category cluster + cross-category related products');
+  const relatedUrls = sampleSchema.isRelatedTo.map((item: { url: string }) => item.url);
+  assert.equal(new Set(relatedUrls).size, relatedUrls.length, 'Product.isRelatedTo must not contain duplicates');
+  const sampleCategoryName = getCategoryBySlug(REVIEWS[0].categorySlug)?.name;
+  const sameCategoryRelatedCount = sampleSchema.isRelatedTo.filter(
+    (item: { category?: string }) => item.category === sampleCategoryName
+  ).length;
+  assert.ok(sameCategoryRelatedCount >= 3, 'Product.isRelatedTo must include at least 3 same-category products');
   assert.equal(sampleSchema.mainEntityOfPage.speakable['@type'], 'SpeakableSpecification');
 
   const { generateLlmsTxt, generateLlmsFullTxt, generateAiCatalogJson } = await import(
@@ -501,6 +511,12 @@ test('Googlebot & AI readiness: robots.txt, llms.txt, llms-full.txt, ai-catalog.
 
   assert.equal(parsedAi.categories.length, 6);
   assert.equal(parsedAi.reviews.length, 36);
+  for (const rev of parsedAi.reviews) {
+    assert.ok(
+      Array.isArray(rev.relatedSameCategory) && rev.relatedSameCategory.length >= 3,
+      `Expected >= 3 same-category cluster entries in ai-catalog.json for ${rev.slug}`
+    );
+  }
   assert.equal(containsStaticDollarPrice(llms), false, 'llms.txt must not contain static dollar prices');
   assert.equal(containsStaticDollarPrice(llmsFull), false, 'llms-full.txt must not contain static dollar prices');
   assert.equal(containsStaticDollarPrice(aiJson), false, 'ai-catalog.json must not contain static dollar prices');
@@ -512,4 +528,177 @@ test('Googlebot & AI readiness: robots.txt, llms.txt, llms-full.txt, ai-catalog.
     assert.ok(llms.includes(`https://www.shoppingey.com/review/${rev.slug}`), `Missing ${rev.slug} in llms.txt`);
     assert.ok(llmsFull.includes(`ASIN: ${rev.asin}`), `Missing ASIN ${rev.asin} in llms-full.txt`);
   }
+});
+
+test('automatic same-category cross-linking guarantees >= 3 high-relevance cluster links for existing and newly added reviews', () => {
+  const clusterMap = buildSameCategoryCrossLinkMap(REVIEWS, 3);
+  assert.equal(clusterMap.size, REVIEWS.length);
+
+  for (const review of REVIEWS) {
+    const links = clusterMap.get(review.slug) ?? [];
+    assert.ok(
+      links.length >= 3,
+      `Expected at least 3 same-category cross-links for ${review.slug}, got ${links.length}`
+    );
+
+    const seen = new Set<string>();
+    for (let i = 0; i < links.length; i += 1) {
+      const link = links[i];
+      assert.notEqual(link.review.slug, review.slug, 'Auto cross-link must never self-link');
+      assert.equal(
+        link.review.categorySlug,
+        review.categorySlug,
+        `Cross-link target ${link.review.slug} must match source category ${review.categorySlug}`
+      );
+      assert.equal(seen.has(link.review.slug), false, 'Auto cross-links must be deduplicated');
+      seen.add(link.review.slug);
+      assert.ok(link.relevanceScore > 0, 'Relevance score must be positive');
+      assert.ok(link.reason.length >= 20, 'Cross-link reason must be descriptive');
+      assert.equal(containsStaticDollarPrice(link.reason), false, 'Reason must not contain static dollar price');
+      if (i > 0) {
+        assert.ok(
+          links[i - 1].relevanceScore >= link.relevanceScore,
+          'Auto cross-links must be sorted by descending relevanceScore'
+        );
+      }
+    }
+
+    const boundedTop3 = getSameCategoryCrossLinks(review, REVIEWS, { minLinks: 3, maxLinks: 3 });
+    assert.equal(boundedTop3.length, 3);
+    assert.deepEqual(
+      boundedTop3.map((l) => l.review.slug),
+      links.slice(0, 3).map((l) => l.review.slug)
+    );
+  }
+
+  // Verify zero-manual-link new article automatically receives >= 3 semantically relevant same-category links
+  const syntheticElectronicsReview: ProductReview = {
+    ...REVIEWS[0],
+    slug: 'synthetic-dolby-atmos-hdmi-earc-streaming-amp',
+    categorySlug: 'home-electronics',
+    asin: 'B0SYNTH001',
+    productName: 'StreamAmp 4K HDMI eARC Dolby Atmos Wireless Hub',
+    reviewTitle: 'StreamAmp 4K HDMI eARC Hub Review (2026)',
+    metaDescription:
+      'Hands-on StreamAmp 4K HDMI eARC hub review testing Dolby Atmos pass-through, Bluetooth 5.3 streaming audio, and USB-C power.',
+    priceTier: 'Premium',
+    rating: 4.7,
+    scoreOutOf10: 9.2,
+    quickVerdict:
+      'Brings effortless 4K HDR streaming, lossless HDMI eARC Dolby Atmos routing, and Bluetooth wireless audio to living room theaters.',
+    highlights: [
+      'HDMI eARC pass-through supports Dolby Atmos and 4K HDR TVs',
+      'Bluetooth 5.3 low-latency wireless audio pairing for headphones and projectors',
+      '100W USB-C power delivery keeps desk hubs tidy',
+    ],
+    pros: ['Zero-lag HDMI eARC Atmos audio', 'Compact brushed metal enclosure'],
+    cons: ['Requires High-Speed HDMI cable'],
+    sections: [
+      {
+        id: 'overview',
+        heading: 'HDMI eARC & Wireless Audio Performance',
+        paragraphs: ['Delivers crisp 4K Atmos streaming without manual link configuration.'],
+      },
+    ],
+    specs: [
+      { label: 'Video Output', value: '4K HDR10+ Dolby Vision' },
+      { label: 'Audio Routing', value: 'HDMI eARC Dolby Atmos & Bluetooth 5.3' },
+    ],
+    companions: [],
+  };
+
+  const syntheticLinks = getSameCategoryCrossLinks(
+    syntheticElectronicsReview,
+    [...REVIEWS, syntheticElectronicsReview],
+    { minLinks: 3 }
+  );
+  assert.ok(syntheticLinks.length >= 3, 'New review without manual links must still receive >= 3 same-category links');
+  assert.ok(
+    syntheticLinks
+      .slice(0, 3)
+      .every((item) => item.review.categorySlug === 'home-electronics' && item.sharedTopics.length >= 1),
+    'Top 3 auto-links for new Home Electronics review must stay inside home-electronics with shared topic matches'
+  );
+  assert.ok(
+    syntheticLinks
+      .slice(0, 3)
+      .some((item) => item.review.slug === 'soundpulse-dolby-atmos-soundbar-subwoofer'),
+    'HDMI eARC Dolby Atmos test article should rank SoundPulse Atmos Soundbar inside its top 3 auto-links'
+  );
+});
+
+test('Social head configuration: all 36 review pages emit comprehensive dynamic Open Graph & Twitter Card tags', async () => {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  const { buildAllSeoRoutes, renderRouteHtml } = await import('../../scripts/generate-seo');
+
+  const indexTemplate = fs.readFileSync(path.resolve(process.cwd(), 'index.html'), 'utf8');
+  assert.ok(
+    indexTemplate.includes(
+      "<meta name='impact-site-verification' value='391f589b-27ef-4de9-acf5-e3a46b472439'>"
+    ),
+    'index.html must preserve Impact verification meta tag'
+  );
+
+  const allRoutes = buildAllSeoRoutes();
+  const reviewRoutes = allRoutes.filter((r) => r.path.startsWith('/review/'));
+  assert.equal(reviewRoutes.length, 36);
+
+  for (const review of REVIEWS) {
+    const category = getCategoryBySlug(review.categorySlug);
+    const socialMeta = buildReviewSocialMeta(review, category);
+    assert.equal(containsStaticDollarPrice(socialMeta.socialTitle), false);
+    assert.equal(containsStaticDollarPrice(socialMeta.socialDescription), false);
+    assert.equal(socialMeta.twitterLabels.length, 2);
+    assert.ok(socialMeta.tags.length >= 4);
+
+    const route = reviewRoutes.find((r) => r.path === `/review/${review.slug}`);
+    assert.ok(route, `Expected pre-render route for ${review.slug}`);
+
+    const html = renderRouteHtml(indexTemplate, route);
+    const headHtml = html.slice(0, html.indexOf('</head>'));
+    const expectedUrl = `https://www.shoppingey.com/review/${review.slug}`;
+
+    const requiredSnippets = [
+      `<meta name='impact-site-verification' value='391f589b-27ef-4de9-acf5-e3a46b472439'>`,
+      `<meta property="og:site_name" content="Shoppingey.com" />`,
+      `<meta property="og:locale" content="en_US" />`,
+      `<meta property="og:type" content="article" />`,
+      `<meta property="og:url" content="${expectedUrl}" />`,
+      `<meta property="og:image" content="${socialMeta.imageUrl}" />`,
+      `<meta property="og:image:secure_url" content="${socialMeta.imageUrl}" />`,
+      `<meta property="og:image:type" content="${socialMeta.imageType}" />`,
+      `<meta property="og:image:width" content="1200" />`,
+      `<meta property="og:image:height" content="896" />`,
+      `<meta property="og:updated_time" content="${socialMeta.modifiedTime}" />`,
+      `<meta property="article:published_time" content="${socialMeta.publishedTime}" />`,
+      `<meta property="article:modified_time" content="${socialMeta.modifiedTime}" />`,
+      `<meta property="article:publisher" content="https://www.shoppingey.com" />`,
+      `<meta name="twitter:card" content="summary_large_image" />`,
+      `<meta name="twitter:domain" content="www.shoppingey.com" />`,
+      `<meta name="twitter:url" content="${expectedUrl}" />`,
+      `<meta name="twitter:image" content="${socialMeta.imageUrl}" />`,
+      `<meta name="twitter:label1" content="Lab Score" />`,
+      `<meta name="twitter:label2" content="Price Tier" />`,
+    ];
+
+    for (const snippet of requiredSnippets) {
+      assert.ok(
+        headHtml.includes(snippet),
+        `Missing required social meta tag "${snippet}" in rendered head for ${review.slug}`
+      );
+    }
+
+    assert.ok(
+      headHtml.includes(`<meta property="article:tag" content="${review.asin}" />`),
+      `Missing ASIN article:tag in rendered head for ${review.slug}`
+    );
+  }
+
+  // Non-review route must emit clean website OG/Twitter cards without stray article tags
+  const homeRoute = allRoutes.find((r) => r.path === '/')!;
+  const homeHead = renderRouteHtml(indexTemplate, homeRoute).split('</head>')[0];
+  assert.ok(homeHead.includes('<meta property="og:type" content="website" />'));
+  assert.equal(homeHead.includes('article:published_time'), false);
+  assert.equal(homeHead.includes('twitter:label1'), false);
 });

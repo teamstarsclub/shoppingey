@@ -22,10 +22,12 @@ import {
   buildFaqJsonLd,
   buildHomePageJsonLd,
   buildProductReviewJsonLd,
+  buildReviewSocialMeta,
   buildSitewideJsonLd,
   buildWebPageJsonLd,
   getCategoryBySlug,
   getReviewsByCategory,
+  getSameCategoryCrossLinks,
 } from '../src/utils/catalog';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -37,13 +39,18 @@ const PUBLIC_AI_CATALOG_PATH = path.join(ROOT_DIR, 'public', 'ai-catalog.json');
 const DIST_DIR = path.join(ROOT_DIR, 'dist');
 const DEFAULT_OG_IMAGE = `${SITE_CONFIG.domain}/src/assets/images/product_dual_basket_air_fryer_1795195713278.jpg`;
 
-interface StaticRouteSpec {
+export interface StaticRouteSpec {
   path: string;
   title: string;
   description: string;
+  socialTitle?: string;
+  socialDescription?: string;
   ogType: 'website' | 'article';
   image: string;
   imageAlt: string;
+  imageType?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   changefreq: 'daily' | 'weekly' | 'monthly' | 'yearly';
   priority: string;
   lastmod: string;
@@ -56,7 +63,9 @@ interface StaticRouteSpec {
     modifiedTime: string;
     authorName: string;
     section?: string;
+    tags?: string[];
   };
+  twitterLabels?: Array<{ label: string; data: string }>;
 }
 
 const INDEX_ROBOTS =
@@ -255,6 +264,7 @@ export function buildAllSeoRoutes(): StaticRouteSpec[] {
 
   const reviewRoutes: StaticRouteSpec[] = REVIEWS.map((review) => {
     const category = getCategoryBySlug(review.categorySlug, CATEGORIES);
+    const socialMeta = buildReviewSocialMeta(review, category);
     const breadcrumbs = [
       { name: 'Home', path: '/' },
       ...(category ? [{ name: category.name, path: `/category/${category.slug}` }] : []),
@@ -265,9 +275,14 @@ export function buildAllSeoRoutes(): StaticRouteSpec[] {
       path: `/review/${review.slug}`,
       title: `${review.productName} Review (2026): Worth Buying? | Shoppingey.com`,
       description: review.metaDescription,
+      socialTitle: socialMeta.socialTitle,
+      socialDescription: socialMeta.socialDescription,
       ogType: 'article',
-      image: toAbsoluteUrl(review.image),
-      imageAlt: review.imageAlt,
+      image: socialMeta.imageUrl,
+      imageAlt: socialMeta.imageAlt,
+      imageType: socialMeta.imageType,
+      imageWidth: socialMeta.imageWidth,
+      imageHeight: socialMeta.imageHeight,
       changefreq: 'weekly',
       priority: '0.9',
       lastmod: review.lastUpdated,
@@ -280,11 +295,13 @@ export function buildAllSeoRoutes(): StaticRouteSpec[] {
         buildBreadcrumbJsonLd(breadcrumbs),
       ],
       articleMeta: {
-        publishedTime: review.lastUpdated,
-        modifiedTime: review.lastUpdated,
-        authorName: review.author.name,
-        section: category?.name,
+        publishedTime: socialMeta.publishedTime,
+        modifiedTime: socialMeta.modifiedTime,
+        authorName: socialMeta.authorName,
+        section: socialMeta.section,
+        tags: socialMeta.tags,
       },
+      twitterLabels: socialMeta.twitterLabels,
     };
   });
 
@@ -379,6 +396,10 @@ export function generateLlmsFullTxt(): string {
     lines.push(`---`, '', `## Department: ${cat.name}`, `URL: ${SITE_CONFIG.domain}/category/${cat.slug}`, '', cat.seoIntro, '');
     const catReviews = getReviewsByCategory(cat.slug, REVIEWS);
     for (const rev of catReviews) {
+      const sameCategoryCluster = getSameCategoryCrossLinks(rev, REVIEWS, {
+        minLinks: 3,
+        maxLinks: 3,
+      });
       lines.push(
         `### ${rev.productName}`,
         `- URL: ${SITE_CONFIG.domain}/review/${rev.slug}`,
@@ -393,6 +414,9 @@ export function generateLlmsFullTxt(): string {
         `- Cons: ${rev.cons.join(' | ')}`,
         `- Key Specs: ${rev.specs.map((s) => `${s.label}: ${s.value}`).join(' ; ')}`,
         `- FAQs: ${rev.faqs.map((f) => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`,
+        `- Related in ${cat.name}: ${sameCategoryCluster
+          .map((link) => `${link.review.productName} (${SITE_CONFIG.domain}/review/${link.review.slug})`)
+          .join(' | ')}`,
         ''
       );
     }
@@ -440,6 +464,15 @@ export function generateAiCatalogJson(): string {
       cons: rev.cons,
       specs: rev.specs,
       faqs: rev.faqs,
+      relatedSameCategory: getSameCategoryCrossLinks(rev, REVIEWS, {
+        minLinks: 3,
+        maxLinks: 3,
+      }).map((link) => ({
+        slug: link.review.slug,
+        url: `${SITE_CONFIG.domain}/review/${link.review.slug}`,
+        relevanceScore: link.relevanceScore,
+        sharedTopics: link.sharedTopics,
+      })),
     })),
   };
 
@@ -464,8 +497,21 @@ function replaceMetaTag(
   return html.replace('</head>', `    ${tag}\n  </head>`);
 }
 
-function renderRouteHtml(baseTemplate: string, route: StaticRouteSpec): string {
+export function renderRouteHtml(baseTemplate: string, route: StaticRouteSpec): string {
   const canonicalUrl = `${SITE_CONFIG.domain}${route.path}`;
+  const resolvedDomain = new URL(SITE_CONFIG.domain).hostname;
+  const resolvedSocialTitle = route.socialTitle ?? route.title;
+  const resolvedSocialDescription = route.socialDescription ?? route.description;
+  const resolvedImageType =
+    route.imageType ??
+    (route.image.toLowerCase().endsWith('.png')
+      ? 'image/png'
+      : route.image.toLowerCase().endsWith('.webp')
+        ? 'image/webp'
+        : 'image/jpeg');
+  const resolvedImageWidth = String(route.imageWidth ?? 1200);
+  const resolvedImageHeight = String(route.imageHeight ?? 896);
+
   let html = baseTemplate;
 
   // Replace <title>
@@ -481,30 +527,60 @@ function renderRouteHtml(baseTemplate: string, route: StaticRouteSpec): string {
   html = replaceMetaTag(html, 'name', 'description', route.description);
   html = replaceMetaTag(html, 'name', 'robots', route.robots);
   html = replaceMetaTag(html, 'name', 'googlebot', route.robots);
+  html = replaceMetaTag(html, 'property', 'og:site_name', SITE_CONFIG.name);
+  html = replaceMetaTag(html, 'property', 'og:locale', 'en_US');
   html = replaceMetaTag(html, 'property', 'og:type', route.ogType);
-  html = replaceMetaTag(html, 'property', 'og:title', route.title);
-  html = replaceMetaTag(html, 'property', 'og:description', route.description);
+  html = replaceMetaTag(html, 'property', 'og:title', resolvedSocialTitle);
+  html = replaceMetaTag(html, 'property', 'og:description', resolvedSocialDescription);
   html = replaceMetaTag(html, 'property', 'og:url', canonicalUrl);
   html = replaceMetaTag(html, 'property', 'og:image', route.image);
+  html = replaceMetaTag(html, 'property', 'og:image:secure_url', route.image);
+  html = replaceMetaTag(html, 'property', 'og:image:type', resolvedImageType);
+  html = replaceMetaTag(html, 'property', 'og:image:width', resolvedImageWidth);
+  html = replaceMetaTag(html, 'property', 'og:image:height', resolvedImageHeight);
   html = replaceMetaTag(html, 'property', 'og:image:alt', route.imageAlt);
 
-  html = replaceMetaTag(html, 'name', 'twitter:title', route.title);
-  html = replaceMetaTag(html, 'name', 'twitter:description', route.description);
+  html = replaceMetaTag(html, 'name', 'twitter:card', 'summary_large_image');
+  html = replaceMetaTag(html, 'name', 'twitter:domain', resolvedDomain);
+  html = replaceMetaTag(html, 'name', 'twitter:url', canonicalUrl);
+  html = replaceMetaTag(html, 'name', 'twitter:title', resolvedSocialTitle);
+  html = replaceMetaTag(html, 'name', 'twitter:description', resolvedSocialDescription);
   html = replaceMetaTag(html, 'name', 'twitter:image', route.image);
   html = replaceMetaTag(html, 'name', 'twitter:image:alt', route.imageAlt);
 
-  // Remove any existing article meta tags and inject fresh ones on review pages
+  // Strip previous dynamic article/updated_time/twitter label meta tags before emitting fresh ones
+  html = html.replace(/\s*<meta\s+property=["']og:updated_time["'][^>]*>/gi, '');
   html = html.replace(/\s*<meta\s+property=["']article:[^"']+["'][^>]*>/gi, '');
+  html = html.replace(/\s*<meta\s+name=["']twitter:(?:label|data)\d+["'][^>]*>/gi, '');
+
+  const dynamicSocialTags: string[] = [];
   if (route.articleMeta) {
-    const articleTags = [
+    dynamicSocialTags.push(
+      `<meta property="og:updated_time" content="${escapeHtml(route.articleMeta.modifiedTime)}" />`,
       `<meta property="article:published_time" content="${escapeHtml(route.articleMeta.publishedTime)}" />`,
       `<meta property="article:modified_time" content="${escapeHtml(route.articleMeta.modifiedTime)}" />`,
       `<meta property="article:author" content="${escapeHtml(route.articleMeta.authorName)}" />`,
-      ...(route.articleMeta.section
-        ? [`<meta property="article:section" content="${escapeHtml(route.articleMeta.section)}" />`]
-        : []),
-    ];
-    html = html.replace('</head>', `    ${articleTags.join('\n    ')}\n  </head>`);
+      `<meta property="article:publisher" content="${escapeHtml(SITE_CONFIG.domain)}" />`
+    );
+    if (route.articleMeta.section) {
+      dynamicSocialTags.push(
+        `<meta property="article:section" content="${escapeHtml(route.articleMeta.section)}" />`
+      );
+    }
+    for (const tag of route.articleMeta.tags ?? []) {
+      dynamicSocialTags.push(`<meta property="article:tag" content="${escapeHtml(tag)}" />`);
+    }
+  }
+  if (route.twitterLabels && route.twitterLabels.length > 0) {
+    route.twitterLabels.slice(0, 2).forEach((entry, index) => {
+      dynamicSocialTags.push(
+        `<meta name="twitter:label${index + 1}" content="${escapeHtml(entry.label)}" />`,
+        `<meta name="twitter:data${index + 1}" content="${escapeHtml(entry.data)}" />`
+      );
+    });
+  }
+  if (dynamicSocialTags.length > 0) {
+    html = html.replace('</head>', `    ${dynamicSocialTags.join('\n    ')}\n  </head>`);
   }
 
   // Remove any previous hero preload links and add high-priority LCP preload on review pages
