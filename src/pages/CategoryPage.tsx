@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Check, ChevronRight, SlidersHorizontal, X } from 'lucide-react';
+import { ArrowRight, Check, SlidersHorizontal, X } from 'lucide-react';
 import { CATEGORIES, REVIEWS, type PriceTier } from '../data/reviews';
 import {
   buildBreadcrumbJsonLd,
@@ -12,6 +12,7 @@ import {
   type SortOption,
 } from '../utils/catalog';
 import { AmazonAffiliateButton } from '../components/AmazonAffiliateButton';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Link } from '../components/Link';
 import { resolveAssetUrl } from '../utils/router';
 import { ProductImage } from '../components/ProductImage';
@@ -71,21 +72,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug }) => {
 
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="mb-5">
-          <ol className="flex items-center flex-wrap gap-1.5 text-xs text-[#4B5563]">
-            <li>
-              <Link to="/" className="hover:text-[#111827] hover:underline">
-                Home
-              </Link>
-            </li>
-            <li aria-hidden="true">
-              <ChevronRight className="w-3.5 h-3.5 text-[#9CA3AF]" />
-            </li>
-            <li aria-current="page" className="font-semibold text-[#111827]">
-              {category.name}
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumbs items={breadcrumbs} className="mb-5" />
 
         {/* Category Hero Header */}
         <section className="bg-white border border-[#E5E7EB] rounded-lg p-6 sm:p-8 mb-6">

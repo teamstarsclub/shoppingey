@@ -639,6 +639,20 @@ test('Social head configuration: all 36 review pages emit comprehensive dynamic 
     ),
     'index.html must preserve Impact verification meta tag'
   );
+  assert.ok(
+    indexTemplate.includes(
+      '<meta name="ads.txt" content="google.com, pub-5379808297296166, DIRECT, f08c47fec0942fa0" />'
+    ),
+    'index.html <head> must contain ads.txt verification meta tag'
+  );
+  assert.ok(
+    indexTemplate.includes(
+      '<meta name="google-adsense-account" content="ca-pub-5379808297296166" />'
+    ),
+    'index.html <head> must contain google-adsense-account meta tag'
+  );
+  const publicAdsTxt = fs.readFileSync(path.resolve(process.cwd(), 'public/ads.txt'), 'utf8').trim();
+  assert.equal(publicAdsTxt, 'google.com, pub-5379808297296166, DIRECT, f08c47fec0942fa0');
 
   const allRoutes = buildAllSeoRoutes();
   const reviewRoutes = allRoutes.filter((r) => r.path.startsWith('/review/'));
@@ -701,4 +715,48 @@ test('Social head configuration: all 36 review pages emit comprehensive dynamic 
   assert.ok(homeHead.includes('<meta property="og:type" content="website" />'));
   assert.equal(homeHead.includes('article:published_time'), false);
   assert.equal(homeHead.includes('twitter:label1'), false);
+});
+
+test('Breadcrumb navigation trail renders Home > Category on CategoryPage and Home > Category > Product on ReviewPage', async () => {
+  const { CategoryPage } = await import('../pages/CategoryPage');
+  const { ReviewPage } = await import('../pages/ReviewPage');
+
+  for (const cat of CATEGORIES) {
+    const categoryHtml = renderToStaticMarkup(
+      React.createElement(CategoryPage, { slug: cat.slug })
+    );
+    assert.ok(
+      categoryHtml.includes('aria-label="Breadcrumb"'),
+      `CategoryPage ${cat.slug} must render Breadcrumb nav`
+    );
+    assert.ok(
+      categoryHtml.includes('itemType="https://schema.org/BreadcrumbList"') ||
+        categoryHtml.includes('itemtype="https://schema.org/BreadcrumbList"'),
+      `CategoryPage ${cat.slug} must emit BreadcrumbList microdata`
+    );
+    const escapedCatName = cat.name.replace(/&/g, '&amp;');
+    assert.ok(
+      categoryHtml.includes('>Home<') && categoryHtml.includes(`>${escapedCatName}<`),
+      `CategoryPage ${cat.slug} must display Home > ${cat.name} trail`
+    );
+  }
+
+  for (const rev of REVIEWS) {
+    const cat = getCategoryBySlug(rev.categorySlug)!;
+    const reviewHtml = renderToStaticMarkup(
+      React.createElement(ReviewPage, { slug: rev.slug })
+    );
+    assert.ok(
+      reviewHtml.includes('aria-label="Breadcrumb"'),
+      `ReviewPage ${rev.slug} must render Breadcrumb nav`
+    );
+    assert.ok(
+      reviewHtml.includes(`href="/category/${cat.slug}"`),
+      `ReviewPage ${rev.slug} breadcrumb must link back to /category/${cat.slug}`
+    );
+    assert.ok(
+      reviewHtml.includes('aria-current="page"'),
+      `ReviewPage ${rev.slug} breadcrumb must mark current product page`
+    );
+  }
 });

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { CheckCircle2, ChevronRight, Mail, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, Mail, ShieldCheck } from 'lucide-react';
 import { SITE_CONFIG } from '../data/reviews';
 import { buildBreadcrumbJsonLd, buildWebPageJsonLd } from '../utils/catalog';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Link } from '../components/Link';
 import { SchemaMarkup } from '../components/SchemaMarkup';
 import { SEOHead } from '../components/SEOHead';
@@ -259,21 +260,7 @@ export const LegalPages: React.FC<LegalPagesProps> = ({ page }) => {
       />
 
       <div className="max-w-[960px] mx-auto px-4 sm:px-6 py-8">
-        <nav aria-label="Breadcrumb" className="mb-5">
-          <ol className="flex items-center gap-1.5 text-xs text-[#4B5563]">
-            <li>
-              <Link to="/" className="hover:text-[#111827] hover:underline">
-                Home
-              </Link>
-            </li>
-            <li aria-hidden="true">
-              <ChevronRight className="w-3.5 h-3.5 text-[#9CA3AF]" />
-            </li>
-            <li aria-current="page" className="font-semibold text-[#111827]">
-              {meta.heading}
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumbs items={breadcrumbs} className="mb-5" />
 
         <article className="bg-white border border-[#E5E7EB] rounded-lg p-6 sm:p-10 space-y-6">
           <header className="pb-5 border-b border-[#E5E7EB]">

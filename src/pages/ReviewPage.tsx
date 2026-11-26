@@ -4,7 +4,6 @@ import {
   Award,
   Check,
   ChevronDown,
-  ChevronRight,
   List,
   Ruler,
   ShieldCheck,
@@ -24,6 +23,7 @@ import {
   getSameCategoryCrossLinks,
 } from '../utils/catalog';
 import { AmazonAffiliateButton } from '../components/AmazonAffiliateButton';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Link } from '../components/Link';
 import { resolveAssetUrl } from '../utils/router';
 import { ProductImage } from '../components/ProductImage';
@@ -197,37 +197,8 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
       <SchemaMarkup id={`review-${review.slug}`} schemas={schemas} />
 
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 py-5 sm:py-7 pb-20 md:pb-8">
-        {/* Breadcrumbs */}
-        <nav aria-label="Breadcrumb" className="mb-4">
-          <ol className="flex items-center flex-wrap gap-1.5 text-xs text-[#4B5563]">
-            <li>
-              <Link to="/" className="hover:text-[#111827] hover:underline">
-                Home
-              </Link>
-            </li>
-            {category && (
-              <>
-                <li aria-hidden="true">
-                  <ChevronRight className="w-3.5 h-3.5 text-[#9CA3AF]" />
-                </li>
-                <li>
-                  <Link
-                    to={`/category/${category.slug}`}
-                    className="hover:text-[#111827] hover:underline"
-                  >
-                    {category.name}
-                  </Link>
-                </li>
-              </>
-            )}
-            <li aria-hidden="true">
-              <ChevronRight className="w-3.5 h-3.5 text-[#9CA3AF]" />
-            </li>
-            <li aria-current="page" className="font-semibold text-[#111827]">
-              {review.productName}
-            </li>
-          </ol>
-        </nav>
+        {/* Breadcrumb Navigation */}
+        <Breadcrumbs items={breadcrumbs} className="mb-4" />
 
         {/* Top Review Affiliate Disclosure Notice */}
         <div className="mb-5 bg-white border border-[#E5E7EB] rounded-md px-4 py-2.5 flex items-center gap-2.5 text-xs text-[#4B5563]">
