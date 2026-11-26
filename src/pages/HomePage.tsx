@@ -26,6 +26,7 @@ import {
   searchReviews,
   sortReviews,
 } from '../utils/catalog';
+import { AdSlot } from '../components/AdSlot';
 import { Link } from '../components/Link';
 import { resolveAssetUrl } from '../utils/router';
 import { ReviewCard } from '../components/ReviewCard';
@@ -198,6 +199,12 @@ export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
           </div>
         </section>
 
+        {/* Below-Fold Discovery Leaderboard (Preserves Instant Hero LCP) */}
+        <AdSlot
+          placement="homeLeaderboard"
+          routeKey={initialQuery ? `q-${initialQuery}` : selectedDepartment}
+        />
+
         {/* Section 2: Latest Featured Reviews Product Grid */}
         <section id="featured-reviews" aria-labelledby="featured-reviews-heading">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-4">
@@ -320,6 +327,12 @@ export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
             </>
           )}
         </section>
+
+        {/* Mid-Content Comparison Display Ad */}
+        <AdSlot
+          placement="homeMidBanner"
+          routeKey={initialQuery ? `q-${initialQuery}` : `${selectedDepartment}-${showAllReviews}`}
+        />
 
         {/* Section 3: Why Trust Shoppingey.com (E-E-A-T 3-Column Trust Section) */}
         <section

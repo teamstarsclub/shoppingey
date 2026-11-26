@@ -11,6 +11,7 @@ import {
   sortReviews,
   type SortOption,
 } from '../utils/catalog';
+import { AdSlot } from '../components/AdSlot';
 import { AmazonAffiliateButton } from '../components/AmazonAffiliateButton';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Link } from '../components/Link';
@@ -142,6 +143,13 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug }) => {
           </div>
         </section>
 
+        {/* High-Intent Category Top Responsive Ad */}
+        <AdSlot
+          placement="categoryTopBanner"
+          routeKey={`${category.slug}-${tierFilter}`}
+          className="mb-6"
+        />
+
         {/* Product Review Listing Cards */}
         {displayedReviews.length === 0 ? (
           <div className="bg-white border border-[#E5E7EB] rounded-lg p-10 text-center">
@@ -161,11 +169,11 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug }) => {
           </div>
         ) : (
           <div className="space-y-6">
-            {displayedReviews.map((review) => (
-              <article
-                key={review.slug}
-                className="bg-white border border-[#E5E7EB] rounded-lg overflow-hidden grid grid-cols-1 lg:grid-cols-12"
-              >
+            {displayedReviews.map((review, idx) => (
+              <React.Fragment key={review.slug}>
+                <article
+                  className="bg-white border border-[#E5E7EB] rounded-lg overflow-hidden grid grid-cols-1 lg:grid-cols-12"
+                >
                 {/* Product Image Column */}
                 <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-[#F3F4F6] flex flex-col justify-between bg-white p-4">
                   <div className="flex items-center justify-between text-xs mb-2">
@@ -283,6 +291,13 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug }) => {
                   <AmazonAffiliateButton asin={review.asin} align="left" />
                 </div>
               </article>
+                {(idx === 2 || (displayedReviews.length <= 3 && idx === displayedReviews.length - 1)) && (
+                  <AdSlot
+                    placement="categoryInFeed"
+                    routeKey={`${category.slug}-${tierFilter}-${sortBy}`}
+                  />
+                )}
+              </React.Fragment>
             ))}
           </div>
         )}

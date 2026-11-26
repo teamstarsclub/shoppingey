@@ -407,7 +407,36 @@ export const LegalPages: React.FC<LegalPagesProps> = ({ page }) => {
                 reply to your inquiry and never sell or rent your contact details to third parties.
               </p>
               <h2 className="text-lg font-bold text-[#111827]">
-                2. Amazon Associates &amp; Third-Party Tracking Cookies
+                2. Google AdSense &amp; Advertising Cookies
+              </h2>
+              <p>
+                Shoppingey.com uses Google AdSense to display relevant advertisements that help keep
+                our independent lab reviews free to read. Third-party vendors, including Google,
+                use cookies to serve ads based on a visitor&rsquo;s prior visits to Shoppingey.com
+                or other websites. Google&rsquo;s use of advertising cookies enables it and its
+                partners to serve ads based on your browsing activity. You may opt out of
+                personalized advertising at any time by visiting{' '}
+                <a
+                  href="https://myadcenter.google.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline font-semibold text-[#111827]"
+                >
+                  Google Ads Settings
+                </a>{' '}
+                or{' '}
+                <a
+                  href="https://www.aboutads.info/choices/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline font-semibold text-[#111827]"
+                >
+                  aboutads.info
+                </a>
+                .
+              </p>
+              <h2 className="text-lg font-bold text-[#111827]">
+                3. Amazon Associates &amp; Referral Cookies
               </h2>
               <p>
                 When you click an outbound Amazon affiliate link on Shoppingey.com, Amazon.com may
@@ -416,7 +445,7 @@ export const LegalPages: React.FC<LegalPagesProps> = ({ page }) => {
                 Amazon’s own Privacy Notice. You may clear or block third-party cookies at any time
                 via your browser settings.
               </p>
-              <h2 className="text-lg font-bold text-[#111827]">3. GDPR &amp; CCPA Rights</h2>
+              <h2 className="text-lg font-bold text-[#111827]">4. GDPR &amp; CCPA Rights</h2>
               <p>
                 Visitors in the European Economic Area, United Kingdom, and California may request
                 access to, correction of, or deletion of any personal correspondence sent to us by

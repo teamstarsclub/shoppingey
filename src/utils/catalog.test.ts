@@ -760,3 +760,60 @@ test('Breadcrumb navigation trail renders Home > Category on CategoryPage and Ho
     );
   }
 });
+
+test('AdSense monetization: Auto Ads script in head, high-CTR ad slots across pages, and Privacy Policy cookie disclosure', async () => {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  const { ADSENSE_CLIENT_ID, ADSENSE_SLOTS } = await import('../config/adsense');
+  const { HomePage } = await import('../pages/HomePage');
+  const { CategoryPage } = await import('../pages/CategoryPage');
+  const { ReviewPage } = await import('../pages/ReviewPage');
+  const { LegalPages } = await import('../pages/LegalPages');
+
+  assert.equal(ADSENSE_CLIENT_ID, 'ca-pub-5379808297296166');
+  const slotIds = Object.values(ADSENSE_SLOTS).map((s) => s.slotId);
+  assert.equal(new Set(slotIds).size, slotIds.length, 'Every AdSense slotId must be unique');
+
+  const indexHtml = fs.readFileSync(path.resolve(process.cwd(), 'index.html'), 'utf8');
+  const headHtml = indexHtml.slice(0, indexHtml.indexOf('</head>'));
+  assert.ok(
+    headHtml.includes(
+      'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5379808297296166'
+    ),
+    'index.html <head> must contain the exact Google AdSense Auto Ads script'
+  );
+  assert.ok(headHtml.includes('crossorigin="anonymous"'));
+
+  const homeHtml = renderToStaticMarkup(React.createElement(HomePage, {}));
+  assert.ok(homeHtml.includes('data-ad-placement="homeLeaderboard"'));
+  assert.ok(homeHtml.includes('data-ad-placement="homeMidBanner"'));
+  assert.ok(homeHtml.includes('data-ad-client="ca-pub-5379808297296166"'));
+
+  const catHtml = renderToStaticMarkup(React.createElement(CategoryPage, { slug: 'home-tech' }));
+  assert.ok(catHtml.includes('data-ad-placement="categoryTopBanner"'));
+  assert.ok(catHtml.includes('data-ad-placement="categoryInFeed"'));
+
+  const reviewHtml = renderToStaticMarkup(
+    React.createElement(ReviewPage, { slug: REVIEWS[0].slug })
+  );
+  for (const placement of [
+    'reviewPostHero',
+    'reviewSidebarSticky',
+    'reviewInArticle',
+    'reviewPostVerdict',
+  ]) {
+    assert.ok(
+      reviewHtml.includes(`data-ad-placement="${placement}"`),
+      `ReviewPage must include ${placement} AdSense slot`
+    );
+  }
+  assert.ok(reviewHtml.includes('data-ad-layout="in-article"'));
+
+  const privacyHtml = renderToStaticMarkup(
+    React.createElement(LegalPages, { page: 'privacy-policy' })
+  );
+  assert.ok(
+    privacyHtml.includes('Google AdSense') && privacyHtml.includes('myadcenter.google.com'),
+    'Privacy Policy must disclose Google AdSense cookies and ad personalization opt-out'
+  );
+});

@@ -93,3 +93,8 @@ details[open] .faq-chevron {
     transition: none;
   }
 }
+
+/* Gracefully collapse ad shell only when AdSense explicitly marks slot unfilled */
+.ad-slot-shell:has(ins.adsbygoogle[data-ad-status="unfilled"]) {
+  display: none;
+}

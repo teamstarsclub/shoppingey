@@ -22,6 +22,7 @@ import {
   getReviewBySlug,
   getSameCategoryCrossLinks,
 } from '../utils/catalog';
+import { AdSlot } from '../components/AdSlot';
 import { AmazonAffiliateButton } from '../components/AmazonAffiliateButton';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Link } from '../components/Link';
@@ -385,6 +386,9 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
           </div>
         </section>
 
+        {/* High-Viewability Post-Hero Responsive Banner (Safely separated from Hero Buy Box) */}
+        <AdSlot placement="reviewPostHero" routeKey={review.slug} className="mt-6" />
+
         {/* Mobile Collapsible Table of Contents */}
         <details className="lg:hidden mt-6 bg-white border border-[#E5E7EB] rounded-lg overflow-hidden">
           <summary className="px-4 py-3 flex items-center justify-between text-sm font-bold text-[#111827] cursor-pointer">
@@ -453,6 +457,8 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
                 <AmazonAffiliateButton asin={review.asin} align="left" />
               </div>
             </div>
+            {/* Sticky Sidebar Ad (Highest Desktop Active View Time) */}
+            <AdSlot placement="reviewSidebarSticky" routeKey={review.slug} />
           </aside>
 
           {/* Editorial Review Main Column */}
@@ -553,32 +559,37 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
               id="review-body"
               className="scroll-mt-32 bg-white border border-[#E5E7EB] rounded-lg p-6 sm:p-8 space-y-8"
             >
-              {review.sections.map((section) => (
-                <div key={section.id} className="space-y-3.5">
-                  <h2 className="text-xl font-bold text-[#111827] tracking-tight">
-                    {section.heading}
-                  </h2>
-                  {section.paragraphs.map((paragraph, idx) => (
-                    <p
-                      key={idx}
-                      className="text-[15.5px] leading-[1.72] text-[#374151] max-w-[72ch]"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
-                  {section.inlineLink && (
-                    <p className="text-[15.5px] leading-[1.72] text-[#374151] max-w-[72ch]">
-                      {section.inlineLink.beforeText}
-                      <Link
-                        to={`/review/${section.inlineLink.targetSlug}`}
-                        className="font-semibold text-[#B45309] underline decoration-[#F59E0B] underline-offset-2 hover:text-[#92400E]"
+              {review.sections.map((section, sectionIdx) => (
+                <React.Fragment key={section.id}>
+                  <div className="space-y-3.5">
+                    <h2 className="text-xl font-bold text-[#111827] tracking-tight">
+                      {section.heading}
+                    </h2>
+                    {section.paragraphs.map((paragraph, idx) => (
+                      <p
+                        key={idx}
+                        className="text-[15.5px] leading-[1.72] text-[#374151] max-w-[72ch]"
                       >
-                        {section.inlineLink.linkText}
-                      </Link>
-                      {section.inlineLink.afterText}
-                    </p>
+                        {paragraph}
+                      </p>
+                    ))}
+                    {section.inlineLink && (
+                      <p className="text-[15.5px] leading-[1.72] text-[#374151] max-w-[72ch]">
+                        {section.inlineLink.beforeText}
+                        <Link
+                          to={`/review/${section.inlineLink.targetSlug}`}
+                          className="font-semibold text-[#B45309] underline decoration-[#F59E0B] underline-offset-2 hover:text-[#92400E]"
+                        >
+                          {section.inlineLink.linkText}
+                        </Link>
+                        {section.inlineLink.afterText}
+                      </p>
+                    )}
+                  </div>
+                  {sectionIdx === 1 && (
+                    <AdSlot placement="reviewInArticle" routeKey={review.slug} className="my-2" />
                   )}
-                </div>
+                </React.Fragment>
               ))}
             </section>
 
@@ -726,6 +737,9 @@ export const ReviewPage: React.FC<ReviewPageProps> = ({ slug }) => {
                 <AmazonAffiliateButton asin={review.asin} align="center" />
               </div>
             </section>
+
+            {/* Post-Verdict Sponsored Comparison Slot (High Purchase-Intent Exit Capture) */}
+            <AdSlot placement="reviewPostVerdict" routeKey={review.slug} />
 
             {/* 7. Buyer FAQ Accordion (Native HTML <details>/<summary> for Google Crawlability) */}
             <section
