@@ -82,6 +82,7 @@
  */
 
 import { HOME_TECH_EXTRA_REVIEWS } from './reviews/homeTech';
+import { HOME_ELECTRONICS_REVIEWS } from './reviews/homeElectronics';
 import { HOME_KITCHEN_EXTRA_REVIEWS } from './reviews/homeKitchen';
 import { HOME_DECOR_EXTRA_REVIEWS } from './reviews/homeDecor';
 import { TOOLS_EXTRA_REVIEWS } from './reviews/tools';
@@ -89,6 +90,7 @@ import { GARDENING_GADGETS_EXTRA_REVIEWS } from './reviews/gardeningGadgets';
 
 export type CategorySlug =
   | 'home-tech'
+  | 'home-electronics'
   | 'home-kitchen'
   | 'home-decor'
   | 'tools'
@@ -104,7 +106,7 @@ export interface Category {
   shortDescription: string;
   seoIntro: string;
   metaDescription: string;
-  iconName: 'cpu' | 'utensils' | 'lamp' | 'wrench' | 'sprout';
+  iconName: 'cpu' | 'tv' | 'utensils' | 'lamp' | 'wrench' | 'sprout';
   featuredImage: string;
 }
 
@@ -204,6 +206,17 @@ export const CATEGORIES: Category[] = [
       'Independent Amazon Home & Tech product reviews tested for reliability, app latency, local storage, and long-term value at Shoppingey.com.',
     iconName: 'cpu',
     featuredImage: '/src/assets/images/product_smart_video_doorbell_1795195714291.jpg',
+  },
+  {
+    slug: 'home-electronics',
+    name: 'Home Electronics',
+    shortDescription: 'Dolby Atmos audio, 4K streaming boxes, projectors, ANC headphones & USB-C hubs.',
+    seoIntro:
+      'Consumer electronics specs are crowded with inflated peak lumen claims, compressed wireless codecs, and overheating charging bricks. Our Home Electronics department benchmarks true HDMI eARC Atmos staging, ANSI projection brightness, 100W GaN sustained wattage, and multi-week desk stability so every upgrade performs reliably day in, day out.',
+    metaDescription:
+      'Independent Amazon Home Electronics reviews testing Dolby Atmos soundbars, 4K streamers, projectors, ANC headphones, and GaN USB-C chargers.',
+    iconName: 'tv',
+    featuredImage: '/src/assets/images/product_dolby_atmos_soundbar_1795675239867.jpg',
   },
   {
     slug: 'home-kitchen',
@@ -396,8 +409,8 @@ export const REVIEWS: ProductReview[] = [
         reason: 'Guarantees fast, zero-buffering 2K live video wake-ups through thick brick and exterior stucco walls.',
       },
       {
-        slug: 'thermosense-smart-learning-thermostat',
-        reason: 'Connects front-entry arrival awareness cleanly into automated whole-home climate comfort.',
+        slug: 'soundpulse-dolby-atmos-soundbar-subwoofer',
+        reason: 'Pauses or balances living-room movie soundbars cleanly when smart doorbell alerts chime.',
       },
       {
         slug: 'solarpath-warm-led-landscape-pathway-lights',
@@ -572,8 +585,8 @@ export const REVIEWS: ProductReview[] = [
         reason: 'Pairs seamlessly on your countertop to handle weekday mornings while the CrispDuo owns weeknight dinners.',
       },
       {
-        slug: 'bladeforge-high-speed-countertop-blender',
-        reason: 'Covers cold sauces, marinades, and smoothies alongside crispy air-fried family mains.',
+        slug: 'lumebeam-1080p-portable-smart-projector',
+        reason: 'Pairs crispy air-fried movie-night snacks with effortless 100-inch wall cinema.',
       },
       {
         slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
@@ -748,8 +761,8 @@ export const REVIEWS: ProductReview[] = [
         reason: 'Matches the satin brushed brass palette while bouncing warm 2700K lamp light across entryways and bedrooms.',
       },
       {
-        slug: 'nordicweave-washable-geometric-area-rug',
-        reason: 'Ties a cozy reading corner or dining area together with soft tactile texture beneath your warm accent lighting.',
+        slug: 'voltbank-100w-gan-desktop-charging-station',
+        reason: 'Recharges cordless table lamps cleanly on desks or credenzas alongside phones with zero cable tangle.',
       },
       {
         slug: 'solarpath-warm-led-landscape-pathway-lights',
@@ -924,8 +937,8 @@ export const REVIEWS: ProductReview[] = [
         reason: 'Covers delicate electronics, glasses, and smart-home micro-fasteners where a 20V drill is overkill.',
       },
       {
-        slug: 'studscan-pro-deep-wall-scanner-detector',
-        reason: 'Locates structural studs and hidden live AC wiring reliably before sinking heavy drill anchors.',
+        slug: 'cinecast-4k-streaming-media-player-box',
+        reason: 'Makes drilling concealed in-wall HDMI/Ethernet conduit runs behind wall-mounted living room displays clean.',
       },
       {
         slug: 'hydrocoil-retractable-garden-hose-reel',
@@ -1100,8 +1113,8 @@ export const REVIEWS: ProductReview[] = [
         reason: 'Keeps thriving, well-irrigated fruit trees, rose bushes, and hedges neatly trimmed without wrist strain.',
       },
       {
-        slug: 'solarpath-warm-led-landscape-pathway-lights',
-        reason: 'IP65 aluminum housings shrug off Zone 2 lawn sprinklers while guiding evening backyard walks.',
+        slug: 'acoustipro-anc-over-ear-wireless-headphones',
+        reason: 'Enjoy uninterrupted podcasts outdoors while smart dual-zone irrigation automates your beds quietly.',
       },
       {
         slug: 'meshcore-wifi-6e-triband-router-system',
@@ -1132,6 +1145,7 @@ export const REVIEWS: ProductReview[] = [
     ],
   },
   ...HOME_TECH_EXTRA_REVIEWS,
+  ...HOME_ELECTRONICS_REVIEWS,
   ...HOME_KITCHEN_EXTRA_REVIEWS,
   ...HOME_DECOR_EXTRA_REVIEWS,
   ...TOOLS_EXTRA_REVIEWS,

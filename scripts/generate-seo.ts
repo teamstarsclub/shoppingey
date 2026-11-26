@@ -98,7 +98,7 @@ export function buildAllSeoRoutes(): StaticRouteSpec[] {
     path: '/',
     title: 'Shoppingey.com — Independent Amazon Product Reviews (2026)',
     description:
-      'Honest, hands-on Amazon product reviews tested and organized by department: Home & Tech, Home & Kitchen, Home Decor, Tools, and Gardening Gadgets.',
+      'Honest, hands-on Amazon product reviews tested and organized by department: Home & Tech, Home Electronics, Home & Kitchen, Home Decor, Tools, and Gardening Gadgets.',
     ogType: 'website',
     image: DEFAULT_OG_IMAGE,
     imageAlt: 'Shoppingey.com independent Amazon product reviews and buying guides',

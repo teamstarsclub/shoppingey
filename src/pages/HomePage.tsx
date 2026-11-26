@@ -8,6 +8,7 @@ import {
   Scale,
   ShieldCheck,
   Sprout,
+  Tv,
   Utensils,
   Wrench,
 } from 'lucide-react';
@@ -40,6 +41,8 @@ function CategoryIcon({ name }: { name: Category['iconName'] }) {
   switch (name) {
     case 'cpu':
       return <Cpu className={cls} aria-hidden="true" />;
+    case 'tv':
+      return <Tv className={cls} aria-hidden="true" />;
     case 'utensils':
       return <Utensils className={cls} aria-hidden="true" />;
     case 'lamp':
@@ -79,7 +82,7 @@ export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
             ? `Search: ${initialQuery} | Shoppingey.com`
             : 'Shoppingey.com — Independent Amazon Product Reviews (2026)'
         }
-        description="Honest, hands-on Amazon product reviews tested and organized by department: Home & Tech, Home & Kitchen, Home Decor, Tools, and Gardening Gadgets."
+        description="Honest, hands-on Amazon product reviews tested and organized by department: Home & Tech, Home Electronics, Home & Kitchen, Home Decor, Tools, and Gardening Gadgets."
         canonicalPath="/"
         ogType="website"
         image={REVIEWS[1]?.image ?? REVIEWS[0].image}
@@ -143,12 +146,12 @@ export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
                 Browse by Category
               </h2>
               <p className="text-sm text-[#4B5563] mt-1">
-                Explore hands-on buying guides across all five Shoppingey.com departments.
+                Explore hands-on buying guides across all six Shoppingey.com departments.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {CATEGORIES.map((category) => {
               const count = getCategoryReviewCount(category.slug, REVIEWS);
               return (
@@ -284,7 +287,7 @@ export const HomePage: React.FC<HomePageProps> = ({ initialQuery }) => {
                 No reviews found matching &ldquo;{initialQuery}&rdquo;
               </p>
               <p className="text-sm text-[#4B5563] mt-1">
-                Browse one of our five product departments above or view all tested reviews.
+                Browse one of our six product departments above or view all tested reviews.
               </p>
               <Link
                 to="/"

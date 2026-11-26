@@ -22,16 +22,17 @@ import {
 } from './catalog';
 import { parsePathname, resolveAssetUrl, stripBasePath, withBasePath } from './router';
 
-test('catalog has exactly 5 required categories and 6 reviews per category (30 total)', () => {
-  assert.equal(CATEGORIES.length, 5);
+test('catalog has exactly 6 required categories and 6 reviews per category (36 total)', () => {
+  assert.equal(CATEGORIES.length, 6);
   assert.deepEqual(
     CATEGORIES.map((c) => c.slug),
-    ['home-tech', 'home-kitchen', 'home-decor', 'tools', 'gardening-gadgets']
+    ['home-tech', 'home-electronics', 'home-kitchen', 'home-decor', 'tools', 'gardening-gadgets']
   );
-  assert.equal(REVIEWS.length, 30);
-  assert.equal(new Set(REVIEWS.map((r) => r.slug)).size, 30, 'All 30 review slugs must be unique');
-  assert.equal(new Set(REVIEWS.map((r) => r.asin)).size, 30, 'All 30 Amazon ASINs must be unique');
-  assert.equal(new Set(REVIEWS.map((r) => r.image)).size, 30, 'All 30 product images must be unique');
+  assert.equal(getCategoryBySlug('homeElectronics')?.slug, 'home-electronics');
+  assert.equal(REVIEWS.length, 36);
+  assert.equal(new Set(REVIEWS.map((r) => r.slug)).size, 36, 'All 36 review slugs must be unique');
+  assert.equal(new Set(REVIEWS.map((r) => r.asin)).size, 36, 'All 36 Amazon ASINs must be unique');
+  assert.equal(new Set(REVIEWS.map((r) => r.image)).size, 36, 'All 36 product images must be unique');
 
   for (const cat of CATEGORIES) {
     assert.equal(
@@ -115,13 +116,13 @@ test('internal linking mesh: every review has 4 distinct inlineLinks, 3 distinct
     const crossCatCompanions = companions.filter((c) => c.review.categorySlug !== review.categorySlug);
     assert.equal(
       sameCatCompanions.length,
-      2,
-      `Review ${review.slug} must have exactly 2 same-category companions`
+      1,
+      `Review ${review.slug} must have exactly 1 same-category companion`
     );
     assert.equal(
       crossCatCompanions.length,
-      1,
-      `Review ${review.slug} must have exactly 1 cross-category companion`
+      2,
+      `Review ${review.slug} must have exactly 2 cross-category companions`
     );
 
     const inlineLinks = review.sections
@@ -259,7 +260,7 @@ test('JSON-LD schema builders emit valid Home CollectionPage, Product, Review, P
   assert.equal(homeSchemas[0]['@type'], 'CollectionPage');
   assert.equal(homeSchemas[0]['@id'], 'https://www.shoppingey.com/#webpage');
   assert.equal(homeSchemas[0].mainEntity['@type'], 'ItemList');
-  assert.equal(homeSchemas[0].mainEntity.numberOfItems, 5);
+  assert.equal(homeSchemas[0].mainEntity.numberOfItems, 6);
 
   const productSchema = buildProductReviewJsonLd(review, category) as Record<string, any>;
   assert.equal(productSchema['@type'], 'Product');
@@ -348,18 +349,18 @@ test('GitHub Pages subpath routing and asset resolution work across / and /repo/
   );
 });
 
-test('Technical SEO: sitemap includes ONLY the 38 indexable URLs and excludes noindex legal/utility pages', async () => {
+test('Technical SEO: sitemap includes ONLY the 45 indexable URLs and excludes noindex legal/utility pages', async () => {
   const { buildAllSeoRoutes, buildSitemapRoutes, generateSitemapXml } = await import(
     '../../scripts/generate-seo'
   );
   const allRoutes = buildAllSeoRoutes();
-  assert.equal(allRoutes.length, 42, 'Expected 42 total pre-rendered routes');
+  assert.equal(allRoutes.length, 49, 'Expected 49 total pre-rendered routes');
 
   const indexableRoutes = buildSitemapRoutes();
   assert.equal(
     indexableRoutes.length,
-    38,
-    'Expected 38 indexable sitemap routes (1 home + 2 E-E-A-T editorial + 5 categories + 30 reviews)'
+    45,
+    'Expected 45 indexable sitemap routes (1 home + 2 E-E-A-T editorial + 6 categories + 36 reviews)'
   );
 
   const nonIndexablePaths = ['/affiliate-disclosure', '/privacy-policy', '/terms', '/contact'];
@@ -372,8 +373,8 @@ test('Technical SEO: sitemap includes ONLY the 38 indexable URLs and excludes no
 
   const xml = generateSitemapXml();
   const locs = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
-  assert.equal(locs.length, 38);
-  assert.equal(new Set(locs).size, 38, 'Sitemap must have zero duplicate URLs');
+  assert.equal(locs.length, 45);
+  assert.equal(new Set(locs).size, 45, 'Sitemap must have zero duplicate URLs');
 
   for (const hiddenPath of nonIndexablePaths) {
     assert.equal(
@@ -398,7 +399,7 @@ test('Technical SEO: sitemap includes ONLY the 38 indexable URLs and excludes no
   }
   assert.ok(xml.includes('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'));
   const imageLocs = [...xml.matchAll(/<image:loc>(.*?)<\/image:loc>/g)].map((m) => m[1]);
-  assert.equal(imageLocs.length, 35, 'Expected Image Sitemap tags for all 5 categories + 30 reviews');
+  assert.equal(imageLocs.length, 42, 'Expected Image Sitemap tags for all 6 categories + 36 reviews');
 });
 
 test('Technical SEO: enriched Organization PNG logo, Product/Review E-E-A-T, unique titles, and meta descriptions meet Google guidelines', async () => {
@@ -498,8 +499,8 @@ test('Googlebot & AI readiness: robots.txt, llms.txt, llms-full.txt, ai-catalog.
   const aiJson = generateAiCatalogJson();
   const parsedAi = JSON.parse(aiJson);
 
-  assert.equal(parsedAi.categories.length, 5);
-  assert.equal(parsedAi.reviews.length, 30);
+  assert.equal(parsedAi.categories.length, 6);
+  assert.equal(parsedAi.reviews.length, 36);
   assert.equal(containsStaticDollarPrice(llms), false, 'llms.txt must not contain static dollar prices');
   assert.equal(containsStaticDollarPrice(llmsFull), false, 'llms-full.txt must not contain static dollar prices');
   assert.equal(containsStaticDollarPrice(aiJson), false, 'ai-catalog.json must not contain static dollar prices');

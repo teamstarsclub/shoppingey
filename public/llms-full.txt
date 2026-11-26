@@ -1,7 +1,7 @@
 # Shoppingey.com — Complete Product Review Catalog for AI & Search Agents
 
 > Canonical Domain: https://www.shoppingey.com
-> Departments: 5 | Tested Product Reviews: 30
+> Departments: 6 | Tested Product Reviews: 36
 > Editorial Standard: Hands-on evaluation with zero sponsored placements and zero static dollar quotes.
 
 ---
@@ -94,6 +94,97 @@ Every smart home gadget promises effortless automation, yet many stumble on flak
 - Cons: Top fan grille does not accept scented essential oils directly (never drip oil onto HEPA media) | Auto mode reacts best within 15 feet of cooking sources rather than behind closed doors | Onboarding requires a 2.4 GHz Wi-Fi SSID (though onboard touch controls work standalone)
 - Key Specs: CADR / Room Coverage: 1,050 sq. ft. (1x/hr) · 220 sq. ft. (4.8x/hr) ; Filtration Stages: Pre-Filter + H13 True HEPA (0.3 µm) + Carbon ; Air Quality Sensor: Laser PM2.5 Particle Sensor + Live AQI Ring ; Noise Range: 21 dB (Sleep) to 49 dB (Turbo High) ; Motor Type: High-Efficiency Brushless DC (38W Max) ; Smart Integration: 2.4 GHz Wi-Fi App, Alexa & Google Home ; Sleep Features: Full Display Light-Off + Whisper Sleep Curve ; Dimensions: 8.7 Diameter x 16.5 H in (7.5 lbs)
 - FAQs: Q: Does AeroPure emit ozone or rely on an ionizer? A: No. It uses purely mechanical H13 True HEPA pleats and activated carbon pellets—zero ozone emission and zero questionable plasma ionizers. | Q: How bright are the control lights in a dark bedroom? A: Not bright at all, because pressing the Display Off button shuts off every single LED indicator—including the AQI ring—for complete darkness while sleeping. | Q: How often do I need to replace the H13 filter cartridge? A: Under average 24/7 bedroom use with monthly outer-mesh vacuuming, one filter drum lasts 8 to 10 months (or 6 months in homes with heavy shedding pets). | Q: Can I place it right next to a bed or wall? A: Leave roughly 8 to 10 inches around the 360-degree lower cylinder intake for optimal airflow, and keep the top exhaust clear of low shelves.
+
+---
+
+## Department: Home Electronics
+URL: https://www.shoppingey.com/category/home-electronics
+
+Consumer electronics specs are crowded with inflated peak lumen claims, compressed wireless codecs, and overheating charging bricks. Our Home Electronics department benchmarks true HDMI eARC Atmos staging, ANSI projection brightness, 100W GaN sustained wattage, and multi-week desk stability so every upgrade performs reliably day in, day out.
+
+### SoundPulse 3.1.2 Dolby Atmos Soundbar & Wireless Subwoofer
+- URL: https://www.shoppingey.com/review/soundpulse-dolby-atmos-soundbar-subwoofer
+- ASIN: B09SL7KP4M
+- Category: Home Electronics
+- Badge: Shoppingey Top Pick | Price Tier: Premium
+- Shoppingey Score: 9.6/10 | Star Rating: 4.9/5
+- Criteria Scores: Build Quality 9.6, Performance 9.7, Value 9.4, Ease of Use 9.5, Durability 9.4
+- Last Updated: 2026-11-24 | Author: Elena Vance (Senior Home Tech Editor)
+- Verdict: An astonishingly balanced living-room theater upgrade that finally fixes muddy TV speech while filling medium-to-large rooms with tactile bass and genuine overhead Dolby Atmos height—without rear speaker wires.
+- Pros: Center channel keeps whispered drama dialogue distinct even over roaring action scores | Low 2.5-inch profile slides neatly under 55-inch and 65-inch OLED stands without blocking IR sensors | Up-firing Atmos drivers create palpable vertical soundstage height under 8–10 ft flat ceilings | Taut wireless subwoofer hits cleanly down to 36 Hz without port chuffing or loose cabinet rattle
+- Cons: Vaulted 14+ foot cathedral ceilings diminish the overhead bounce from up-firing Atmos cones | No built-in rear satellite speakers (expandable later via optional wireless surround kit) | Front status LED readout dims well, though initial EQ tweaks work faster with the backlit remote
+- Key Specs: Channel Configuration: 3.1.2 Dolby Atmos & DTS:X (380W Peak Output) ; HDMI Connectivity: 1x HDMI eARC Out + 1x HDMI 2.1 In (4K120 / VRR) ; Other Inputs: Optical TOSLINK, USB Audio, Bluetooth 5.3 ; Wireless Subwoofer: 6.5-in Front-Firing Woofer (36 Hz Floor) ; Sound Modes: Movie, Music, Clear Voice, Night, Game Low-Latency ; Mounting: Included Keyhole Steel Wall Brackets & Template ; Soundbar Dimensions: 38.6 W x 2.5 H x 4.1 D in ; Subwoofer Dimensions: 8.3 W x 14.2 H x 11.8 D in (Wireless)
+- FAQs: Q: Does the soundbar turn on and adjust volume using my regular TV remote? A: Yes! Connecting via the included HDMI cable to your TV’s HDMI eARC/ARC port enables automatic HDMI-CEC power sync and volume control with your TV remote. | Q: Does the wireless subwoofer need any speaker wire back to the bar? A: Only a standard wall power cord—audio transmits wirelessly over a low-latency dedicated 5.8 GHz link so you can tuck the sub beside a sofa or credenza. | Q: Will it block the bottom of a 55-inch OLED TV sitting on its factory stand? A: At 2.5 inches tall, it clears most modern TV screen bezels cleanly, and wall-mounting hardware is included in the box if your TV sits completely flush. | Q: How much does the SoundPulse 3.1.2 system cost? A: Pricing shifts frequently with Amazon promotions. It sits in the Premium tier—use the Buy On Amazon button above to check current live pricing.
+
+### LumeBeam 1080p Auto-Focus Portable LED Smart Projector
+- URL: https://www.shoppingey.com/review/lumebeam-1080p-portable-smart-projector
+- ASIN: B0C3M8VN2X
+- Category: Home Electronics
+- Badge: Best Value | Price Tier: Mid-Range
+- Shoppingey Score: 9.4/10 | Star Rating: 4.8/5
+- Criteria Scores: Build Quality 9.5, Performance 9.4, Value 9.5, Ease of Use 9.6, Durability 9.2
+- Last Updated: 2026-11-23 | Author: Elena Vance (Senior Home Tech Editor)
+- Verdict: The easiest grab-and-watch home projector we tested all year—aim it at any blank wall or bedroom ceiling, wait three seconds for laser autofocus to lock razor-sharp 1080p video, and stream straight off Wi-Fi.
+- Pros: Laser autofocus snaps text and subtitles razor sharp within 3 seconds of moving the stand | 3.1-pound body runs either off wall AC or a 100W USB-C PD power hub outdoors | Sealed dustproof optical block prevents annoying black lint blobs on the lens over years | Low 27 dB fan noise never overwhelms the surprisingly clear dual 10W built-in drivers
+- Cons: Best viewed in dim or evening rooms—direct noon sunlight washes out any portable projector | No built-in internal battery (keeps weight light; power via USB-C PD or AC adapter) | Auto-obstacle avoidance is conservative—occasionally shrink-crops near framed wall art until manual tweak
+- Key Specs: Native Resolution: 1920 x 1080 Full HD (Supports 4K HDR Input) ; Brightness: 900 ANSI Lumens (30,000-Hr LED Light Source) ; Screen Size Range: 40 in to 130 in (1.2:1 Throw Ratio) ; Auto Calibration: 3-Sec Laser ToF Auto-Focus & Auto-Keystone ; Audio Output: Dual 10W Speakers + Dolby Audio + 3.5mm / Bluetooth ; Ports: HDMI 2.1, USB-A, USB-C PD 100W Power Input ; Noise Level: 27 dB Ultra-Quiet Cooling Fan ; Dimensions & Weight: 5.1 W x 5.4 D x 6.8 H in (3.1 lbs)
+- FAQs: Q: Does LumeBeam work on a sloped bedroom ceiling? A: Yes. Its integrated aluminum cradle pivots upward up to 135 degrees and runs laser autofocus automatically onto ceilings up to 11 feet high. | Q: Do I need an external streaming stick to watch Netflix or YouTube? A: No—Wi-Fi 6 and built-in smart streaming apps run directly on the projector, though an HDMI port is right on the back if you prefer plugging in a dedicated box or game console. | Q: Can I place the projector off to the side of my bed instead of dead center? A: Yes. Automatic 4-point keystone squares the projected rectangle cleanly even from side-table angles up to 35 degrees. | Q: Can it pair wirelessly with external Bluetooth speakers? A: Yes! Built-in two-way Bluetooth 5.2 lets you output movie audio directly to headphones or soundbars with minimal lip-sync delay.
+
+### VoltBank 100W 6-Port GaN USB-C Desktop Charging Station
+- URL: https://www.shoppingey.com/review/voltbank-100w-gan-desktop-charging-station
+- ASIN: B0B7X4KR9P
+- Category: Home Electronics
+- Badge: Editor Tested | Price Tier: Budget-Friendly
+- Shoppingey Score: 9.3/10 | Star Rating: 4.8/5
+- Criteria Scores: Build Quality 9.4, Performance 9.5, Value 9.6, Ease of Use 9.4, Durability 9.2
+- Last Updated: 2026-11-22 | Author: Elena Vance (Senior Home Tech Editor)
+- Verdict: The cleanest one-cord desktop power hub in its class—replacing a tangled nest of bulky white laptop bricks and phone cubes with six whisper-cool GaN ports wrapped in anodized aluminum.
+- Pros: Cuts six wall-wart bricks down to a single slim anodized block that fits anywhere | Peaked at just 114°F under a 95W continuous 3-hour soak test—cooler than plastic bricks | Front tactile master power button lets you sleep idle gear cleanly overnight | Zero audible electrical buzz at 6 inches away on a bedside table
+- Cons: Re-plugging a new cable causes a 1-second PD power renegotiation blink across active ports (normal on multi-port GaN) | USB-C charging cables are sold separately—bring good 100W E-Marker cables for laptops | Outputs 100W total across all ports combined, so two gaming laptops at once should use 140W+ bricks
+- Key Specs: Total Output: 100W Combined GaN Power Delivery ; Port Layout: 4x USB-C (PD 3.0 + PPS) + 2x USB-A (QC 3.0) ; Single Port Peak: Up to 100W on USB-C1 / USB-C2 ; Safety Protections: Over-Voltage, Over-Current, Short & Thermal Guard ; AC Input Cord: Detachable 5 ft Braided Cord (100–240V Worldwide) ; Control: Front Master Power Toggle + Dim Warm Amber LED ; Chassis Finish: Anodized Slate Aluminum + Matte Polycarbonate ; Dimensions & Weight: 4.1 x 2.9 x 1.3 in (0.68 lbs)
+- FAQs: Q: Can VoltBank fast-charge a 14-inch or 16-inch MacBook Pro at full speed? A: Yes! Either USB-C1 or USB-C2 delivers up to a full 100W when charging a single laptop, matching or exceeding factory laptop bricks. | Q: Does it work internationally on 220V–240V European or UK outlets? A: Yes. Its internal switching supply accepts 100–240V 50/60Hz—just bring a passive outlet plug adapter or swap the standard C7 figure-eight cord. | Q: Why does charging briefly pause for a second when I plug in a second phone? A: Smart multi-port GaN chargers briefly renegotiate USB-PD voltage tables for 1 second whenever a new cable connects so every device receives safe, accurate power. | Q: Do the two orange USB-A ports support older watches and accessories? A: Yes—both USB-A ports support smart low-current trickle charging for smartwatches and fitness bands alongside 18W Quick Charge phones.
+
+### CineCast 4K HDR Dolby Vision Streaming Media Player
+- URL: https://www.shoppingey.com/review/cinecast-4k-streaming-media-player-box
+- ASIN: B0D1Q6WN8H
+- Category: Home Electronics
+- Badge: Shoppingey Top Pick | Price Tier: Mid-Range
+- Shoppingey Score: 9.5/10 | Star Rating: 4.9/5
+- Criteria Scores: Build Quality 9.5, Performance 9.7, Value 9.4, Ease of Use 9.6, Durability 9.5
+- Last Updated: 2026-11-23 | Author: Elena Vance (Senior Home Tech Editor)
+- Verdict: A blistering-fast, zero-bloat living-room streaming powerhouse that instantly retires sluggish built-in smart TV menus—delivering frame-matched 4K Dolby Vision, Gigabit Ethernet, and an upscale aluminum remote.
+- Pros: Apps launch in under 1.2 seconds—dramatically faster than flagship smart TV native OS menus | Frame-rate matching switches cleanly to 24Hz cinema cadence with zero judder on panning shots | Motion-activated backlit remote makes midnight volume/pause taps effortless | USB 3.0 side port plays local 4K home videos or expands storage cleanly
+- Cons: HDMI 2.1 cable is not bundled inside the compact box (use an 18Gbps+ High Speed HDMI cord) | Does not natively stream 4K 120Hz cloud gaming (tops out at crisp 4K 60Hz cinema playback) | Costs more than basic ad-supported dongles, though 64GB storage prevents yearly slowdowns
+- Key Specs: Video Support: 4K 60Hz, Dolby Vision, HDR10+, HDR10, HLG, AV1 ; Audio Pass-Through: Dolby Atmos, Dolby TrueHD, DTS-HD MA ; Memory & Storage: 4GB LPDDR4 RAM / 64GB High-Speed eMMC Storage ; Networking: 1000 Mbps Gigabit Ethernet + Tri-Band Wi-Fi 6 ; Ports: HDMI 2.1, Gigabit RJ45, USB-A 3.0, Optical Out ; Wireless & Remote: Bluetooth 5.3 + Motion-Backlit Aluminum Voice Remote ; Content Frame Match: Automatic 24p / 30p / 50p / 60p Refresh Switch ; Dimensions: 3.9 x 3.9 x 0.85 in (0.72 lbs)
+- FAQs: Q: Will CineCast speed up an older 4K TV whose built-in apps lag or freeze? A: Yes! CineCast runs all apps directly on its fast quad-core processor with 4GB RAM and 64GB storage—your TV only acts as a clean 4K monitor via HDMI. | Q: Does it support Dolby Vision and Dolby Atmos on Netflix, Disney+, and Apple TV? A: Yes, full Dolby Vision video and Dolby Atmos surround audio work across all major 4K streaming apps when connected to a compatible TV or soundbar. | Q: Can I turn off the TV and adjust soundbar volume with the CineCast remote? A: Yes. During 60-second setup it programs HDMI-CEC and universal IR codes automatically so one aluminum clicker runs your entire screen setup. | Q: Does it connect over wired Ethernet as well as Wi-Fi? A: Yes—unlike dongles that need extra USB adapters, a real Gigabit RJ45 Ethernet jack sits right on the rear panel alongside Wi-Fi 6.
+
+### AcoustiPro Hybrid ANC Over-Ear Bluetooth Headphones
+- URL: https://www.shoppingey.com/review/acoustipro-anc-over-ear-wireless-headphones
+- ASIN: B09T5JKL2Z
+- Category: Home Electronics
+- Badge: Editor Tested | Price Tier: Mid-Range
+- Shoppingey Score: 9.4/10 | Star Rating: 4.8/5
+- Criteria Scores: Build Quality 9.3, Performance 9.5, Value 9.6, Ease of Use 9.5, Durability 9.2
+- Last Updated: 2026-11-24 | Author: Elena Vance (Senior Home Tech Editor)
+- Verdict: Supremely comfortable, travel-ready over-ear headphones that erase dishwasher hum, busy coffee shops, and plane cabin roar for 50 straight hours—offering rich, balanced sound without flagship luxury markups.
+- Pros: Zero ear-pinch or headband hotspot even during full 6-hour cross-country flights | Warm, non-fatiguing 40mm dynamic drivers avoid bloated fake bass while keeping vocals crisp | Physical tactile buttons along the right cup beat finicky capacitive touch swipes in winter gloves | Includes slim hardshell EVA zip case, braided USB-C audio/charge cord, and 3.5mm cable
+- Cons: Memory foam cups isolate heat well—can feel slightly warm during sweaty summer yard chores | Wind-noise reduction handles light breezes fine, though strong gusts require disabling Transparency | No IPX waterproof rating (keep them dry in heavy downpours)
+- Key Specs: Drivers & Audio: 40mm Custom Dynamic + LDAC / AAC / Wired USB DAC ; Noise Cancellation: Hybrid 4-Mic ANC (-42dB) + Transparency Mode ; Battery Endurance: 50 Hrs ANC On / 65 Hrs ANC Off ; Quick Charge: 10-Min USB-C Charge = 5 Hours Playback ; Bluetooth Chip: Bluetooth 5.3 with Seamless 2-Device Multipoint ; Earpads: Replaceable Slow-Rebound Protein-Leather Foam ; Included Accessories: EVA Hardshell Case, USB-C Cord, 3.5mm Audio Cable ; Weight: 0.56 lbs (254g)
+- FAQs: Q: Can AcoustiPro connect to my work laptop and smartphone at the exact same time? A: Yes! Dual-device Multipoint Bluetooth stays linked to both devices so music on your laptop pauses automatically when your phone rings. | Q: Can I plug them into airplane seatback jacks or use them if the battery runs flat? A: Yes. Use the included 3.5mm cable for passive wired playback even at 0% battery, or plug via USB-C to a laptop for clean digital wired audio and simultaneous charging. | Q: Do they pinch if I wear prescription glasses? A: No—the low-density slow-rebound memory foam conforms softly around thin metal and acetate frames while maintaining an effective noise seal. | Q: Are the ear cushions replaceable down the road? A: Yes. Standard snap-on oval cushions swap out cleanly in under a minute after years of heavy travel.
+
+### DeskDock 11-in-1 Dual-4K USB-C Aluminum Docking Station
+- URL: https://www.shoppingey.com/review/deskdock-11in1-thunderbolt-usb-c-hub
+- ASIN: B0C8V2MR4Y
+- Category: Home Electronics
+- Badge: Best Value | Price Tier: Mid-Range
+- Shoppingey Score: 9.5/10 | Star Rating: 4.9/5
+- Criteria Scores: Build Quality 9.6, Performance 9.6, Value 9.5, Ease of Use 9.5, Durability 9.4
+- Last Updated: 2026-11-25 | Author: Elena Vance (Senior Home Tech Editor)
+- Verdict: A rock-solid single-cable desk hub that turns any USB-C or Thunderbolt laptop into a dual-4K workstation—delivering true 60Hz dual displays, full Gigabit Ethernet, and rapid SD photo transfers without overheating.
+- Pros: All high-bandwidth ports stayed cool and stable during 4-hour dual-4K monitor + SSD transfers | Zero HDMI flicker or monitor wake-from-sleep dropouts across Windows and macOS | All key I/O sits neatly along one clean edge so desk cables route out of sight | Braided host cable eliminates stiff plastic kinks next to slim ultrabooks
+- Cons: Pass-through laptop charging requires bringing your own 65W–100W USB-C GaN power supply | Base macOS extends 1 external display natively (mirrors 2nd HDMI unless Mac runs M3/M4 Pro/Max) | 10-inch integrated host cable is long enough for desk use, though laptop stands sit nicer with an elbow
+- Key Specs: Video Ports: 2x HDMI 2.0 (Dual 4K@60Hz MST / Single 4K@60Hz) ; Power Delivery: 100W USB-C PD Pass-Through (Up to 85W to Host) ; USB Data Ports: 2x USB-A 3.2 (10Gbps) + 1x USB-C Data + 1x USB 2.0 ; Networking: 1000 Mbps Gigabit Ethernet RJ45 ; Card Readers: Simultaneous UHS-II SD + microSD (Up to 312 MB/s) ; Audio Jack: 3.5mm Combo Headphone & Microphone Port ; Build Material: CNC Space-Gray Aluminum + Braided 10-in Lead ; Dimensions & Weight: 5.5 x 2.1 x 0.68 in (0.41 lbs)
+- FAQs: Q: Does DeskDock include a wall power charger inside the box? A: No—it uses a pass-through PD port so you can plug in your existing laptop USB-C charger or a compact 100W GaN hub to charge your laptop and run all ports over one wire. | Q: Will it run two independent extended 4K monitors on MacBooks? A: On Windows laptops supporting DisplayPort MST, both HDMI ports extend independently up to 4K 60Hz. On standard base-chip Macs, macOS mirrors the two HDMI ports unless running Pro/Max chips or Thunderbolt docks. | Q: Can I use the SD and microSD card slots at the same time? A: Yes! Both UHS-II slots read and write simultaneously without forcing you to unmount one card first. | Q: Does the aluminum body get hot under heavy dual-monitor use? A: It warms gently (~104°F) to dissipate controller heat passively, which protects transfer stability and stays comfortable to touch.
 
 ---
 

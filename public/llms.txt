@@ -1,6 +1,6 @@
 # Shoppingey.com
 
-> Independent hands-on Amazon product reviews tested, scored on a transparent 5-point rubric, and organized across 5 core home, workshop, kitchen, decor, and garden departments (30 reviews total). Prices on Amazon fluctuate dynamically, so live price tiers are shown rather than fixed dollar quotes.
+> Independent hands-on Amazon product reviews tested, scored on a transparent 5-point rubric, and organized across 6 core home, workshop, kitchen, decor, and garden departments (36 reviews total). Prices on Amazon fluctuate dynamically, so live price tiers are shown rather than fixed dollar quotes.
 
 ## Key Resources
 - [Homepage & Full Review Directory](https://www.shoppingey.com/): Complete index of tested product reviews.
@@ -12,6 +12,7 @@
 
 ## Department Hubs
 - [Home & Tech](https://www.shoppingey.com/category/home-tech): 6 tested reviews — Independent Amazon Home & Tech product reviews tested for reliability, app latency, local storage, and long-term value at Shoppingey.com.
+- [Home Electronics](https://www.shoppingey.com/category/home-electronics): 6 tested reviews — Independent Amazon Home Electronics reviews testing Dolby Atmos soundbars, 4K streamers, projectors, ANC headphones, and GaN USB-C chargers.
 - [Home & Kitchen](https://www.shoppingey.com/category/home-kitchen): 6 tested reviews — Hands-on Amazon Home & Kitchen appliance reviews covering cooking performance, build quality, cleanup ease, and real durability.
 - [Home Decor](https://www.shoppingey.com/category/home-decor): 6 tested reviews — Honest Amazon Home Decor reviews evaluating lighting quality, finish durability, materials, and room-ready design at Shoppingey.com.
 - [Tools](https://www.shoppingey.com/category/tools): 6 tested reviews — Bench-tested Amazon Tools reviews covering cordless drills, torque output, ergonomics, and battery endurance by Shoppingey.com editors.
@@ -24,6 +25,14 @@
 - [ThermoSense Pro Smart Wi-Fi Learning Thermostat](https://www.shoppingey.com/review/thermosense-smart-learning-thermostat): Editor Tested · Score 9.3/10 · Rating 4.8/5 · Mid-Range · ASIN B09XXS48P8 — A refined, whisper-accurate smart thermostat that fixes uneven room temperatures using an included remote sensor and trims monthly HVAC runtime without fussy programming.
 - [KeyVault Fingerprint Wi-Fi Smart Deadbolt Lock](https://www.shoppingey.com/review/keyvault-biometric-smart-deadbolt-lock): Best Value · Score 9.4/10 · Rating 4.8/5 · Mid-Range · ASIN B07HXFKMYR — A rock-solid ANSI Grade 1 smart deadbolt that combines blazing-fast thumbprint unlocks, backlit anti-peep keypad codes, and built-in Wi-Fi without requiring a separate bridge.
 - [AeroPure H13 True HEPA Smart Wi-Fi Air Purifier](https://www.shoppingey.com/review/aeropure-smart-hepa-air-purifier): Editor Tested · Score 9.4/10 · Rating 4.8/5 · Mid-Range · ASIN B09M7KP4TX — A sleek, impressively quiet H13 True HEPA smart purifier that clears cooking smoke, pet dander, and seasonal pollen rapidly in bedrooms and living rooms up to 1,050 sq. ft.
+
+## Home Electronics Reviews
+- [SoundPulse 3.1.2 Dolby Atmos Soundbar & Wireless Subwoofer](https://www.shoppingey.com/review/soundpulse-dolby-atmos-soundbar-subwoofer): Shoppingey Top Pick · Score 9.6/10 · Rating 4.9/5 · Premium · ASIN B09SL7KP4M — An astonishingly balanced living-room theater upgrade that finally fixes muddy TV speech while filling medium-to-large rooms with tactile bass and genuine overhead Dolby Atmos height—without rear speaker wires.
+- [LumeBeam 1080p Auto-Focus Portable LED Smart Projector](https://www.shoppingey.com/review/lumebeam-1080p-portable-smart-projector): Best Value · Score 9.4/10 · Rating 4.8/5 · Mid-Range · ASIN B0C3M8VN2X — The easiest grab-and-watch home projector we tested all year—aim it at any blank wall or bedroom ceiling, wait three seconds for laser autofocus to lock razor-sharp 1080p video, and stream straight off Wi-Fi.
+- [VoltBank 100W 6-Port GaN USB-C Desktop Charging Station](https://www.shoppingey.com/review/voltbank-100w-gan-desktop-charging-station): Editor Tested · Score 9.3/10 · Rating 4.8/5 · Budget-Friendly · ASIN B0B7X4KR9P — The cleanest one-cord desktop power hub in its class—replacing a tangled nest of bulky white laptop bricks and phone cubes with six whisper-cool GaN ports wrapped in anodized aluminum.
+- [CineCast 4K HDR Dolby Vision Streaming Media Player](https://www.shoppingey.com/review/cinecast-4k-streaming-media-player-box): Shoppingey Top Pick · Score 9.5/10 · Rating 4.9/5 · Mid-Range · ASIN B0D1Q6WN8H — A blistering-fast, zero-bloat living-room streaming powerhouse that instantly retires sluggish built-in smart TV menus—delivering frame-matched 4K Dolby Vision, Gigabit Ethernet, and an upscale aluminum remote.
+- [AcoustiPro Hybrid ANC Over-Ear Bluetooth Headphones](https://www.shoppingey.com/review/acoustipro-anc-over-ear-wireless-headphones): Editor Tested · Score 9.4/10 · Rating 4.8/5 · Mid-Range · ASIN B09T5JKL2Z — Supremely comfortable, travel-ready over-ear headphones that erase dishwasher hum, busy coffee shops, and plane cabin roar for 50 straight hours—offering rich, balanced sound without flagship luxury markups.
+- [DeskDock 11-in-1 Dual-4K USB-C Aluminum Docking Station](https://www.shoppingey.com/review/deskdock-11in1-thunderbolt-usb-c-hub): Best Value · Score 9.5/10 · Rating 4.9/5 · Mid-Range · ASIN B0C8V2MR4Y — A rock-solid single-cable desk hub that turns any USB-C or Thunderbolt laptop into a dual-4K workstation—delivering true 60Hz dual displays, full Gigabit Ethernet, and rapid SD photo transfers without overheating.
 
 ## Home & Kitchen Reviews
 - [AeroVanc CrispDuo 8-Quart Dual-Basket Air Fryer](https://www.shoppingey.com/review/aerovanc-crispduo-8qt-dual-basket-air-fryer): Shoppingey Top Pick · Score 9.6/10 · Rating 4.9/5 · Mid-Range · ASIN B089TQWJKK — The best-balanced dual-zone air fryer we have tested on Amazon: independent convection heaters deliver shatteringly crisp results in both drawers while Sync-Finish lands main dishes and sides hot at the exact same second.

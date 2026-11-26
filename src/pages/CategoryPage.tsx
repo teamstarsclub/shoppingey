@@ -311,7 +311,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug }) => {
           >
             More Categories to Explore
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {otherCategories.map((other) => {
               const count = getCategoryReviewCount(other.slug, REVIEWS);
               return (

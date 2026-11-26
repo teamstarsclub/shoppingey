@@ -130,8 +130,8 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Completes the morning beverage station with silky iced smoothies and cold-foam blending.',
       },
       {
-        slug: 'heatwave-smart-wireless-meat-thermometer',
-        reason: 'Applies the same disciplined culinary temperature precision from pour-over water to oven roasts.',
+        slug: 'voltbank-100w-gan-desktop-charging-station',
+        reason: 'Keeps kitchen tablets, recipe phones, and scales charged neatly away from countertop clutter.',
       },
       {
         slug: 'zenmist-ceramic-essential-oil-diffuser',
@@ -290,8 +290,8 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Brings the same culinary temperature precision to weeknight roasts and grilling.',
       },
       {
-        slug: 'sealpro-stainless-vacuum-food-sealer',
-        reason: 'Seals bulk specialty roasted espresso beans airtight so aroma stays vibrant for months.',
+        slug: 'cinecast-4k-streaming-media-player-box',
+        reason: 'Pairs café-grade morning espressos with crisp ad-light 4K weekend news and cooking shows.',
       },
       {
         slug: 'solarpath-warm-led-landscape-pathway-lights',
@@ -450,8 +450,8 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Vacuum-seals smoothie fruit packs and blended pestos flat for zero-freezer-burn prep.',
       },
       {
-        slug: 'aerovanc-crispduo-8qt-dual-basket-air-fryer',
-        reason: 'Covers the hot crispy half of weeknight dinners while BladeForge handles sauces and smoothies.',
+        slug: 'acoustipro-anc-over-ear-wireless-headphones',
+        reason: 'Erases high-RPM blender roar effortlessly with -42dB ANC while whipping morning smoothies.',
       },
       {
         slug: 'nordicweave-washable-geometric-area-rug',
@@ -610,8 +610,8 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Wire-free design slips cleanly inside closed air-fryer drawers for juicy chicken breasts and salmon.',
       },
       {
-        slug: 'brewcraft-precision-gooseneck-electric-kettle',
-        reason: 'Adds temperature precision across coffee bars and dinner-party dining tables alike.',
+        slug: 'deskdock-11in1-thunderbolt-usb-c-hub',
+        reason: 'Keeps home-office desks connected cleanly while your phone tracks low-and-slow smoker probes outside.',
       },
       {
         slug: 'lasersight-digital-laser-distance-measure',
@@ -770,8 +770,8 @@ export const HOME_KITCHEN_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Brings exact water temperature control to blanching garden produce and steeping vacuum-sealed teas.',
       },
       {
-        slug: 'cremapro-15-bar-espresso-machine-grinder',
-        reason: 'Pairs seamlessly with airtight vacuum canisters or sealed pouches that keep roasted espresso beans fresh.',
+        slug: 'soundpulse-dolby-atmos-soundbar-subwoofer',
+        reason: 'Turns post-prep cleanups into relaxing living-room movie nights after vacuum-sealing bulk meals.',
       },
       {
         slug: 'archview-brushed-gold-arched-wall-mirror',

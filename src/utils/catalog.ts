@@ -24,7 +24,10 @@ export function getCategoryBySlug(
   slug: string,
   categories: Category[] = CATEGORIES
 ): Category | undefined {
-  return categories.find((cat) => cat.slug === slug);
+  const exact = categories.find((cat) => cat.slug === slug);
+  if (exact) return exact;
+  const compact = slug.toLowerCase().replace(/[^a-z0-9]/g, '');
+  return categories.find((cat) => cat.slug.replace(/[^a-z0-9]/g, '') === compact);
 }
 
 export function getReviewBySlug(
@@ -226,7 +229,7 @@ export function buildHomePageJsonLd(): Record<string, unknown>[] {
       '@id': `${SITE_CONFIG.domain}/#webpage`,
       name: 'Shoppingey.com — Independent Amazon Product Reviews (2026)',
       description:
-        'Honest, hands-on Amazon product reviews tested and organized by department: Home & Tech, Home & Kitchen, Home Decor, Tools, and Gardening Gadgets.',
+        'Honest, hands-on Amazon product reviews tested and organized by department: Home & Tech, Home Electronics, Home & Kitchen, Home Decor, Tools, and Gardening Gadgets.',
       url: homeUrl,
       inLanguage: 'en-US',
       isPartOf: {

@@ -130,8 +130,8 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Grounds walnut wall accents with warm cream-and-taupe woven Scandinavian texture below.',
       },
       {
-        slug: 'zenmist-ceramic-essential-oil-diffuser',
-        reason: 'Sits cleanly on the 6.7-inch shelf depth as a sculptural matte-ceramic centerpiece.',
+        slug: 'cinecast-4k-streaming-media-player-box',
+        reason: 'Displays solid walnut shelves gracefully framing clean living-room 4K streaming media setups.',
       },
       {
         slug: 'meshcore-wifi-6e-triband-router-system',
@@ -286,12 +286,12 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
     ],
     companions: [
       {
-        slug: 'lumaarc-brass-linen-floor-lamp',
-        reason: 'Mirrors the brushed brass finish while illuminating your dressing corner with warm linen-diffused light.',
+        slug: 'zenmist-ceramic-essential-oil-diffuser',
+        reason: 'Softens tall brushed-brass bedroom dressing corners with warm stoneware and subtle spa-grade scent.',
       },
       {
-        slug: 'zenmist-ceramic-essential-oil-diffuser',
-        reason: 'Softens dressing corners with subtle spa-grade stoneware and ambient scent.',
+        slug: 'acoustipro-anc-over-ear-wireless-headphones',
+        reason: 'Matches warm champagne metallic accents across refined bedrooms and modern dressing nooks.',
       },
       {
         slug: 'hydroflow-smart-wifi-hose-watering-timer',
@@ -450,8 +450,8 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Frames reading armchairs on the rug with warm overhead linen-diffused lighting and slim brass arches.',
       },
       {
-        slug: 'lumaglow-cordless-rechargeable-led-table-lamp',
-        reason: 'Casts warm 2700K accent light across coffee tables without trailing cords across rug edges.',
+        slug: 'deskdock-11in1-thunderbolt-usb-c-hub',
+        reason: 'Anchors calm home-office workstations with soft woven underfoot comfort beneath standing desks.',
       },
       {
         slug: 'workbeam-rechargeable-magnetic-led-work-light',
@@ -610,8 +610,8 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Combines subtle porcelain scent throw with warm 2700K cord-free table lighting on nightstands.',
       },
       {
-        slug: 'oakridge-floating-walnut-wall-shelves-set',
-        reason: 'Displays the sculptural stoneware diffuser cleanly at eye level on a study or living room wall.',
+        slug: 'soundpulse-dolby-atmos-soundbar-subwoofer',
+        reason: 'Combines calm botanical essential-oil diffusion with rich room-filling Dolby Atmos acoustics.',
       },
       {
         slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
@@ -770,8 +770,8 @@ export const HOME_DECOR_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Balances warm brushed brass curves against crisp horizontal solid walnut wall grain.',
       },
       {
-        slug: 'archview-brushed-gold-arched-wall-mirror',
-        reason: 'Matches brushed champagne-brass tones across bedrooms and dressing corners.',
+        slug: 'lumebeam-1080p-portable-smart-projector',
+        reason: 'Dims cleanly beside sofa corners for warm ambient contrast during portable big-screen movie nights.',
       },
       {
         slug: 'heatwave-smart-wireless-meat-thermometer',

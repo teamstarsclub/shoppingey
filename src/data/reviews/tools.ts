@@ -130,8 +130,8 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Combines exact distance layout with reliable wall-stud detection before drilling.',
       },
       {
-        slug: 'workbeam-rechargeable-magnetic-led-work-light',
-        reason: 'Illuminates dark attics and closets cleanly while taking room measurements.',
+        slug: 'acoustipro-anc-over-ear-wireless-headphones',
+        reason: 'Keeps noisy workshop dust collection or wet-vac hum hushed while mapping room spans.',
       },
       {
         slug: 'nordicweave-washable-geometric-area-rug',
@@ -290,8 +290,8 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Bathes your electronics repair bench in crisp shadow-free floodlight during intricate teardowns.',
       },
       {
-        slug: 'levelline-green-beam-cross-laser-level',
-        reason: 'Projects crisp alignment lines across walls before driving delicate smart-home wall plates.',
+        slug: 'deskdock-11in1-thunderbolt-usb-c-hub',
+        reason: 'Essential micro-driver kit for installing laptop NVMe upgrades right alongside aluminum docks.',
       },
       {
         slug: 'thermosense-smart-learning-thermostat',
@@ -450,8 +450,8 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Combines solid framing stud detection with luminous green laser horizontals for spotless installs.',
       },
       {
-        slug: 'torqpro-20v-brushless-cordless-drill-kit',
-        reason: 'Drives heavy TV mount lag bolts and shelf brackets cleanly once StudScan marks dead-center.',
+        slug: 'soundpulse-dolby-atmos-soundbar-subwoofer',
+        reason: 'Finds solid framing studs and AC wires behind drywall before wall-mounting heavy soundbars.',
       },
       {
         slug: 'keyvault-biometric-smart-deadbolt-lock',
@@ -610,8 +610,8 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Illuminates dark crawlspaces and framing bays while driving structural screws cleanly.',
       },
       {
-        slug: 'lasersight-digital-laser-distance-measure',
-        reason: 'Brightens dimly lit attics and basements so laser measurement marks stay crisp and visible.',
+        slug: 'lumebeam-1080p-portable-smart-projector',
+        reason: 'Lights up dim backyards cleanly while setting up outdoor projector tripods before movie time.',
       },
       {
         slug: 'heatwave-smart-wireless-meat-thermometer',
@@ -770,8 +770,8 @@ export const TOOLS_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Measures exact room spans and cut lengths while LevelLine keeps every layout mark dead level.',
       },
       {
-        slug: 'precisionbit-electric-screwdriver-repair-kit',
-        reason: 'Fastens delicate cabinet hinges, switch plates, and trim hardware cleanly along laser lines.',
+        slug: 'voltbank-100w-gan-desktop-charging-station',
+        reason: 'Tops up LevelLine’s USB-C lithium pack rapidly overnight alongside phones and workshop tablets.',
       },
       {
         slug: 'oakridge-floating-walnut-wall-shelves-set',

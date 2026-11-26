@@ -130,8 +130,8 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Combines outlet-level energy monitoring with smart HVAC scheduling to cut whole-home utility waste.',
       },
       {
-        slug: 'keyvault-biometric-smart-deadbolt-lock',
-        reason: 'Trigger indoor welcome lamps plugged into VoltGuard automatically when your front door unlocks at dusk.',
+        slug: 'lumebeam-1080p-portable-smart-projector',
+        reason: 'Protects portable smart projectors from bedroom and living-room power surges during storms.',
       },
       {
         slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
@@ -290,8 +290,8 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Provides steady 2.4 GHz IoT connectivity at the front entry for instant lock notifications.',
       },
       {
-        slug: 'aeropure-smart-hepa-air-purifier',
-        reason: 'Keeps smart bedroom air-quality sensors online continuously with dedicated 2.4 GHz IoT isolation.',
+        slug: 'voltbank-100w-gan-desktop-charging-station',
+        reason: 'Powers multi-gig home office setups cleanly right beside tri-band Wi-Fi 6E mesh nodes.',
       },
       {
         slug: 'oakridge-floating-walnut-wall-shelves-set',
@@ -450,8 +450,8 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Matches hallway VOC and air-quality alerts with whisper-quiet H13 HEPA scrubbing in bedrooms.',
       },
       {
-        slug: 'auravision-2k-smart-wifi-video-doorbell',
-        reason: 'Builds a unified subscription-free smart home dashboard across climate and entryway security.',
+        slug: 'cinecast-4k-streaming-media-player-box',
+        reason: 'Coordinates comfortable movie-night room temperatures automatically alongside fast 4K Dolby Vision streaming.',
       },
       {
         slug: 'zenmist-ceramic-essential-oil-diffuser',
@@ -610,8 +610,8 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Lets you visually verify couriers on 2K video and trigger guest access cleanly from one workflow.',
       },
       {
-        slug: 'voltguard-smart-wifi-surge-power-strip',
-        reason: 'Automates hallway welcome lights the moment your fingerprint unlocks the door after sunset.',
+        slug: 'acoustipro-anc-over-ear-wireless-headphones',
+        reason: 'Transparency Mode ensures you never miss front-door smart lock alerts while wearing ANC headphones.',
       },
       {
         slug: 'hydrocoil-retractable-garden-hose-reel',
@@ -770,8 +770,8 @@ export const HOME_TECH_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Tracks actual kilowatt-hour draw cleanly and safeguards sensitive brushless purifier electronics.',
       },
       {
-        slug: 'meshcore-wifi-6e-triband-router-system',
-        reason: 'Keeps live PM2.5 history and Alexa automation schedules responsive in upstairs bedrooms.',
+        slug: 'deskdock-11in1-thunderbolt-usb-c-hub',
+        reason: 'Keeps home office air ultra-clean around dual-4K laptop workstations running all afternoon.',
       },
       {
         slug: 'shearpro-cordless-electric-pruning-shears',

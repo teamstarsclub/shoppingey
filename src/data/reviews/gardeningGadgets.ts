@@ -130,8 +130,8 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Highlights thriving evening garden borders cleanly once your beds are dialed in.',
       },
       {
-        slug: 'aerogrow-indoor-hydroponic-herb-garden-kit',
-        reason: 'Extends year-round fresh herb harvesting indoors during frosty winter months.',
+        slug: 'deskdock-11in1-thunderbolt-usb-c-hub',
+        reason: 'Tracks garden crop planting spreadsheets and soil pH logs cleanly back at a multi-monitor desk.',
       },
       {
         slug: 'lasersight-digital-laser-distance-measure',
@@ -290,8 +290,8 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Keeps fresh pruning and culinary plant harvests thriving indoors long after outdoor frost.',
       },
       {
-        slug: 'hydrocoil-retractable-garden-hose-reel',
-        reason: 'Rinses walkways and deeply hydrates newly trimmed rose beds without dragging tangled hoses.',
+        slug: 'soundpulse-dolby-atmos-soundbar-subwoofer',
+        reason: 'Rewards an afternoon of orchard pruning with rich, immersive living-room movie sound.',
       },
       {
         slug: 'brewcraft-precision-gooseneck-electric-kettle',
@@ -450,8 +450,8 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Keeps unruly garden hoses neatly coiled away behind shrubs so solar walkways stay uncluttered.',
       },
       {
-        slug: 'hydroflow-smart-wifi-hose-watering-timer',
-        reason: 'Automates overnight lawn irrigation quietly while IP65-sealed solar fixtures shrug off sprinkler mist.',
+        slug: 'lumebeam-1080p-portable-smart-projector',
+        reason: 'Guides guests along warm dusk garden paths straight to evening backyard projector movie nights.',
       },
       {
         slug: 'lumaglow-cordless-rechargeable-led-table-lamp',
@@ -610,8 +610,8 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Bridges indoor automated herb care with smart seasonal drip schedules outdoors.',
       },
       {
-        slug: 'terraprobe-4in1-digital-soil-moisture-meter',
-        reason: 'Helps you transplant rooted hydroponic herbs successfully into outdoor patio pots come spring.',
+        slug: 'voltbank-100w-gan-desktop-charging-station',
+        reason: 'Recharges indoor kitchen tablets, timers, and smart herb accessories from one clean counter hub.',
       },
       {
         slug: 'lumaarc-brass-linen-floor-lamp',
@@ -770,8 +770,8 @@ export const GARDENING_GADGETS_EXTRA_REVIEWS: ProductReview[] = [
         reason: 'Confirms deep root-zone saturation after gentle thumb-nozzle watering sessions.',
       },
       {
-        slug: 'shearpro-cordless-electric-pruning-shears',
-        reason: 'Teams up for effortless weekend yard maintenance—crisp trimmed hedges plus clutter-free watering.',
+        slug: 'cinecast-4k-streaming-media-player-box',
+        reason: 'Rewinds outdoor yard hoses in five seconds flat so you get back inside faster for 4K cinema.',
       },
       {
         slug: 'levelline-green-beam-cross-laser-level',
